@@ -295,7 +295,7 @@ const privateKey = privateKeyBase64
     //   karthiks@datadriven-services.co.in
     //
     // To:
-    //   karthiks@datadriven-services.com
+    //   karthik@datadriven-services.com
     //
     // Reply-To:
     //   visitor's email
