@@ -1,84 +1,150 @@
-// Vercel Routing Middleware — runs on the Edge runtime before any static
-// asset or serverless function is served.
+// Vercel Routing Middleware — Edge runtime.
 //
-// Protects /admin and all its sub-paths with HTTP Basic Authentication.
-// Credentials are read exclusively from Vercel environment variables:
-//   ADMIN_USERNAME
-//   ADMIN_PASSWORD
+// Replaces HTTP Basic Auth with an HMAC-signed session cookie.
 //
-// All other routes (/,  /api/contact, /blog, etc.) are passed through
-// without any authentication check.
+// Protected: /admin and /admin/** (except /admin/login and /admin/login.html)
+// Session cookie name: ew_admin_session
 //
-// Local development (npm run dev) is not affected — this middleware only
+// Token format  →  <issuedAt>:<expiresAt>.<HMAC-SHA256-hex(issuedAt:expiresAt, ADMIN_SESSION_SECRET)>
+//   issuedAt  : Unix timestamp (seconds) when the session was minted
+//   expiresAt : Unix timestamp (seconds) = issuedAt + 8 h
+//   signature : HMAC-SHA256 of the "<issuedAt>:<expiresAt>" payload, as lowercase hex
+//
+// Validation (both conditions must pass):
+//   (a) The HMAC signature is cryptographically correct.
+//   (b) The current time is strictly before expiresAt.
+//
+// Unauthenticated or expired sessions → 302 redirect to /admin/login.
+// All other routes (public site, /api/contact) → pass through untouched.
+//
+// Local development (npm run dev) is not affected — middleware only
 // runs on Vercel's platform.
 
 export const config = { runtime: 'edge' }
 
-export default function middleware(request: Request): Response | null {
+const SESSION_COOKIE = 'ew_admin_session'
+const LOGIN_PAGE     = '/admin/login'
+const LOGIN_PAGE_HTML = '/admin/login.html'  // direct file access
+
+export default async function middleware(request: Request): Promise<Response | null> {
   const url = new URL(request.url)
+  const { pathname } = url
 
-  // ── 1. Only protect /admin and everything beneath it ──────────────────
-  if (!url.pathname.startsWith('/admin')) return null
+  // ── 1. Not an /admin route — pass through immediately ─────────────────
+  //       Covers the public site, /api/contact, and all other paths.
+  if (!pathname.startsWith('/admin')) return null
 
-  // ── 2. Read credentials from environment variables ────────────────────
-  //       Fail closed if either variable is missing so the admin area is
-  //       never accidentally left open.
-  const expectedUser = process.env.ADMIN_USERNAME
-  const expectedPass = process.env.ADMIN_PASSWORD
+  // ── 2. The login page itself must be reachable without a session ───────
+  //       Both the clean URL (/admin/login) and the file path (/admin/login.html)
+  //       are allowed so that Vercel's rewrite can serve the static file.
+  if (pathname === LOGIN_PAGE || pathname === LOGIN_PAGE_HTML) return null
 
-  if (!expectedUser || !expectedPass) {
+  // ── 3. Fail closed if the session secret is not configured ────────────
+  const secret = process.env.ADMIN_SESSION_SECRET
+  if (!secret) {
     return new Response(
-      'Admin auth is not configured. Set ADMIN_USERNAME and ADMIN_PASSWORD in Vercel environment variables.',
+      'Admin auth is not configured. Set ADMIN_SESSION_SECRET in Vercel environment variables.',
       { status: 500 },
     )
   }
 
-  // ── 3. Parse the Authorization header ────────────────────────────────
-  const authHeader = request.headers.get('authorization') ?? ''
+  // ── 4. Read and verify the session cookie ─────────────────────────────
+  const cookieHeader = request.headers.get('cookie') ?? ''
+  const token = parseCookie(cookieHeader, SESSION_COOKIE)
 
-  if (authHeader.startsWith('Basic ')) {
-    const base64 = authHeader.slice('Basic '.length)
-
-    try {
-      const decoded = atob(base64)        // Web API — available on Edge runtime
-      const colonIndex = decoded.indexOf(':')
-
-      if (colonIndex !== -1) {
-        const submittedUser = decoded.slice(0, colonIndex)
-        const submittedPass = decoded.slice(colonIndex + 1)
-
-        // ── 4. Constant-time comparison to prevent timing attacks ─────
-        const userMatch = timingSafeEqual(submittedUser, expectedUser)
-        const passMatch = timingSafeEqual(submittedPass, expectedPass)
-
-        if (userMatch && passMatch) return null   // ✓ authenticated — pass through
-      }
-    } catch {
-      // atob() throws on invalid base64 — treat as failed auth
-    }
+  if (token) {
+    const valid = await verifyToken(token, secret)
+    if (valid) return null  // ✓ authenticated and not expired — pass through
   }
 
-  // ── 5. Not authenticated — send 401 to trigger the browser login dialog
-  return new Response('Unauthorized', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': 'Basic realm="EvaWarm Admin"',
-      'Content-Type': 'text/plain',
-    },
-  })
+  // ── 5. Not authenticated (no cookie, bad signature, or expired) ────────
+  //       Redirect to the branded login page.
+  const loginUrl = new URL(LOGIN_PAGE, request.url)
+  return Response.redirect(loginUrl.toString(), 302)
 }
 
 // ---------------------------------------------------------------------------
-// Constant-time string comparison.
-// Returns false immediately if lengths differ (length is not a secret),
-// then XORs every character pair so the loop always runs the same number
-// of iterations regardless of where the first mismatch occurs.
+// Parse a named cookie from the Cookie header string.
+// Returns the cookie value, or null if not found.
 // ---------------------------------------------------------------------------
-function timingSafeEqual(a: string, b: string): boolean {
-  if (a.length !== b.length) return false
-  let result = 0
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i)
+function parseCookie(header: string, name: string): string | null {
+  for (const segment of header.split(';')) {
+    const trimmed = segment.trim()
+    const eq = trimmed.indexOf('=')
+    if (eq === -1) continue
+    const key = trimmed.slice(0, eq).trim()
+    if (key === name) return trimmed.slice(eq + 1).trim()
   }
-  return result === 0
+  return null
+}
+
+// ---------------------------------------------------------------------------
+// Verify a session token.
+//
+// Steps:
+//   1. Split on the last '.' to separate payload from HMAC hex signature.
+//   2. Import ADMIN_SESSION_SECRET as an HMAC-SHA256 key (Web Crypto API).
+//   3. Verify the signature against the payload — constant-time via SubtleCrypto.
+//   4. Parse expiresAt from the payload and compare against the current time.
+//
+// Returns true only when BOTH the signature is valid AND the token is
+// not yet expired. Any malformed token returns false without throwing.
+// ---------------------------------------------------------------------------
+async function verifyToken(token: string, secret: string): Promise<boolean> {
+  try {
+    // ── Split token into payload and signature ───────────────────────────
+    const dotIndex = token.lastIndexOf('.')
+    if (dotIndex === -1) return false
+
+    const payload = token.slice(0, dotIndex)   // "issuedAt:expiresAt"
+    const hexSig  = token.slice(dotIndex + 1)  // lowercase hex HMAC
+
+    if (!payload || !hexSig) return false
+
+    // ── Import secret as HMAC-SHA256 verification key ───────────────────
+    const key = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(secret),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,       // not extractable
+      ['verify'],
+    )
+
+    // ── Verify signature (constant-time, no early exit on mismatch) ──────
+    const sigBytes     = hexToBytes(hexSig)
+    const payloadBytes = new TextEncoder().encode(payload)
+    const signatureValid = await crypto.subtle.verify('HMAC', key, sigBytes, payloadBytes)
+
+    if (!signatureValid) return false
+
+    // ── Check expiry — only after the signature is confirmed valid ────────
+    //   Payload format: "<issuedAt>:<expiresAt>"
+    const colonIndex = payload.indexOf(':')
+    if (colonIndex === -1) return false
+
+    const expiresAt = parseInt(payload.slice(colonIndex + 1), 10)
+    if (Number.isNaN(expiresAt)) return false
+
+    const nowSeconds = Math.floor(Date.now() / 1000)
+    return nowSeconds < expiresAt   // false when expired
+
+  } catch {
+    // Any parse error, bad base16, or crypto failure → reject token
+    return false
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Decode a lowercase hexadecimal string to a Uint8Array.
+// Returns an empty array for any malformed input.
+// ---------------------------------------------------------------------------
+function hexToBytes(hex: string): Uint8Array {
+  if (hex.length % 2 !== 0) return new Uint8Array(0)
+  const bytes = new Uint8Array(hex.length / 2)
+  for (let i = 0; i < hex.length; i += 2) {
+    const byte = parseInt(hex.slice(i, i + 2), 16)
+    if (Number.isNaN(byte)) return new Uint8Array(0)
+    bytes[i / 2] = byte
+  }
+  return bytes
 }
