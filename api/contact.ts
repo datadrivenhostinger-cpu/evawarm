@@ -283,9 +283,9 @@ const privateKey = privateKeyBase64
     // --------------------------------------------------
 
     const gmail = google.gmail({
-      version: 'v1',
-      auth,
-    })
+  version: 'v1',
+  auth: auth as any,
+})
 
     // --------------------------------------------------
     // CREATE EMAIL
