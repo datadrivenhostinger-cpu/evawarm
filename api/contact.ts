@@ -97,6 +97,7 @@ const privateKey = privateKeyBase64
 
     const contactEmail =
       process.env.CONTACT_EMAIL
+    const ccEmail = process.env.CONTACT_CC?.trim()
 
     // --------------------------------------------------
     // CHECK ENVIRONMENT VARIABLES
@@ -302,15 +303,16 @@ const privateKey = privateKeyBase64
     // --------------------------------------------------
 
     const rawMessage = [
-      `From: ${impersonateUser}`,
-      `To: ${contactEmail}`,
-      `Reply-To: ${email}`,
-      `Subject: ${subject}`,
-      'MIME-Version: 1.0',
-      'Content-Type: text/html; charset=UTF-8',
-      '',
-      html,
-    ].join('\r\n')
+  `From: ${impersonateUser}`,
+  `To: ${contactEmail}`,
+  ...(ccEmail ? [`Cc: ${ccEmail}`] : []),
+  `Reply-To: ${email}`,
+  `Subject: ${subject}`,
+  'MIME-Version: 1.0',
+  'Content-Type: text/html; charset=UTF-8',
+  '',
+  html,
+].join('\r\n')
 
     // Gmail API requires base64url format
     const encodedMessage =
