@@ -1,0 +1,107 @@
+# Local development uses the Decap proxy server.
+# Production authentication/backend should be configured before publishing /admin.
+# See CMS_SETUP.md for the production options.
+
+backend:
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: content/blog
+    create: true
+    delete: true
+    identifier_field: title
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [date, title, category]
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: "The main title shown on the article page."
+
+      - label: Excerpt
+        name: excerpt
+        widget: text
+        hint: "Short summary used on the Blog listing page."
+
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - Email Deliverability
+          - Email Warmup
+          - Email Verification
+          - Outbound Marketing
+
+      - label: Publish Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+
+      - label: Read Time
+        name: readTime
+        widget: string
+        hint: "Example: 6 min read"
+
+      - label: Hero / Featured Image
+        name: image
+        widget: image
+        required: false
+        hint: "Upload the hero image for this article. The same image is used for the featured card."
+
+      - label: Featured Article
+        name: featured
+        widget: boolean
+        default: true
+
+      - label: Hero Image Position
+        name: imagePosition
+        widget: select
+        default: center
+        options:
+          - center
+          - top
+          - bottom
+          - left
+          - right
+        hint: "Controls which part of the hero image stays visible when it is cropped."
+
+      - label: Introduction
+        name: introduction
+        widget: text
+
+      - label: Sections
+        name: sections
+        widget: list
+        label_singular: Section
+        summary: "{{title}}"
+        fields:
+          - label: Section Title
+            name: title
+            widget: string
+          - label: Paragraphs
+            name: paragraphs
+            widget: list
+            label_singular: Paragraph
+            field:
+              label: Paragraph
+              name: paragraph
+              widget: text
+
+      - label: EvaWarm Takeaway
+        name: takeaway
+        widget: text
+
+      - label: Conclusion
+        name: conclusion
+        widget: text

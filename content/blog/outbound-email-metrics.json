@@ -1,0 +1,45 @@
+{
+  "slug": "outbound-email-metrics",
+  "title": "The Outbound Email Metrics That Actually Matter",
+  "excerpt": "Go beyond opens and clicks with the metrics that help you understand list quality and campaign health.",
+  "category": "Outbound Marketing",
+  "date": "2026-08-12T00:00:00.000Z",
+  "readTime": "6 min read",
+  "introduction": "Outbound performance becomes much easier to manage when you measure what actually tells you whether your sending system and campaigns are healthy.",
+  "sections": [
+    {
+      "id": "delivery-quality",
+      "title": "Delivery quality",
+      "paragraphs": [
+        "Start with whether messages are being accepted and delivered reliably. Bounce trends and delivery outcomes help reveal list or infrastructure problems early.",
+        "A clean delivery baseline makes the rest of your campaign metrics more useful."
+      ]
+    },
+    {
+      "id": "reputation-signals",
+      "title": "Reputation signals",
+      "paragraphs": [
+        "Complaints, reputation indicators, and sudden changes in delivery behavior can show that mailbox providers are reacting to your sending pattern.",
+        "Watch for trends instead of overreacting to one isolated event."
+      ]
+    },
+    {
+      "id": "engagement-context",
+      "title": "Engagement in context",
+      "paragraphs": [
+        "Opens and clicks can be useful directional signals, but they should be read alongside delivery quality, list source, campaign intent, and audience fit.",
+        "The goal is to understand why results changed, not simply to chase a higher percentage."
+      ]
+    },
+    {
+      "id": "campaign-trends",
+      "title": "Campaign-level trends",
+      "paragraphs": [
+        "Compare results across campaigns, domains, mailboxes, lists, and time periods to identify patterns.",
+        "Consistent reporting helps your team distinguish a one-off campaign result from a real system-level issue."
+      ]
+    }
+  ],
+  "takeaway": "Use metrics to explain what is happening, not just to celebrate a number. Delivery quality, reputation, engagement, and campaign trends are strongest when viewed together.",
+  "conclusion": "A small, meaningful dashboard is better than a wall of vanity metrics. Track the signals that help you decide what to change next."
+}
