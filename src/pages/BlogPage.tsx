@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight, CalendarDays, ChevronRight, Clock3, MailCheck, ShieldCheck, Sparkles } from 'lucide-react'
 import { blogPosts, formatBlogDate, type BlogPost } from '@/data/blog'
+import PageFAQ from '@/components/FAQ'
 
 const categories = ['All', 'Email Deliverability', 'Email Warmup', 'Email Verification', 'Outbound Marketing']
 
@@ -163,6 +164,20 @@ export default function BlogPage({ navigate }: BlogPageProps) {
           </div>
         </div>
       </section>
+
+      <PageFAQ
+        faqs={blogFaqs}
+        heading={'Questions About\nOur Blog & Resources'}
+        bg="#0b1324"
+      />
     </main>
   )
 }
+
+const blogFaqs = [
+  { q: 'How often do you publish new articles?', a: 'We publish new guides and deep-dives on email deliverability, warmup, and outbound marketing regularly. Subscribe to our newsletter in the footer to get new articles directly in your inbox.' },
+  { q: 'Can I request a topic?', a: 'Absolutely. If there is a deliverability question you cannot find a clear answer to, reach out through the contact page and we will cover it in an upcoming article.' },
+  { q: 'Are these guides based on real client experience?', a: 'Yes — every article on this blog is grounded in hands-on experience with real client campaigns. We do not recycle generic email marketing advice. The content reflects what we actually do, see, and measure.' },
+  { q: 'Can I share or republish articles?', a: 'You are welcome to share links to any article. For republication or excerpts, please contact us first so we can agree appropriate attribution.' },
+  { q: 'Where can I learn more about email warmup?', a: 'Start with the How It Works page for a full explanation of our manual warmup process, or visit the Services page for detailed breakdowns of each service. The FAQ page also covers the most common deliverability questions in depth.' },
+]

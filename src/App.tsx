@@ -10,6 +10,7 @@ import {
   HowWeWork,
   ServicesPreview,
   Testimonials,
+  HomeFAQ,
   FinalCTA,
 } from '@/pages/Home'
 import ServicesPage from '@/pages/ServicesPage'
@@ -85,6 +86,7 @@ export default function App() {
           <HowWeWork />
           <ServicesPreview navigate={navigate} />
           <Testimonials />
+          <HomeFAQ />
           <FinalCTA navigate={navigate} />
         </>
       ) : page === 'services' ? (

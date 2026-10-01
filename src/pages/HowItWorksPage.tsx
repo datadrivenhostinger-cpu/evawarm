@@ -52,7 +52,7 @@ function PageHero({ navigate }: { navigate: (p: string) => void }) {
               Book a Meeting
               <Calendar size={14} />
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-ghost">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-ghost">
               Get Your Free Audit Now
             </a>
           </div>
@@ -434,7 +434,7 @@ function HowCTA() {
               Book a Meeting
               <Calendar size={14} />
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-ghost btn-lg">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-ghost btn-lg">
               Contact Us
             </a>
           </div>

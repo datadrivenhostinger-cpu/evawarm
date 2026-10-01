@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react'
 import React from 'react'
 import { ArrowRight, CheckCircle2, SlidersHorizontal, BarChart3, Headphones, Mail, ShieldCheck, TrendingUp, Calendar, ChevronRight, ChevronLeft } from 'lucide-react'
+import PageFAQ from '@/components/FAQ'
 
 // ─── Hooks ──────────────────────────────────────────────────────────────────
 
@@ -225,17 +226,17 @@ export function Hero({ navigate }: { navigate: (p: string) => void }) {
                 <Calendar size={15} />
                 Schedule a Meeting
               </a>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-ghost btn-lg">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-ghost btn-lg">
                 <Mail size={15} />
-                karthiks@datadriven-services.com
+                karthik@datadriven-services.com
               </a>
             </div>
 
             {/* Proof strip */}
             <div className="hero-cta" style={{ display: 'flex', gap: 32, marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
               {[
-                ['500+', 'Happy Clients'],
-                ['20M+', 'Emails Warmed'],
+                ['50+', 'Happy Clients'],
+                ['3K+',  'Emails Warmed'],
                 ['40%',  'Spam Reduction'],
               ].map(([n, l]) => (
                 <div key={l}>
@@ -466,7 +467,7 @@ export function WhoBenefits() {
                 <div style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 28, color: '#06b6d4' }}>{t.stat.v}</div>
                 <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#3a4762' }}>{t.stat.l}</div>
               </div>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" style={{ flex: 1, justifyContent: 'center' }}>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" style={{ flex: 1, justifyContent: 'center' }}>
                 Talk to an Expert
               </a>
             </div>
@@ -491,10 +492,10 @@ export function WhoBenefits() {
 // ─── Stats (intentionally distinguished band) ─────────────────────────────────
 
 const statItems = [
-  { target: 500, suffix: '+',  label: 'Happy Clients',    sub: 'Across industries worldwide' },
-  { target: 10,  suffix: 'K+', label: 'Inbox Warmups',    sub: 'Completed successfully'      },
+  { target: 50,  suffix: '+',  label: 'Happy Clients',    sub: 'Across industries worldwide' },
+  { target: 3,   suffix: 'K+', label: 'Inbox Warmups',    sub: 'Completed successfully'      },
   { target: 100, suffix: 'K+', label: 'Spam Resolved',    sub: 'Emails rescued from filters' },
-  { target: 20,  suffix: 'M+', label: 'Emails Warmed',    sub: 'Total volume processed'      },
+  { target: 3,   suffix: 'K+', label: 'Emails Warmed',    sub: 'Total volume processed'      },
   { target: 40,  suffix: '%',  label: 'Spam Reduction',   sub: 'Average across all clients'  },
 ]
 
@@ -720,6 +721,28 @@ export function Testimonials() {
         </div>
       </div>
     </section>
+  )
+}
+
+// ─── Home FAQ ─────────────────────────────────────────────────────────────────
+
+const homeFaqs = [
+  { q: 'What is email warmup and why do I need it?', a: 'Email warmup is the process of gradually increasing your sending volume from a new or dormant domain to build a positive sender reputation with ISPs. Without it, ISPs flag your domain as suspicious and route emails to spam. A proper warmup ensures your messages reach the primary inbox from day one.' },
+  { q: 'How is manual warmup different from automated warmup tools?', a: 'Automated tools send emails between pools of fake accounts — ISPs are fully aware of this and discount those signals. Manual warmup uses real human inboxes, real opens, and real replies. That authentic engagement is what ISPs actually trust, producing faster and more durable reputation gains.' },
+  { q: 'How long does a warmup take?', a: 'Typically 3–6 weeks depending on your domain age, current reputation, and target sending volume. New domains require a full warmup cycle while established domains recovering from reputation issues often see improvement in 2–3 weeks.' },
+  { q: 'What results can I expect?', a: 'Most clients reach 90%+ primary inbox placement by the end of their warmup. Open rates typically improve 2–3× as emails stop landing in spam. Ongoing deliverability monitoring keeps those gains sustained after the warmup completes.' },
+  { q: 'Do you work with our existing ESP and CRM?', a: 'Yes — we are ESP-agnostic. We work with HubSpot, Salesforce, Mailchimp, Instantly, Smartlead, Apollo, Outreach, Salesloft, and all custom SMTP setups. No platform migration required.' },
+  { q: 'How do I get started?', a: 'Book a free 30-minute consultation through our Calendly link. We will review your current setup, identify issues, and give you a clear warmup plan — no commitment required for the initial call.' },
+]
+
+export function HomeFAQ() {
+  return (
+    <PageFAQ
+      faqs={homeFaqs}
+      heading={'Frequently Asked Questions\nAbout Email Warmup'}
+      chip="FAQ"
+      bg="#060b17"
+    />
   )
 }
 

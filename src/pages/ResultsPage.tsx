@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { useEffect, useRef } from 'react'
+import PageFAQ from '@/components/FAQ'
 
 function useReveal<T extends HTMLElement>(threshold = 0.13) {
   const ref = useRef<T>(null)
@@ -199,7 +200,7 @@ function BrysaCaseStudy() {
               EvaWarm's custom manual warm-up delivered a <strong style={{ color: '#edf0ff' }}>70%+ average open rate in just 6 weeks</strong> after engagement began. Bounce rate dropped to under 2%, Brysa achieved 15 leads/month using fewer domains, and generated <strong style={{ color: '#edf0ff' }}>20% more revenue</strong>.
             </p>
           </div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-primary" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-primary" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
             Get Similar Results
             <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path fillRule="evenodd" d="M1 7a.5.5 0 01.5-.5h9.293L8.147 3.854a.5.5 0 01.708-.708l3.5 3.5a.5.5 0 010 .708l-3.5 3.5a.5.5 0 01-.708-.708L10.793 7.5H1.5A.5.5 0 011 7z" /></svg>
           </a>
@@ -349,6 +350,14 @@ function MeetClientsCTA({ navigate }: { navigate: (p: string) => void }) {
 
 // ─── ResultsPage ──────────────────────────────────────────────────────────────
 
+const resultsFaqs = [
+  { q: 'How quickly will I see results after starting warmup?', a: 'Most clients see measurable inbox placement improvement within 2–3 weeks. Open rates typically increase within the first campaign run after warmup completes. Full, stable reputation is reached by the 4–6 week mark.' },
+  { q: 'Are your case studies from real clients?', a: 'Yes — every case study and testimonial on this page is from a real EvaWarm client. We do not publish anonymised or composite results; the companies, names, and metrics are all genuine.' },
+  { q: 'What open rates can I realistically expect?', a: 'Our clients average 65%+ open rates post-warmup, compared to industry averages of 20–30%. The exact improvement depends on your sending volume, audience quality, and content — but the inbox placement improvement is consistent across all accounts.' },
+  { q: 'Do these results hold over time?', a: 'Yes — with proper list hygiene, authentication maintenance, and sensible sending behaviour, the reputation we build persists. We provide post-warmup guidance to keep your deliverability strong long after the engagement ends.' },
+  { q: 'What if I do not see the expected results?', a: 'We monitor deliverability throughout the engagement and adjust the warmup strategy if we see anomalies. If results are not meeting targets, we diagnose the root cause and continue the engagement until inbox placement meets the agreed benchmark.' },
+]
+
 export default function ResultsPage({ navigate }: { navigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }) }, [])
   return (
@@ -357,6 +366,7 @@ export default function ResultsPage({ navigate }: { navigate: (p: string) => voi
       <BrysaCaseStudy />
       <TestimonialsSection />
       <StatsSection />
+      <PageFAQ faqs={resultsFaqs} heading={'Questions About\nOur Results'} bg="#060b17" />
       <MeetClientsCTA navigate={navigate} />
     </div>
   )

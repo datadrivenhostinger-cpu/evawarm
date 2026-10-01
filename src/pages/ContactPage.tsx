@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import PageFAQ from '@/components/FAQ'
 
-const CONTACT_EMAIL = 'karthiks@datadriven-services.com'
+const CONTACT_EMAIL = 'karthik@datadriven-services.com'
 const serviceOptions = [
   { value: 'Email Warmup', label: 'Email Warmup' },
   { value: 'Email Deliverability', label: 'Email Deliverability' },
@@ -241,7 +242,21 @@ function ContactContent() {
   )
 }
 
+const contactFaqs = [
+  { q: 'How quickly will you respond?', a: 'We respond to all enquiries within 24 hours on business days. For urgent deliverability issues, mention it in your message and we will prioritise accordingly.' },
+  { q: 'Is the initial consultation really free?', a: 'Yes — completely free, no strings attached. We assess your setup, identify issues, and give you a clear picture of what we recommend. You decide whether to proceed after that.' },
+  { q: 'What information should I include in my message?', a: 'The more context the better: your ESP, domain age, current sending volume, and the main problem you are facing (spam placement, bounces, low open rates, etc.). This helps us prepare a useful response immediately.' },
+  { q: 'Do you offer ongoing support or just one-off projects?', a: 'Both. We work on one-off warmup and deliverability projects, as well as ongoing retainer engagements for businesses that need continuous monitoring, monthly reporting, and strategic email guidance.' },
+  { q: 'Can I schedule a call directly?', a: 'Yes — you can book a free 30-minute call directly through our Calendly link. Alternatively, send a message through this form and we will suggest a time that works.' },
+]
+
 export default function ContactPage({ navigate: _navigate }: { navigate: (p: string) => void }) {
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }) }, [])
-  return <div><PageHero navigate={_navigate} /><ContactContent /></div>
+  return (
+    <div>
+      <PageHero navigate={_navigate} />
+      <ContactContent />
+      <PageFAQ faqs={contactFaqs} heading={'Before You Reach Out\nCommon Questions'} bg="#060b17" />
+    </div>
+  )
 }

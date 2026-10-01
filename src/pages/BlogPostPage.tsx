@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, CalendarDays, Clock3 } from 'lucide-react'
 import { blogPosts, formatBlogDate } from '@/data/blog'
+import PageFAQ from '@/components/FAQ'
 
 interface BlogPostPageProps {
   slug: string
@@ -137,6 +138,19 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
           </div>
         </div>
       </section>
+
+      <PageFAQ
+        faqs={blogPostFaqs}
+        heading={'About This Topic\nQuick Answers'}
+        bg="#0b1324"
+      />
     </main>
   )
 }
+
+const blogPostFaqs = [
+  { q: 'How do I apply what I have read to my own sending setup?', a: 'Start with a free EvaWarm consultation — we will map the concepts from any article directly to your domain, ESP, and current deliverability situation. Theory is only useful when it is applied correctly to your specific context.' },
+  { q: 'Are the tactics in these articles still current?', a: 'Yes. Every article is written from active client work and updated when ISP behaviour or best practices change. Email deliverability evolves quickly and we keep our content aligned with what is actually working today.' },
+  { q: 'Can EvaWarm implement these strategies for me?', a: 'Absolutely. If you have read about a strategy — warmup, authentication, deliverability audit — and want it done professionally, that is exactly what we do. Reach out through the contact page or book a free call.' },
+  { q: 'Where can I find more in-depth resources?', a: 'Browse the full blog for topic-specific deep-dives, or visit the FAQ page for a structured overview of email warmup and deliverability. Our How It Works page explains our full process end-to-end.' },
+]

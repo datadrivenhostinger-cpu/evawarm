@@ -140,7 +140,7 @@ function PageHero({ navigate }: { navigate: (p: string) => void }) {
               </a>
             ))}
           </div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-primary" style={{ animation: 'hero-up 0.8s ease both', animationDelay: '0.42s' }}>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-primary" style={{ animation: 'hero-up 0.8s ease both', animationDelay: '0.42s' }}>
             Request a Call Back
             <ArrowRight size={14} />
           </a>
@@ -250,7 +250,7 @@ function ServiceSection({ detail }: { detail: typeof serviceDetails[0] }) {
             <p style={{ fontFamily: 'Sora', fontWeight: 600, fontSize: 17, color, marginBottom: 16, lineHeight: 1.4 }}>{tagline}</p>
             <p style={{ fontFamily: 'Inter', fontSize: 15, color: '#8896b3', lineHeight: 1.8, marginBottom: 14 }}>{description}</p>
             <p style={{ fontFamily: 'Inter', fontSize: 14, color: '#5a6a86', lineHeight: 1.8, marginBottom: 28 }}>{longDesc}</p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-primary" style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 4px 18px ${color}30` }}>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-primary" style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 4px 18px ${color}30` }}>
               Get Started with {title.split(' ')[0]}
             </a>
           </div>
@@ -396,14 +396,14 @@ function HappyClients({ navigate }: { navigate: (p: string) => void }) {
               Meet Our Clients
               <ArrowRight size={14} />
             </button>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-ghost btn-lg">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-ghost btn-lg">
               Contact Us
             </a>
           </div>
 
           {/* Stat strip */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'rgba(255,255,255,0.06)', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }} className="happy-stats">
-            {[['500+', 'Happy Clients'], ['20M+', 'Emails Warmed'], ['65%', 'Avg Open Rate']].map(([v, l], i) => (
+            {[['50+', 'Happy Clients'], ['20M+', 'Emails Warmed'], ['65%', 'Avg Open Rate']].map(([v, l], i) => (
               <div key={l} style={{ padding: '28px 20px', textAlign: 'center', background: '#0f1b30' }}>
                 <div style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 32, letterSpacing: -1.5 }} className="g-text">{v}</div>
                 <div style={{ fontFamily: 'Inter', fontSize: 13, color: '#5a6a86', marginTop: 6 }}>{l}</div>
@@ -434,8 +434,8 @@ function ServiceCTA() {
             Tell us about your current email setup and goals. We&apos;ll respond within 24 hours with a personalized assessment.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" className="btn-primary btn-lg">
-              Contact karthiks@datadriven-services.com
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-primary btn-lg">
+              Contact karthik@datadriven-services.com
             </a>
             <a href="https://calendar.app.google/gt6J1J4rvFomHMgi8" target="_blank" rel="noopener noreferrer" className="btn-ghost btn-lg">
               Schedule a Free Call

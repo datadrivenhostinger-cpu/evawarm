@@ -90,12 +90,12 @@ export default function Footer({ navigate }: FooterProps) {
                 ✓ Subscribed! Check your inbox.
               </div>
             )}
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthiks@datadriven-services.com" style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 16, color: '#5a6a86', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 16, color: '#5a6a86', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#06b6d4')}
               onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#5a6a86')}
             >
               <Mail size={14} />
-              karthiks@datadriven-services.com
+              karthik@datadriven-services.com
             </a>
           </div>
         </div>

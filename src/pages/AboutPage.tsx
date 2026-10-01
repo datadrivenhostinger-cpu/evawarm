@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { useEffect, useRef } from 'react'
+import PageFAQ from '@/components/FAQ'
 
 function useReveal<T extends HTMLElement>(threshold = 0.12) {
   const ref = useRef<T>(null)
@@ -156,7 +157,7 @@ function Team() {
           <div className="card gradient-border" style={{ padding: '48px 44px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(6,182,212,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
             <div style={{ width: 100, height: 100, borderRadius: '50%', border: '3px solid rgba(6,182,212,0.35)', margin: '0 auto 24px', position: 'relative', overflow: 'hidden', boxShadow: '0 0 0 6px rgba(6,182,212,0.08)' }}>
-              <img src="/karthik.jpg" alt="Karthik" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+              <img src="/karthik.webp" alt="Karthik" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
             </div>
             <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 24, color: '#edf0ff', marginBottom: 6 }}>Karthik</h3>
             <p style={{ fontFamily: 'Inter', fontSize: 14, color: '#22d3ee', marginBottom: 20 }}>Founder & Lead Deliverability Expert</p>
@@ -200,6 +201,16 @@ function AboutCTA({ navigate }: { navigate: (p: string) => void }) {
   )
 }
 
+// ─── About FAQ ────────────────────────────────────────────────────────────────
+
+const aboutFaqs = [
+  { q: 'Who founded EvaWarm?', a: 'EvaWarm was founded by Karthik Subramanian, a veteran email deliverability expert with years of hands-on experience across ISP relationships, email infrastructure, and warmup protocols. The team has since grown with senior specialists across deliverability, outbound strategy, and client success.' },
+  { q: 'What industries do you work with?', a: 'We work across B2B SaaS, e-commerce, agencies, financial services, healthcare, and enterprise sales teams. Any business that relies on email for pipeline, revenue, or communication can benefit from our services.' },
+  { q: 'How is EvaWarm different from other deliverability services?', a: 'EvaWarm focuses exclusively on manual warmup and deliverability — it is not a side feature of a broader platform. Every engagement is handled by senior experts, not automated scripts, and we maintain direct accountability for your inbox placement outcomes.' },
+  { q: 'Do you sign NDAs?', a: 'Yes. We are happy to sign NDAs before sharing any information about your email infrastructure or campaign strategy. Client confidentiality is a core operating principle.' },
+  { q: 'What is your typical engagement process?', a: 'We start with a free consultation to assess your current setup. After that, we send a clear proposal with scope, timeline, and deliverables. Once aligned, we begin the warmup or deliverability work within 24–48 hours of kickoff.' },
+]
+
 // ─── AboutPage ────────────────────────────────────────────────────────────────
 
 export default function AboutPage({ navigate }: { navigate: (p: string) => void }) {
@@ -210,6 +221,7 @@ export default function AboutPage({ navigate }: { navigate: (p: string) => void 
       <Mission />
       <Values />
       <Team />
+      <PageFAQ faqs={aboutFaqs} heading={'Questions About\nEvaWarm'} bg="#060b17" />
       <AboutCTA navigate={navigate} />
     </div>
   )
