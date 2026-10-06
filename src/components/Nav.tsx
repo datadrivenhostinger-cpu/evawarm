@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Logo from '@/components/Logo'
 import { ArrowRight, Menu, X } from 'lucide-react'
+import { serviceLandings } from '@/data/serviceLandings'
 
 interface NavProps {
   currentPage: string
@@ -10,6 +11,7 @@ interface NavProps {
 export default function Nav({ currentPage, navigate }: NavProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [ddClosed, setDdClosed] = useState(false)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 30)
@@ -21,6 +23,7 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   const go = (p: string) => {
     navigate(p)
     setMenuOpen(false)
+    setDdClosed(true)
   }
 
   const mainLinks: [string, string][] = [
@@ -30,6 +33,7 @@ export default function Nav({ currentPage, navigate }: NavProps) {
     ['About', 'about'],
     ['Pricing', 'pricing'],
     ['Blog', 'blog'],
+    ['Resources', 'email-deliverability-assets'],
   ]
 
   const isActive = (p: string) => currentPage === p
@@ -62,8 +66,8 @@ export default function Nav({ currentPage, navigate }: NavProps) {
         {/* Desktop links */}
         <div className="hide-mobile" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
           {mainLinks.map(([label, page]) => (
+            <div key={page} style={{ position: 'relative' }} onMouseLeave={() => setDdClosed(false)} className={page === 'services' || page === 'email-deliverability-assets' ? `nav-dd${ddClosed ? ' closed' : ''}` : undefined}>
             <button
-              key={page}
               onClick={() => go(page)}
               style={{
                 background: isActive(page) ? 'rgba(6, 182, 212, 0.08)' : 'none',
@@ -94,7 +98,29 @@ export default function Nav({ currentPage, navigate }: NavProps) {
             >
               {label}
             </button>
+            {page === 'email-deliverability-assets' && (
+              <div className="nav-dd-menu">
+                <button onClick={() => go('email-deliverability-assets')}>Email Deliverability Assets</button>
+              </div>
+            )}
+            {page === 'services' && (
+              <div className="nav-dd-menu">
+                <button onClick={() => go('services')}>All Services</button>
+                <button onClick={() => go('email-warmup')}>Warmup Service</button>
+                <button onClick={() => go('services/bulk-email-warmup')}>Bulk Email Warmup</button>
+                <button onClick={() => go('services/email-verification-services')}>Email Verification Services</button>
+                {serviceLandings.map(x => <button key={x.slug} onClick={() => go(`services/${x.slug}`)}>{x.navLabel}</button>)}
+              </div>
+            )}
+            </div>
           ))}
+          <style>{`
+            .nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; padding: 6px; margin-top: 4px; background: rgba(6,11,23,0.97); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); flex-direction: column; }
+            .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: flex; }
+            .nav-dd.closed .nav-dd-menu { display: none !important; }
+            .nav-dd-menu button { background: none; border: none; text-align: left; color: #c4d0ee; font-family: Sora, sans-serif; font-size: 13.5px; font-weight: 500; padding: 10px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+            .nav-dd-menu button:hover { background: rgba(6,182,212,0.08); color: #22d3ee; }
+          `}</style>
         </div>
 
         {/* CTA */}
@@ -176,6 +202,12 @@ export default function Nav({ currentPage, navigate }: NavProps) {
               >
                 {label}
               </button>
+            ))}
+            <button onClick={() => go('email-warmup')} style={{ textAlign: 'left', background: isActive('email-warmup') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('email-warmup') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>Warmup Service</button>
+            <button onClick={() => go('services/bulk-email-warmup')} style={{ textAlign: 'left', background: isActive('services/bulk-email-warmup') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('services/bulk-email-warmup') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>Bulk Email Warmup</button>
+            <button onClick={() => go('services/email-verification-services')} style={{ textAlign: 'left', background: isActive('services/email-verification-services') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('services/email-verification-services') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>Email Verification Services</button>
+            {serviceLandings.map(x => (
+              <button key={x.slug} onClick={() => go(`services/${x.slug}`)} style={{ textAlign: 'left', background: isActive(`services/${x.slug}`) ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive(`services/${x.slug}`) ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>{x.navLabel}</button>
             ))}
             <button
               onClick={() => go('contact')}

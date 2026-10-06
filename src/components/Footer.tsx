@@ -45,8 +45,8 @@ export default function Footer({ navigate }: FooterProps) {
           {/* Services */}
           <div>
             <h4 style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 12, color: '#edf0ff', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 18 }}>Services</h4>
-            {['Manual Email Warmup', 'Email Deliverability', 'Outbound Marketing', 'Deliverability Audit'].map(s => (
-              <button key={s} onClick={() => navigate('services')} style={{ display: 'block', background: 'none', border: 'none', color: '#5a6a86', fontFamily: 'Inter', fontSize: 14, marginBottom: 11, cursor: 'pointer', textAlign: 'left', transition: 'color 0.2s' }}
+            {[['Manual Email Warmup', 'services/manual-email-warmup'], ['Warmup Service', '__email-warmup'], ['Bulk Email Warmup', 'services/bulk-email-warmup'], ['Email Deliverability', 'services/email-deliverability-consulting'], ['Outbound Marketing', 'services/outbound-email-marketing'], ['Deliverability Audit', 'services/deliverability-audit']].map(([s, slug]) => (
+              <button key={s} onClick={() => navigate(slug.startsWith('__') ? slug.slice(2) : slug)} style={{ display: 'block', background: 'none', border: 'none', color: '#5a6a86', fontFamily: 'Inter', fontSize: 14, marginBottom: 11, cursor: 'pointer', textAlign: 'left', transition: 'color 0.2s' }}
                 onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#edf0ff')}
                 onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#5a6a86')}
               >{s}</button>
@@ -90,12 +90,12 @@ export default function Footer({ navigate }: FooterProps) {
                 ✓ Subscribed! Check your inbox.
               </div>
             )}
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 16, color: '#5a6a86', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 16, color: '#5a6a86', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#06b6d4')}
               onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#5a6a86')}
             >
               <Mail size={14} />
-              karthik@datadriven-services.com
+              Email Us
             </a>
           </div>
         </div>
@@ -108,13 +108,13 @@ export default function Footer({ navigate }: FooterProps) {
             <span style={{ color: '#3a4560' }}>Owned by DataDriven Services.</span>
           </span>
           <div style={{ display: 'flex', gap: 20 }}>
-            {['Privacy Policy', 'Terms of Service'].map(l => (
-              <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, '-')}`}
-                style={{ color: '#3a4560', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
+            {['Privacy Policy', 'Terms of Service'].map(l => { const route: Record<string, string> = { 'Privacy Policy': 'privacy-policy', 'Terms of Service': 'terms-conditions' }; return (
+              <a key={l} onClick={route[l] ? (e) => { e.preventDefault(); navigate(route[l]) } : undefined} href={route[l] ? `#/${route[l]}` : `#${l.toLowerCase().replace(/\s+/g, '-')}`}
+                style={{ color: '#3a4560', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s', cursor: 'pointer' }}
                 onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#6e7e9e')}
                 onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#3a4560')}
               >{l}</a>
-            ))}
+            )})}
           </div>
         </div>
       </div>

@@ -117,8 +117,10 @@ function ContactContent() {
     {
       icon: <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />,
       label: 'Email',
-      value: CONTACT_EMAIL,
+      value: 'Email Us',
       href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}`,
+      target: '_blank',
+      rel: 'noopener noreferrer',
       color: '#06b6d4',
     },
     {
@@ -217,7 +219,7 @@ function ContactContent() {
               <div>
                 <div style={{ fontFamily: 'Sora', fontSize: 12, fontWeight: 600, color: '#6e7e9e', letterSpacing: 0.7, textTransform: 'uppercase', marginBottom: 4 }}>{item.label}</div>
                 {item.href ? (
-                  <a href={item.href} style={{ fontFamily: 'Inter', fontSize: 15, color: '#edf0ff', textDecoration: 'none', transition: 'color 0.2s' }}
+                  <a href={item.href} target={(item as any).target} rel={(item as any).rel} style={{ fontFamily: 'Inter', fontSize: 15, color: '#edf0ff', textDecoration: 'none', transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = item.color}
                     onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#edf0ff'}
                   >{item.value}</a>

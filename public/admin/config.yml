@@ -3,9 +3,11 @@
 # See CMS_SETUP.md for the production options.
 
 backend:
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
+  name: github
+  repo: datadrivenhostinger-cpu/evawarm
   branch: main
+  base_url: https://evawarmweb.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: public/uploads
 public_folder: /uploads

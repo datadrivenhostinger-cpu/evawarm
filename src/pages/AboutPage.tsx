@@ -152,20 +152,76 @@ function Team() {
           </p>
         </div>
 
-        {/* Founder card */}
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div className="card gradient-border" style={{ padding: '48px 44px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(6,182,212,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
-            <div style={{ width: 100, height: 100, borderRadius: '50%', border: '3px solid rgba(6,182,212,0.35)', margin: '0 auto 24px', position: 'relative', overflow: 'hidden', boxShadow: '0 0 0 6px rgba(6,182,212,0.08)' }}>
-              <img src="/karthik.webp" alt="Karthik" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+        {/* 4-member team grid */}
+        <div className="team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+
+          {/* Karthik — Founder */}
+          <a href="https://www.linkedin.com/in/karthik-subramanian-55548349" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <div className="card gradient-border" style={{ padding: '36px 24px', textAlign: 'center', position: 'relative', overflow: 'hidden', height: '100%', cursor: 'pointer' }}>
+              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(6,182,212,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
+              <div style={{ width: 80, height: 80, borderRadius: '50%', border: '2px solid rgba(6,182,212,0.35)', margin: '0 auto 16px', position: 'relative', overflow: 'hidden', boxShadow: '0 0 0 4px rgba(6,182,212,0.08)' }}>
+                <img src="/karthik.webp" alt="Karthik" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+              </div>
+              <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 17, color: '#edf0ff', marginBottom: 4 }}>Karthik</h3>
+              <p style={{ fontFamily: 'Inter', fontSize: 12.5, color: '#22d3ee', marginBottom: 12 }}>Founder & Lead Deliverability Expert</p>
+              <p style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e', lineHeight: 1.7 }}>Years of hands-on expertise across email infrastructure, ISP relationships, and warmup protocols.</p>
+              <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 5, color: '#0a66c2', fontFamily: 'Sora', fontSize: 11.5, fontWeight: 600 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn
+              </div>
             </div>
-            <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 24, color: '#edf0ff', marginBottom: 6 }}>Karthik</h3>
-            <p style={{ fontFamily: 'Inter', fontSize: 14, color: '#22d3ee', marginBottom: 20 }}>Founder & Lead Deliverability Expert</p>
-            <p style={{ fontFamily: 'Inter', fontSize: 15.5, color: '#6e7e9e', lineHeight: 1.8, maxWidth: 480, margin: '0 auto' }}>
-              With years of hands-on experience across email infrastructure, ISP relationships, and warmup protocols, Karthik has helped hundreds of businesses turn their email channel into a reliable growth engine.
-            </p>
+          </a>
+
+          {/* Suganya */}
+          <a href="https://www.linkedin.com/in/suganya-arumugam-b20a27121" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <div className="card" style={{ padding: '36px 24px', textAlign: 'center', position: 'relative', overflow: 'hidden', height: '100%', cursor: 'pointer' }}>
+              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(139,92,246,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
+              <div style={{ width: 80, height: 80, borderRadius: '50%', border: '2px solid rgba(139,92,246,0.35)', margin: '0 auto 16px', background: 'linear-gradient(135deg, rgba(139,92,246,0.18), rgba(6,182,212,0.12))', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 0 4px rgba(139,92,246,0.07)' }}>
+                <span style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 26, color: '#a78bfa' }}>S</span>
+              </div>
+              <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 17, color: '#edf0ff', marginBottom: 4 }}>Suganya</h3>
+              <p style={{ fontFamily: 'Inter', fontSize: 12.5, color: '#a78bfa', marginBottom: 12 }}>Deliverability Specialist</p>
+              <p style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e', lineHeight: 1.7 }}>Expert in email authentication, reputation monitoring, and inbox placement strategies.</p>
+              <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 5, color: '#0a66c2', fontFamily: 'Sora', fontSize: 11.5, fontWeight: 600 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn
+              </div>
+            </div>
+          </a>
+
+          {/* Dhana — no LinkedIn */}
+          <div className="card" style={{ padding: '36px 24px', textAlign: 'center', position: 'relative', overflow: 'hidden', height: '100%' }}>
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(245,158,11,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
+            <div style={{ width: 80, height: 80, borderRadius: '50%', border: '2px solid rgba(245,158,11,0.35)', margin: '0 auto 16px', background: 'linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 0 4px rgba(245,158,11,0.07)' }}>
+              <span style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 26, color: '#fbbf24' }}>D</span>
+            </div>
+            <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 17, color: '#edf0ff', marginBottom: 4 }}>Dhana</h3>
+            <p style={{ fontFamily: 'Inter', fontSize: 12.5, color: '#fbbf24', marginBottom: 12 }}>Email Warmup Strategist</p>
+            <p style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e', lineHeight: 1.7 }}>Focused on sender reputation growth, engagement simulation, and scalable warmup execution.</p>
           </div>
+
+          {/* Deepika */}
+          <a href="https://www.linkedin.com/in/deepika-moorthi-0ab03b239" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <div className="card" style={{ padding: '36px 24px', textAlign: 'center', position: 'relative', overflow: 'hidden', height: '100%', cursor: 'pointer' }}>
+              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(16,185,129,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
+              <div style={{ width: 80, height: 80, borderRadius: '50%', border: '2px solid rgba(16,185,129,0.35)', margin: '0 auto 16px', background: 'linear-gradient(135deg, rgba(16,185,129,0.18), rgba(52,211,153,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 0 4px rgba(16,185,129,0.07)' }}>
+                <span style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 26, color: '#34d399' }}>D</span>
+              </div>
+              <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 17, color: '#edf0ff', marginBottom: 4 }}>Deepika</h3>
+              <p style={{ fontFamily: 'Inter', fontSize: 12.5, color: '#34d399', marginBottom: 12 }}>Client Success Manager</p>
+              <p style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e', lineHeight: 1.7 }}>Ensures every client gets measurable results through clear communication and strategic follow-through.</p>
+              <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 5, color: '#0a66c2', fontFamily: 'Sora', fontSize: 11.5, fontWeight: 600 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn
+              </div>
+            </div>
+          </a>
+
         </div>
+        <style>{`
+          @media(max-width:1100px){ .team-grid { grid-template-columns: 1fr 1fr !important; } }
+          @media(max-width:600px){ .team-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
       </div>
     </section>
   )

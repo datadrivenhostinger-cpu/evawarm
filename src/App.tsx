@@ -24,8 +24,16 @@ import ContactPage from '@/pages/ContactPage'
 import BlogPage from '@/pages/BlogPage'
 import BlogPostPage from '@/pages/BlogPostPage'
 import NotFoundPage from '@/pages/NotFoundPage'
+import EmailWarmupPage from '@/pages/EmailWarmupPage'
+import EmailVerificationPage from '@/pages/EmailVerificationPage'
+import PrivacyPolicy from '@/pages/PrivacyPolicy'
+import EmailDeliverabilityAssets from '@/pages/EmailDeliverabilityAssets'
+import TermsAndConditions from '@/pages/TermsAndConditions'
+import BulkEmailWarmupPage from '@/pages/BulkEmailWarmupPage'
+import ServiceLandingPage from '@/pages/ServiceLandingPage'
+import { serviceLandings } from '@/data/serviceLandings'
 
-type Page = 'home' | 'services' | 'how-it-works' | 'results' | 'testimonials' | 'about' | 'pricing' | 'faq' | 'contact' | 'blog' | 'blog-post' | '404'
+type Page = 'home' | 'services' | 'how-it-works' | 'results' | 'testimonials' | 'about' | 'pricing' | 'faq' | 'contact' | 'blog' | 'blog-post' | 'email-warmup' | `services/${string}` | 'email-deliverability-assets' | 'terms-conditions' | 'privacy-policy' | '404'
 
 function getInitialPage(): Page {
   const h = window.location.hash
@@ -39,6 +47,14 @@ function getInitialPage(): Page {
   if (h === '#/contact') return 'contact'
   if (h === '#/blog') return 'blog'
   if (h.startsWith('#/blog/')) return 'blog-post'
+  if (h === '#/email-warmup') return 'email-warmup'
+  if (h === '#/services/bulk-email-warmup') return 'services/bulk-email-warmup'
+  if (h === '#/services/email-verification-services') return 'services/email-verification-services'
+  if (h === '#/email-deliverability-assets') return 'email-deliverability-assets'
+  if (h === '#/terms-conditions') return 'terms-conditions'
+  if (h === '#/privacy-policy') return 'privacy-policy'
+  const sl = serviceLandings.find(x => h === `#/services/${x.slug}`)
+  if (sl) return `services/${sl.slug}`
   return 'home'
 }
 
@@ -64,12 +80,20 @@ export default function App() {
       else if (h === '#/contact') setPage('contact')
       else if (h === '#/blog') setPage('blog')
       else if (h.startsWith('#/blog/')) setPage('blog-post')
+      else if (h === '#/email-warmup') setPage('email-warmup')
+      else if (h === '#/services/bulk-email-warmup') setPage('services/bulk-email-warmup')
+      else if (h === '#/services/email-verification-services') setPage('services/email-verification-services')
+      else if (h === '#/email-deliverability-assets') setPage('email-deliverability-assets')
+      else if (h === '#/terms-conditions') setPage('terms-conditions')
+      else if (h === '#/privacy-policy') setPage('privacy-policy')
+      else if (serviceLandings.some(x => h === `#/services/${x.slug}`)) setPage(h.slice(2) as Page)
       else setPage('home')
     }
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
 
+  const landing = serviceLandings.find(x => page === `services/${x.slug}`)
   const showFooter = page !== '404'
 
   return (
@@ -109,6 +133,20 @@ export default function App() {
         <BlogPage navigate={navigate} />
       ) : page === 'blog-post' ? (
         <BlogPostPage slug={window.location.hash.slice('#/blog/'.length)} navigate={navigate} />
+      ) : page === 'email-warmup' ? (
+        <EmailWarmupPage navigate={navigate} />
+      ) : page === 'services/bulk-email-warmup' ? (
+        <BulkEmailWarmupPage />
+      ) : page === 'services/email-verification-services' ? (
+        <EmailVerificationPage navigate={navigate} />
+      ) : page === 'email-deliverability-assets' ? (
+        <EmailDeliverabilityAssets navigate={navigate} />
+      ) : page === 'terms-conditions' ? (
+        <TermsAndConditions navigate={navigate} />
+      ) : page === 'privacy-policy' ? (
+        <PrivacyPolicy navigate={navigate} />
+      ) : landing ? (
+        <ServiceLandingPage key={landing.slug} service={landing} navigate={navigate} />
       ) : (
         <NotFoundPage navigate={navigate} />
       )}

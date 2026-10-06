@@ -226,9 +226,9 @@ export function Hero({ navigate }: { navigate: (p: string) => void }) {
                 <Calendar size={15} />
                 Schedule a Meeting
               </a>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-ghost btn-lg">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" target="_blank" rel="noopener noreferrer" className="btn-ghost btn-lg">
                 <Mail size={15} />
-                karthik@datadriven-services.com
+                Email Us
               </a>
             </div>
 
@@ -467,7 +467,7 @@ export function WhoBenefits() {
                 <div style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 28, color: '#06b6d4' }}>{t.stat.v}</div>
                 <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#3a4762' }}>{t.stat.l}</div>
               </div>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" style={{ flex: 1, justifyContent: 'center' }}>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" target="_blank" rel="noopener noreferrer" style={{ flex: 1, justifyContent: 'center' }}>
                 Talk to an Expert
               </a>
             </div>

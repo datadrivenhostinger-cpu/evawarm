@@ -434,8 +434,8 @@ function ServiceCTA() {
             Tell us about your current email setup and goals. We&apos;ll respond within 24 hours with a personalized assessment.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" className="btn-primary btn-lg">
-              Contact karthik@datadriven-services.com
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthik@datadriven-services.com" target="_blank" rel="noopener noreferrer" className="btn-primary btn-lg">
+              Email Us
             </a>
             <a href="https://calendar.app.google/gt6J1J4rvFomHMgi8" target="_blank" rel="noopener noreferrer" className="btn-ghost btn-lg">
               Schedule a Free Call
