@@ -14,7 +14,10 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
 
   const jumpTo = (id?: string) => {
     if (!id) return
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const el = document.getElementById(id)
+    if (!el) return
+    // scrollIntoView works inside an overflow:auto parent
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
@@ -39,10 +42,10 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
         </div>
       </section>
 
-      <section className="mesh-alt" style={{ padding: '0 32px 110px' }}>
+      <section className="mesh-alt blog-post-section">
         <div className="blog-post-layout">
-          <aside className="blog-toc" aria-label="In this article">
-            <div className="blog-toc-label">In this article</div>
+          <aside className="blog-toc" aria-label="In the article">
+            <div className="blog-toc-label">In the article</div>
             <nav>
               {tocSections.map((section) => (
                 <button

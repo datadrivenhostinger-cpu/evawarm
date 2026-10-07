@@ -1,15 +1,18 @@
-import { useMemo, useState } from 'react'
-import { ArrowRight, CalendarDays, ChevronRight, Clock3, MailCheck, ShieldCheck, Sparkles } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ArrowLeft, ArrowRight, CalendarDays, ChevronRight, Clock3, MailCheck, ShieldCheck, Sparkles } from 'lucide-react'
 import { blogPosts, formatBlogDate, type BlogPost } from '@/data/blog'
 import PageFAQ from '@/components/FAQ'
 
-const categories = ['All', 'Email Deliverability', 'Email Warmup', 'Email Verification', 'Outbound Marketing']
+const POSTS_PER_PAGE = 9
+
+const categories = ['All', 'Email Deliverability', 'Email Warmup', 'Email Verification', 'Outbound Marketing', 'Cold Email']
 
 const categoryIcons = {
   'Email Deliverability': MailCheck,
   'Email Warmup': Sparkles,
   'Email Verification': ShieldCheck,
   'Outbound Marketing': MailCheck,
+  'Cold Email': MailCheck,
 } as const
 
 interface BlogPageProps {
@@ -27,14 +30,66 @@ function Meta({ post }: { post: BlogPost }) {
 
 export default function BlogPage({ navigate }: BlogPageProps) {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [currentPage, setCurrentPage] = useState(1)
+  const listingRef = useRef<HTMLDivElement>(null)
+
+  // When category changes, always reset to page 1
+  const handleCategoryChange = useCallback((category: string) => {
+    setActiveCategory(category)
+    setCurrentPage(1)
+  }, [])
+
+  // Scroll to top of listing section whenever page changes
+  useEffect(() => {
+    listingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [currentPage])
 
   const filteredPosts = useMemo(() => {
     if (activeCategory === 'All') return blogPosts
     return blogPosts.filter((post) => post.category === activeCategory)
   }, [activeCategory])
 
+  // Featured post is always the first (or the one marked featured)
   const featuredPost = filteredPosts.find((post) => post.featured) ?? filteredPosts[0]
-  const latestPosts = featuredPost ? filteredPosts.filter((post) => post.slug !== featuredPost.slug) : []
+  // Remaining posts go into the paginated grid
+  const remainingPosts = featuredPost ? filteredPosts.filter((post) => post.slug !== featuredPost.slug) : []
+
+  // Page 1: featured takes 1 slot → grid shows POSTS_PER_PAGE-1 = 8 cards
+  // Page 2+: full POSTS_PER_PAGE = 9 cards each
+  const PAGE_1_GRID = POSTS_PER_PAGE - 1  // 8
+
+  // Total pages accounting for the smaller page-1 bucket
+  const totalPages = !featuredPost || remainingPosts.length === 0
+    ? 1
+    : remainingPosts.length <= PAGE_1_GRID
+      ? 1
+      : 1 + Math.ceil((remainingPosts.length - PAGE_1_GRID) / POSTS_PER_PAGE)
+
+  const safePage = Math.min(currentPage, totalPages)
+
+  // Slice window differs for page 1 vs later pages
+  const pageStart = safePage === 1 ? 0 : PAGE_1_GRID + (safePage - 2) * POSTS_PER_PAGE
+  const pageEnd   = safePage === 1 ? PAGE_1_GRID : pageStart + POSTS_PER_PAGE
+  const pagePosts = remainingPosts.slice(pageStart, pageEnd)
+
+  const goToPage = useCallback((page: number) => {
+    setCurrentPage(page)
+  }, [])
+
+  // Build page number list (show at most 5 page buttons with ellipsis logic)
+  const pageNumbers = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1)
+    }
+    const pages: (number | '...')[] = [1]
+    if (safePage > 3) pages.push('...')
+    const rangeStart = Math.max(2, safePage - 1)
+    const rangeEnd = Math.min(totalPages - 1, safePage + 1)
+    for (let i = rangeStart; i <= rangeEnd; i++) pages.push(i)
+    if (safePage < totalPages - 2) pages.push('...')
+    pages.push(totalPages)
+    return pages
+  }, [totalPages, safePage])
 
   return (
     <main>
@@ -52,15 +107,16 @@ export default function BlogPage({ navigate }: BlogPageProps) {
         </div>
       </section>
 
-      <section className="mesh-alt" style={{ padding: '24px 32px 110px' }}>
+      <section className="mesh-alt" style={{ padding: '24px 32px 110px' }} ref={listingRef}>
         <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          {/* ── Category filters ──────────────────────────────── */}
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28 }}>
             {categories.map((category) => (
               <button
                 key={category}
                 className={activeCategory === category ? 'btn-outline' : 'btn-ghost'}
                 style={{ fontSize: 13, padding: '9px 16px' }}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => handleCategoryChange(category)}
                 aria-pressed={activeCategory === category}
               >
                 {category}
@@ -68,6 +124,7 @@ export default function BlogPage({ navigate }: BlogPageProps) {
             ))}
           </div>
 
+          {/* ── Featured post ─────────────────────────────────── */}
           {featuredPost ? (
           <article className="card-glass" style={{ overflow: 'hidden', marginBottom: 54 }}>
             <div className="blog-feature-grid">
@@ -125,15 +182,22 @@ export default function BlogPage({ navigate }: BlogPageProps) {
             <div className="card-glass" style={{ padding: 44, marginBottom: 54, color: '#9aabc9' }}>No blog posts found in this category.</div>
           )}
 
+          {/* ── Latest articles header ─────────────────────────── */}
           <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: 20, marginBottom: 22 }}>
             <div>
               <div style={{ color: '#22d3ee', fontFamily: 'Sora, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 9 }}>Latest articles</div>
               <h2 style={{ fontFamily: 'Sora, sans-serif', fontSize: 34, color: '#edf0ff', letterSpacing: '-1px' }}>Learn. Improve. Send smarter.</h2>
             </div>
+            {totalPages > 1 && (
+              <div style={{ color: '#6e7e9e', fontSize: 13, whiteSpace: 'nowrap', paddingBottom: 6 }}>
+                Page {safePage} of {totalPages}
+              </div>
+            )}
           </div>
 
+          {/* ── Paginated blog grid ───────────────────────────── */}
           <div className="blog-grid">
-            {latestPosts.map((post) => {
+            {pagePosts.map((post) => {
               const Icon = categoryIcons[post.category as keyof typeof categoryIcons] ?? MailCheck
               return (
                 <article key={post.slug} className="card" style={{ padding: 20, display: 'flex', flexDirection: 'column', minHeight: 320 }}>
@@ -162,6 +226,52 @@ export default function BlogPage({ navigate }: BlogPageProps) {
               )
             })}
           </div>
+
+          {/* ── Pagination controls ───────────────────────────── */}
+          {totalPages > 1 && (
+            <div className="blog-pagination">
+              {/* Previous */}
+              <button
+                className="blog-pagination-btn"
+                onClick={() => goToPage(safePage - 1)}
+                disabled={safePage === 1}
+                aria-label="Previous page"
+              >
+                <ArrowLeft size={14} />
+                <span>Previous</span>
+              </button>
+
+              {/* Page numbers */}
+              <div className="blog-pagination-pages">
+                {pageNumbers.map((page, idx) =>
+                  page === '...' ? (
+                    <span key={`ellipsis-${idx}`} className="blog-pagination-ellipsis">…</span>
+                  ) : (
+                    <button
+                      key={page}
+                      className={page === safePage ? 'blog-pagination-num active' : 'blog-pagination-num'}
+                      onClick={() => goToPage(page as number)}
+                      aria-label={`Page ${page}`}
+                      aria-current={page === safePage ? 'page' : undefined}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+              </div>
+
+              {/* Next */}
+              <button
+                className="blog-pagination-btn"
+                onClick={() => goToPage(safePage + 1)}
+                disabled={safePage === totalPages}
+                aria-label="Next page"
+              >
+                <span>Next</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
