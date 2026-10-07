@@ -1,0 +1,97 @@
+{
+  "slug": "how-to-improve-your-open-rate",
+  "title": "How to improve your email open rate?",
+  "excerpt": "If you can really work on the 6 points mentioned above and bring in the ideal outcome, your can definitely stay out of spam and land in inbox.",
+  "category": "Email Deliverability",
+  "date": "2021-08-07T00:00:00.000Z",
+  "readTime": "7 min read",
+  "image": "/uploads/1-08d794.png",
+  "introduction": "If you land in spam folders consistently, you must accept that you are spamming either by sending non-permission-based emails or sending emails that do not help your recipients engage with you. Whether you run permission-based or non-permission-based email campaigns, the important thing is your recipients should engage with your emails. I.e., Open, Read, Reply, Forward, Mark Not SPAM, Add Star, and Mark Important. Based on your engagement, your email deliverability score is determined by ISPs. More engagement score means good inbox deliverability and it can help to improve your email open rate.",
+  "sections": [
+    {
+      "id": "spam-rules",
+      "title": "Spam rules",
+      "paragraphs": [
+        "ISPs (such as Gmail or Yahoo) use a variety of techniques to process and filter incoming emails. These techniques may also result in blocking mail from legitimate senders. It’s the job of the ISPs to protect their customers from receiving unwanted or unsolicited or not-opt in emails.",
+        "When you are sending an email to a recipient, their ISP will decide if your email should be landed in the inbox or not. They refer to 2 types of authorities."
+      ]
+    },
+    {
+      "id": "blacklist-directories",
+      "title": "Blacklist directories",
+      "paragraphs": [
+        "which are databases that store information about spammers. Please note that they track your email sending activity: sending frequency, sending volume, bounce rate, spam reports, and more importantly they track how engaged your recipients are with your emails ."
+      ]
+    },
+    {
+      "id": "spam-filters",
+      "title": "Spam filters",
+      "paragraphs": [
+        "They monitor the content of your emails. These are algorithms used by ISPs that review your domain settings, email subject line, content, attachments, and links. If it’s potential spam (per their algorithms), they notify the ISPs about these results!",
+        "Now that your ISPs know everything about your IP, domain, and email content, they will derive a domain reputation score by themselves. If the score is good, you will land in inboxes. If not, SPAM! It is important to note that different ISPs have different policies or rules.",
+        "Your reputation score is temporary but can be good consistently if you keep having a healthy reputation score. If the score is not good, ofcourse, you can work on improving the same."
+      ]
+    },
+    {
+      "id": "protect-your-main-domain-or-website",
+      "title": "Protect your main domain or website :",
+      "paragraphs": [
+        "Our reputation score sometimes may become less due to high amount of spam reports (especially in the cold outreach) or no user engagement. It is our responsibility to protect our main so your transactional emails don’t go spam in the worst case. So please have a secondary domain for your email outreach."
+      ]
+    },
+    {
+      "id": "set-up-your-domain-in-the-right-way",
+      "title": "Set up your domain in the right way :",
+      "paragraphs": [
+        "Please ensure you set up SPF, DKIM, and DMARC records correctly in your domain dashboard so other mail servers can find you to send mail to your users, and other mail servers will trust you to receive your mail. These are also DNS records designed to protect you from spam and to help other servers to trust that your server is not a spam host."
+      ]
+    },
+    {
+      "id": "content-and-personalization",
+      "title": "Content and personalization :",
+      "paragraphs": [
+        "Your content should not have spammy keywords such as free, buy now, etc And also it should not have large images (purely text-based emails are always preferred). Avoiding attachments is a best practice. If it has links such as a landing page URL or links used to detect opens or image URLs, these URLs’ reputation is also an important factor in determining your reputation score .",
+        "It should also give a feel of one-on-one kind email to the readers because that ensures engagement. We can consider having personalized subject lines such as “Hi John, quick question” or “Hi John, just read your article, Best practices in _______”.",
+        "There are different levels and types of personalization, like using prospects’ names in the email body, mentioning the company’s or prospect’s achievement in the introduction, etc. The last example can be considered as hyper-personalization.",
+        "This hyper-personalization means “intent”. This excessive customization gives the recipients extra credibility for the sender. It is a way that the sender shows the prospect how important they are to him/her.",
+        "So it is important to understand that the level of personalization, whether basic or hyper, always significantly affects the quality of your email and this is what, indirectly affects its deliverability rate."
+      ]
+    },
+    {
+      "id": "volume",
+      "title": "Volume :",
+      "paragraphs": [
+        "If you are able to achieve a 30%+ open rate consistently regardless of the total number of emails sent, you are really free to send as many emails as you can. If you can’t get that, you need to slow down and follow best practices to ensure you get at least a 30% open rate and then try increasing the volume. Even after increasing your volume, you should still get at least a 30% open rate consistently. Otherwise, you need to bring down the number again."
+      ]
+    },
+    {
+      "id": "activity",
+      "title": "Activity :",
+      "paragraphs": [
+        "Your domain should not have received a lot of spam reports in the past (at least in the recent past (2 months min)) and should have received a lot of engagement from the recipients.",
+        "The importance of activity or user engagement has already been explained. Reiterating:  your recipients should engage with your emails. Ie, Open, Read, Reply, Forward, Mark Not SPAM, Mark Star, and Mark Important. Based on your engagement score, your email deliverability score is determined by ISPs. More engagement score means a good way to improve your email open rate ."
+      ]
+    },
+    {
+      "id": "my-domainemail-account-is-new-or-my-email-account-does-not-h",
+      "title": "My domain/email account is new OR my email account does not have a good activity score. What should I do?",
+      "paragraphs": [
+        "Here comes the email warm-up!",
+        "Email service providers like Gmail and Outlook have mechanisms that identify your email sending history and activity score. If you send emails with a new account or with any account that does not have good engagement from users, their mechanism  will put you in Spam zone. Your only chance to leave Spam zone is if somehow their algorithms learn that you’re no longer spamming. Tools such as EvaWarm receive your email and interact positively to help you improve your sender reputation.",
+        "Your cold emails can be marked as spam by some recipients. To balance this, you need to use EvaWarm to get positive engagements as long as you run cold outreach. In case you run permission-based outreach and still can’t improve your email open rate, you need to use Eva until they start engaging with you in good volume!"
+      ]
+    },
+    {
+      "id": "other-events-that-have-an-impact-on-your-email-activity",
+      "title": "Other events that have an impact on your email activity:",
+      "paragraphs": [
+        "Bounce : This mainly occurs when the email address you want to send an email doesn’t exist. It’s a bad indication for your IP as it means you really do not know who your recipients are. Please verify your list once in 3 months using an email verification provider.",
+        "Spam traps : ISPs and Blacklist directories purposefully create email addresses and put them all around the world (via web). These are meant to detect spammers. If they receive an email from your IP or domain, you instantly get blacklisted. It is worth investing some time to ensure you are not adding any random email address to your list .",
+        "Tools to consider:",
+        "Glock apps for Inbox Deliverability Testing MX toolbox for checking your DNS records EmailChecker for email verification Eva for the email warm-up",
+        "Conclusion :",
+        "If you can really work on the 6 points mentioned above and bring in the ideal outcome, your can definitely stay out of spam and land in inbox. Like we said in the beginning, having a good open rate consistently is an ongoing process and not a one-time task. Always, follow the best practices and get your emails delivered in inboxes. Happy journey to inboxes!"
+      ]
+    }
+  ]
+}

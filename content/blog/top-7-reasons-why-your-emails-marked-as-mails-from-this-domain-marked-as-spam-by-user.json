@@ -1,0 +1,117 @@
+{
+  "slug": "top-7-reasons-why-your-emails-marked-as-mails-from-this-domain-marked-as-spam-by-user",
+  "title": "Top 7 reasons why your emails marked as “MAILS FROM THIS DOMAIN MARKED AS SPAM BY USER”",
+  "excerpt": "Did I dream of landing all my emails in the recipient’s Inbox? Sounds great right. Touchwood let it come true! In general, many cold email outreach practices will not exactly tell us why you receive a message “ Mails from this domain marked as Spam by user “ the main reason is Domain Burn once […]",
+  "category": "Email Deliverability",
+  "date": "2022-03-21T00:00:00.000Z",
+  "readTime": "10 min read",
+  "image": "/uploads/1-cbfc7f.png",
+  "introduction": "Did I dream of landing all my emails in the recipient’s Inbox? Sounds great right. Touchwood let it come true! In general, many cold email outreach practices will not exactly tell us why you receive a message “ Mails from this domain marked as Spam by user “ the main reason is Domain Burn once you notice the changes you have to immediately stop your campaign and look out for Best Cold Email Outreach practices . As a result, your domain reputation can be saved to some extent, start your email warmup process for a month and you will regain the domain reputation you lost during the burn after which you can follow the list of reasons given below to avoid the massive domain hit in future . Let’s get started….",
+  "sections": [
+    {
+      "id": "mails-from-this-domain-marked-as-spam-by-user-here-are-the-7",
+      "title": "“MAILS FROM THIS DOMAIN MARKED AS SPAM BY USER” here are the 7 important reasons.",
+      "paragraphs": [
+        "The Email Service Providers are good and friendly until your behavior looks organic. If you try to behave like a bot they definitely categorize you as a spammer and you won’t be able to cross the filter zone .so being in a human touch is very much required for email marketing."
+      ]
+    },
+    {
+      "id": "1-email-message-a-reason-for-spam",
+      "title": "1. EMAIL “MESSAGE” A REASON FOR SPAM",
+      "paragraphs": [
+        "In your email, avoid employing spam trigger words. These are the words that have been labeled as being too manipulative, demanding, sleazy, or conjuring up bad feelings.",
+        "Email service providers can examine every email for spam or genuineness using sophisticated technologies like AI and Machine Language.",
+        "We’ve compiled a list of 394  spam terms to stay away from. The list can be found here spam trigger words ."
+      ]
+    },
+    {
+      "id": "grammar-and-spell-check",
+      "title": "GRAMMAR AND SPELL CHECK",
+      "paragraphs": [
+        "This is why most scam emails are badly worded – it’s not because the scammer speaks lousy English or is inattentive. It’s because a badly written email automatically chooses the most gullible recipient.",
+        "What would you do if you were actually duped? Would you call the cops?",
+        "This is not a good ending for a con artist. They’d prefer you ignore the email or classify it as SPAM, which is exactly what a badly worded email does!",
+        "Then there’s the reality that if you can’t spot their lousy grammatical method, you’re probably too gullible or eager for their offer.",
+        "As a result, if you continue to use poor grammar in your emails, they will be filtered and sent to the spam folder.",
+        "Other aspects directly related to the format and readability of your email are taken into account when determining whether or not a message is spam.  All of them should be avoided:",
+        "Email Copy that isn’t well written",
+        "Colors that pop and large fonts",
+        "Quite a few exclamations!!!!! and $$$$$"
+      ]
+    },
+    {
+      "id": "2-email-with-shorter-url-and-relevant-links",
+      "title": "2. Email with Shorter URL and Relevant Links",
+      "paragraphs": [
+        "If the links in your emails go to a strange domain or a URL that has been reported as fraudulent, your email will almost certainly end up in SPAM. This can also happen if you utilize an email marketing platform with a spammy backend for rewriting links.",
+        "Many spammers hide their spammy URLs using URL shortening services like bit.ly (as they all have access to the same domain and appear the same). If you promote something, be sure to use a link shortener."
+      ]
+    },
+    {
+      "id": "3-email-images-that-dont-follow-protocol",
+      "title": "3. Email Images that don’t follow Protocol",
+      "paragraphs": [
+        "Spammers often use an image to mask all SPAM trigger words and use the email content for negative and neutral only. The image goes past most SPAM filters because they don’t process it. As a result, an email with a significantly skewed Image/Text ratio may be reported by SPAM filters.",
+        "Some email recipients may not allow photos to load. They won’t see the photos in your email, making it look spammy and causing it to be classed as spam. SPAM filters will take this information into account and, over time, will begin to classify most emails with a similar signature as SPAM."
+      ]
+    },
+    {
+      "id": "4-email-html-is-not-equal-to-web-html",
+      "title": "4. Email HTML is NOT equal to Web HTML.",
+      "paragraphs": [
+        "HTML for email is NOT the same as HTML for the web.",
+        "There are a number of obvious HTML tags and CSS characteristics that popular email clients do not support (the major culprit being – Microsoft Outlook).",
+        "Forms should not be embedded in emails. The form’s submit button will need the use of JavaScript (which is a problem).",
+        "Because flash content is considered hazardous for something as delicate as email, most email clients simply do not support it. Flash-based emails are blocked by most email clients. To make your emails more appealing, you might include GIFs as an alternative.",
+        "Spam filters, and especially firewalls, always take the precautionary attitude of “better safe than sorry.” As a result, any of your well-intentioned emails containing any form of the script will end up in the SPAM folder.",
+        "I’ve seen far too many marketers copy text directly from Microsoft Word, Excel, Powerpoint, and other similar programs. These programs tack on extra unwelcome characters to your message source. Always paste your content into a plain text editor that removes any special characters."
+      ]
+    },
+    {
+      "id": "5-emails-violating-spam-laws",
+      "title": "5. Emails violating Spam Laws",
+      "paragraphs": [
+        "The anti-spam legislation of several countries requires organizations sending marketing emails to include a valid, physical postal address. There are different anti-spam laws for different countries but the inclusion of an address is also necessary to comply with our terms of use.",
+        "All marketing emails must include a simple way for recipients to opt-out. If you’re sending emails to your opted-in list(s), make sure each one includes an unsubscribe link. Unsubscribe links are usually found at the bottom, but you should not include them if your recipients do not opt-in and also give them opt-out message such as “ if your not interested to receive further emails hit reply” , email providers such as Gmail regard this as a significant signal of good reputation.",
+        "Email Size can land you in spam? surprise lets see",
+        "We discovered that transferring files with a size of 15KB to 100KB is OK. These emails passed easily through all of our spam filters!",
+        "When the email file size exceeded 100KB, deliverability concerns began to arise. Every email, ranging in size from 110 to 650 kilobytes, failed numerous spam filters. Surprisingly, once the email file size surpassed 100KB, the number of spam filters that rejected each email remained constant. An email with a file size of 110KB, for example, was captured in the same seven spam filters as an email with a file size of 650KB."
+      ]
+    },
+    {
+      "id": "low-quality-or-irrelavent-prospectors-list",
+      "title": "Low quality or Irrelavent Prospectors List",
+      "paragraphs": [
+        "A high hard bounce rate can be traced back to invalid or broken email addresses. Your prospect list should be double-checked and kept current. Don’t send emails to prospects from a list that is more than a few months old because some of the prospects may have changed employment and whose business email addresses may no longer be functional.",
+        "You shouldn’t buy pre-made prospect lists for the same reason. You have no means of knowing if the data was obtained legally. Furthermore, the contact information may be out of current and unconfirmed, causing your emails to bounce.",
+        "If your prospects believe your mails are irrelevant to their business, they might flag them as spam manually. It’s an indication to their email provider that messages from that sender are not really wanted. As a result, you should carefully identify your target audience and only approach people who will profit from your service."
+      ]
+    },
+    {
+      "id": "7-email-that-fails-to-authentication-protocol",
+      "title": "7. Email that fails to Authentication Protocol",
+      "paragraphs": [
+        "Email authentication is an important topic if you are using a 3rd party ESP. If you are using a mailbox provider like – Gmail, Yahoo Mail, AOL, Apple Mail, etc then your emails will be authenticated by default. Below is a list of the authentication process to increase the  Domain Reputation and mail Deliverability.",
+        "Warmup your Email – You’ll need to warm up your new domain and outbound email accounts once you’ve set them up. The trick is to start sending a limited number of emails from them at different times of the day and to respond to some of those emails if possible.",
+        "Verify the Reputation of your IP – Email is sent using the SMTP (Simple Mail Transfer Protocol) protocol, which is by its very nature unencrypted. TLS, or transport-level security, is a means for encrypting email communications so that the content cannot be read by anybody other than the intended receivers. When you get emails, check the headers to see if this is the case. It will harm your ESP’s reputation if they do not use TLS authentication for their IPs.",
+        "Checking your ” From Or Reply to “ address -When a domain has an inbox, but the “from email” used to send the email does not. No-reply>@ email addresses are a good illustration of this. When your receipts try to reply, SPAM filter=s will identify this as an invalid email (because the reply emails will bounce).If this happens on a regular schedule, your IP reputation will suffer.",
+        "Not Adding SPF and DKIM Records – It stands for Sender Policy Framework . This is checked by email inbox providers, who either reject the message or send it to the recipient’s Spam folder (so that no one else exploits you as a sender). It is a best practice not to enable more than 10 servers to send emails on your behalf.",
+        "To check this, open any email you’ve received and look at the headers and/or the original message. The “mailed by” domain indicates whether or not the SPF has been properly applied. It should be the same as the email address’s domain.",
+        "Domain Keys Identified Mail is the abbreviation. It gives a technique to confirm that the email message came from the domain it claims to have come from and that the message hasn’t been tampered with along the route.",
+        "A two-way (private key and public key combination) authentication is used to accomplish this. The ESPs normally provide the public key (again, in the form of a TXT DNS record that can be queried globally), and the private key is used by them to encrypt the full or a portion of the email, which can then be decrypted on the receiving end using the public key.",
+        "If the decryption fails, the recipient will know that either the domain hasn’t authorized this email to be transmitted, or someone has intercepted it.",
+        "Adding Incorrect DMARK Declaration – DMARC is a declaration from the sender domain that their owner is aware of email authentication and that recipients should get fully authenticated emails from them (containing both SPF and DKIM).",
+        "It also specifies what should be done with emails that do not have adequate authentication. They could include leaving them alone or not affecting them, sending them to the spam bin, or completely blocking them."
+      ]
+    },
+    {
+      "id": "wrap-up-session",
+      "title": "WRAP UP SESSION",
+      "paragraphs": [
+        "“Mails from this domain Marked as Spam by User” I understand that it appears to be daunting at first. Some of these points would seem to be impossible to complete without the assistance of an administrator. However, you cannot dismiss them simply because they appear to be excessively tough or time-consuming. Alternatively, you can do so, but don’t be surprised if half of your emails bounce or if your email provider spams you from sending messages.",
+        "There is no easy way out of this situation. If you want your emails to reach their intended recipients, you must master deliverability checks.",
+        "And if there’s anything else you’ve been doing to improve your deliverability that I’m missing, please let me know in the comments."
+      ]
+    }
+  ]
+}

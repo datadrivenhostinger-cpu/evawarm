@@ -1,0 +1,49 @@
+{
+  "slug": "why-does-your-email-land-in-spam-with-the-notification-it-is-similar-to-messages-that-were-identified-as-spam-in-the-past",
+  "title": "Why does your email land in spam with the notification “It is similar to messages that were identified as spam in the past”?",
+  "excerpt": "Assume your recipients have accepted your email with a spam warning saying “It is similar to messages that were identified as spam in the past“. Indeed, you heard it right! This just implies that different clients announced comparative messages as spam before. Thus, your email arrived in spam. These messages are for the most part, […]",
+  "category": "Email Deliverability",
+  "date": "2021-11-30T00:00:00.000Z",
+  "readTime": "3 min read",
+  "image": "/uploads/1-3eab6d.png",
+  "introduction": "Assume your recipients have accepted your email with a spam warning saying “ It is similar to messages that were identified as spam in the past “. Indeed, you heard it right! This just implies that different clients announced comparative messages as spam before. Thus, your email arrived in spam. These messages are for the most part, not a phishing or spoofing attempt.",
+  "sections": [
+    {
+      "id": "the-source-of-the-problem-and-how-to-solve-it",
+      "title": "The source of the problem and how to solve it",
+      "paragraphs": [
+        "Non-optin client list",
+        "These are the messages that have seemingly been sent to the non-opt-in client list. Many recipients mark your cold emails as spam when they receive them. As a result, if any such reports are submitted within a short period of time, your new recipients will receive your emails in spam folders.",
+        "There are two fixes for this problem:",
+        "Whitelisting your content.",
+        "Changing the content.",
+        "Whitelisting your content",
+        "At EvaWarm, we have an industry-first feature called ‘Whitelist Your Promotional Content.’ You can use this to balance spam reports (from others in the past), whitelist your actual email copy, and increase user engagement (including link clicks) – This function allows you to bypass Gmail and avoid having your email marked as “It looks like messages that have been marked as spam in the past,” ensuring that your email gets delivered to the inbox.",
+        "2. Changing the content",
+        "Changing your messaging from time to time is a good idea. However, you must devote a significant amount of time and work to your content creation."
+      ]
+    },
+    {
+      "id": "unsubscription-option",
+      "title": "Unsubscription option",
+      "paragraphs": [
+        "If your recipients do not wish to receive your emails, you must give them a simple means to let you know so that you do not receive spam reports. Include an unsubscribe link in the email bottom, or tell the recipient to reply with “STOP” or “No” if they wish to be removed from your mailing list."
+      ]
+    },
+    {
+      "id": "possible-issues-with-links",
+      "title": "Possible issues with links",
+      "paragraphs": [
+        "Even if you’re a good sender, if you include a link in your email that isn’t trusted or blocked, your emails are more likely to end up in spam. This isn’t limited to the URLs of landing pages. You should also double-check that the URLs hosting your email images (including those used for open tracking) are not blacklisted and have a decent reputation."
+      ]
+    },
+    {
+      "id": "problems-with-sender-domain",
+      "title": "Problems with sender domain",
+      "paragraphs": [
+        "The SPF and DKIM records for the area ought to be appropriately updated to have great email deliverability. If your emails are ending up in the spam folder, use tools like Glock Apps to see if these records are up to date."
+      ]
+    }
+  ],
+  "conclusion": "We trust that you got an answer for the spam notice message, “It is similar to messages that were identified as spam in the past”. Didn’t find the answer you were looking for? If it’s not too much trouble, go ahead and comment below, or contact us at support@eva-email-warm-up.com EvaWarm is verified as Email Marketing software. Check that out."
+}

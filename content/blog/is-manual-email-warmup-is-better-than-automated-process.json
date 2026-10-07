@@ -1,0 +1,55 @@
+{
+  "slug": "is-manual-email-warmup-is-better-than-automated-process",
+  "title": "How is manual email warm-up better than an automated process?",
+  "excerpt": "The pros and cons of manual vs automated email warmup. Learn which approach ensures better deliverability and engagement for your email",
+  "category": "Email Warmup",
+  "date": "2023-02-02T00:00:00.000Z",
+  "readTime": "8 min read",
+  "image": "/uploads/1-4-573fa0.png",
+  "introduction": "Creating an email campaign isn’t a difficult task, but achieving results can be. Many concepts have to be put into play, and the first priority part is to warm up the email domain. Many email marketers are familiar with this term, however, for beginners, let’s understand what an email warmup is. Email Warm-up is the process of gradually building the sender reputation of a new email account by starting with small amounts and slowly increasing the volume. This helps you build a positive reputation with email providers, increases deliverability, and ensures that your emails aren’t marked as spam.Email warm-up helps establish trust with email providers, improves the chances of your emails reaching the intended recipients, and helps achieve better email marketing results. There are two approaches to email warm-up:",
+  "sections": [
+    {
+      "id": "1-manual-email-warmup",
+      "title": "1. Manual email warmup:",
+      "paragraphs": [
+        "In email marketing, it’s important to keep in mind that email providers use intricate algorithms to monitor both new email accounts without a sending history and existing accounts utilized for email marketing. These accounts are more likely to trigger spam filters and result in emails being either blocked or sent to recipients’ spam folders. This highlights the importance of establishing a positive sending reputation and avoiding triggering spam filters to ensure successful email marketing outcomes.",
+        "By doing manual email warmup, you can ensure that your emails are not marked as spam, maintain good email deliverability, and reach the desired audience effectively. Additionally, sending high-quality, relevant, and engaging content can help improve recipient engagement and overall email performance.",
+        "To warm up an email account manually, one can start by sending a few emails a day to a small group of subscribers, gradually increasing the frequency and volume of emails over a period of several weeks or months. It’s important to monitor the deliverability of emails during this time and adjust the sending behavior as needed to ensure a positive sending reputation is established.",
+        "Studies indicate that a greater number of leading digital marketing agencies are opting for manual email warm-up over automated email warm-up. This highlights the importance and popularity of the manual approach in establishing a positive sending reputation and successful email marketing campaigns."
+      ]
+    },
+    {
+      "id": "2-automated-email-warmup",
+      "title": "2. Automated email warmup:",
+      "paragraphs": [
+        "The goal of automated email warm-up is the same as manual email warm-up, which is to establish a positive sending reputation with email providers and improve email deliverability. Automated email warm-up uses algorithms to gradually increase the sending volume, making it a faster and more convenient way to warm up a new email account.",
+        "Automated email warm-up solutions offer a range of features and customization options, including the ability to set a warm-up schedule, adjust sending volume based on recipient engagement, and monitor sending reputation and deliverability metrics. This makes it easier for organizations and individuals to warm up their email accounts in a manner that is tailored to their specific needs and goals.",
+        "Additionally, automated email warm-up solutions can help ensure consistent sending practices and help maintain a positive sending reputation over time, leading to improved email performance and higher deliverability rates."
+      ]
+    },
+    {
+      "id": "why-should-you-choose-manual-email-manual-warmup",
+      "title": "Why should you choose Manual Email manual warmup?",
+      "paragraphs": [
+        "we mentioned that many top digital marketing agencies prefer manual email warmups over automated email processes. Some of the below pros are going to surprise you about the benefits of manual email warmup, so you will understand why top digital marketing and big brands prefer manual email warmups."
+      ]
+    },
+    {
+      "id": "why-evawarm-is-best-for-you",
+      "title": "Why EvaWarm is best for you?",
+      "paragraphs": [
+        "we offer a 100% manual process that increases your email sending limits and helps you avoid ISP and ESP blacklists. Our team has extensive experience and a proven track record of success in improving email deliverability.",
+        "Our process is customizable to meet your specific needs and our focus on maintaining a positive sender reputation ensures that your messages reach their intended audience. With our comprehensive monitoring and reporting capabilities, you can track your progress and make informed decisions to continuously improve your email deliverability. Trust EvaWarm for your email warmup needs and achieve better results."
+      ]
+    },
+    {
+      "id": "final-thoughts",
+      "title": "Final thoughts",
+      "paragraphs": [
+        "Manual email warmup is a better option compared to automated warmup due to its personal touch and ability to tailor the process to each unique situation. Automated warmup solutions often use generic approaches that may not be effective for every situation.",
+        "With EvaWarm, you have access to an industry-first manual email warmup tool. Our team of experts handles the entire process manually, ensuring that your email sending limits are increased and avoiding ISP and ESP blacklists.",
+        "With our customizable approach, we prioritize maintaining a positive sender reputation, monitor and report progress, and provide a comprehensive solution for all your email warmup needs. Choose EvaWarm for a reliable, effective, and personalized solution to your email warmup needs."
+      ]
+    }
+  ]
+}

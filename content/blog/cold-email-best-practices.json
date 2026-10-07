@@ -1,0 +1,282 @@
+{
+  "slug": "cold-email-best-practices",
+  "title": "Cold email best practices",
+  "excerpt": "Cold emailing is harder than most communications available in today’s world. The recipients don’t know who you are and what kind of business you are doing. They have no clue about your emails. So it is difficult to get people to open cold emails. Before that, What is a cold email? A cold email […]",
+  "category": "Email Deliverability",
+  "date": "2022-01-19T00:00:00.000Z",
+  "readTime": "13 min read",
+  "image": "/uploads/1-c714af.png",
+  "introduction": "Cold emailing is harder than most communications available in today’s world. The recipients don’t know who you are and what kind of business you are doing. They have no clue about your emails. So it is difficult to get people to open cold emails. Before that,",
+  "sections": [
+    {
+      "id": "what-is-a-cold-email",
+      "title": "What is a cold email?",
+      "paragraphs": [
+        "A cold email is an initial email sent to a recipient with the goal of gaining sales, opportunities, or other mixed benefits.",
+        "In simple words, cold emailing refers to emailing someone you don’t know for some reason. You can email any random human in this world. And there is a high chance of getting a reply if they like your email. This is how you grow your connections!"
+      ]
+    },
+    {
+      "id": "what-is-cold-email-marketing",
+      "title": "What is cold email marketing?",
+      "paragraphs": [
+        "By utilizing email as the main way to communicate with your prospects, cold email marketing is a great way to make contact with a large number of potential clients.",
+        "In this blog, we can discuss some of the best practices for cold emailing. Without wasting time, we will jump into the subject!"
+      ]
+    },
+    {
+      "id": "effective-cold-email-strategies-5-steps",
+      "title": "Effective cold email strategies: 5 steps",
+      "paragraphs": [
+        "This article contains all the tricks that are essential for cold emailing. You will learn all you need to know about cold email outreach, including:",
+        "Cold email basics",
+        "Cold email vs spam folders",
+        "Building a cold email list",
+        "Best way to write a cold email to get a response",
+        "Cold emailing in bulk: how to do it"
+      ]
+    },
+    {
+      "id": "how-to-use-this-article",
+      "title": "How to use this article?",
+      "paragraphs": [
+        "Please feel free to toggle between sections if you think you are already familiar with certain pieces.",
+        "This cold email article will walk you through everything you ever wanted to know about cold emails, from A to Z."
+      ]
+    },
+    {
+      "id": "1-customize-your-signature-profile-and-provider-for-cold-ema",
+      "title": "1. Customize your signature, profile, and provider for cold email outreach",
+      "paragraphs": [
+        "There are three important factors to consider before diving into cold emailing for your business. Neither of us wants our emails to get delivered to the spam box. Am I right?",
+        "To avoid that, check these things at the first:",
+        "Picking an email provider that is right for your business",
+        "Setting up your email profile correctly",
+        "Your email signature"
+      ]
+    },
+    {
+      "id": "picking-an-email-provider-that-is-right-for-your-business",
+      "title": "Picking an email provider that is right for your business",
+      "paragraphs": [
+        "There are two types of email providers that are broadly used;",
+        "Paid (Example – G-suite, HostGator)",
+        "Free (Example – Google, Hotmail, Yahoo, etc)",
+        "I will suggest the paid one. Here are some reasons for that:",
+        "You can easily send emails through your domain like yourname@youdomain.com (never use your primary domain for cold outreach, please use the secondary domain for the cold email outreach. Eg. yourname@yourdomain.in instead of yourname@youdomain.com )",
+        "It makes your company look professional and helps to build credibility with the customers.",
+        "There is a marked improvement in the deliverability and a lesser chance of your email being mistaken for spam."
+      ]
+    },
+    {
+      "id": "how-to-set-up-your-email-profile-correctly",
+      "title": "How to set up your email profile correctly?",
+      "paragraphs": [
+        "No one would care about your email if your email has no photo and an invalid name.",
+        "Try to include authentic information on your email profile."
+      ]
+    },
+    {
+      "id": "set-up-your-email-signature",
+      "title": "Set up your email signature",
+      "paragraphs": [
+        "Having an email signature will always be considered a vital component of effective communication. It is an opportunity to convey your company’s personality, introduce the person answering emails, and provide contact information. Don’t forget to include your physical address on the email signature.",
+        "You can create your customized email signature using Hubspot ."
+      ]
+    },
+    {
+      "id": "2-how-to-avoid-getting-blacklisted-cold-email-vs-spam-folder",
+      "title": "2. How to avoid getting blacklisted – cold email vs spam folders",
+      "paragraphs": [
+        "Databases that contain spammer information are called blacklist directories. You should be aware that they track your email sending activity, such as frequency, volume, bounce rate, spam reports, and most importantly, how engaged your recipients are with your emails.",
+        "It is important to have an unsubscribe note at the bottom of your email signature."
+      ]
+    },
+    {
+      "id": "how-to-avoid-emails-going-to-spam",
+      "title": "How to avoid emails going to spam?",
+      "paragraphs": [
+        "In essence, email authentication protocols function as secret agents behind the scenes, ensuring that senders are indeed who they claim to be before emails reach their inboxes. Enabling these methods can increase your email deliverability.",
+        "There are three things to consider in this,",
+        "SPF – It tells the receiver of an email how legitimate the sender is. In order to verify the SPF record for an email received by a recipient, their email provider checks the DNS records for the domain name listed as the return address in the “envelope from” address.",
+        "DKIM – The DKIM protocol adds a digital signature to every message. The receiving servers can confirm that the message is not forged and that hasn’t been altered during transit.",
+        "DMARC – The DMARC protocol is very effective for organizations since it uses both DKIM and SPF records to verify the senders’ emails. It protects your domain from email spoofing.",
+        "To run a quick audit of your SPF and DKIM settings, use Glockapp"
+      ]
+    },
+    {
+      "id": "setup-of-a-custom-tracking-domain-why-is-it-so-important",
+      "title": "Setup of a custom tracking domain – why is it so important?",
+      "paragraphs": [
+        "You will need the tracking domain for two main reasons, to track open and click rates.",
+        "But why do you have to set up a custom tracking code ?",
+        "It is important to know how many people opened, clicked, and responded to your cold email when sending it. Analyzing these metrics will reveal which email campaigns are successful and which ones are not. In order to show these stats, email automation tools insert tracking pixels in their email marketing software and change URLs. These custom tracking codes increase your email deliverability."
+      ]
+    },
+    {
+      "id": "how-to-warm-up-an-email-account",
+      "title": "How to warm up an email account?",
+      "paragraphs": [
+        "Various providers of email services, including Gmail and Outlook, monitor your domain reputation and history of email sending. The system will put you in the Spam zone if you send emails with a new account or an account that does not have good engagement from users.",
+        "The only way to get out of the spam zone is if somehow their algorithms learn that you’re not spamming anymore.",
+        "Don’t worry EvaWarm will receive your email and interact positively to help you improve your sender reputation.",
+        "Go to EvaWarm and sign up .",
+        "Update your email warm up setting",
+        "Then EvaWarm will take care of your emails",
+        "IF your email account is young (less than 1 month) :",
+        "The number of warm-up emails sent per day is 30.",
+        "The number of warm-up emails received per day is 10.",
+        "The increment value per day is 1%.",
+        "IF your email account is old (more than 1 month) :",
+        "The number of warm-up emails sent per day is 20.",
+        "The number of warm-up emails received per day is 7.",
+        "The increment value per day is 1%."
+      ]
+    },
+    {
+      "id": "how-to-clean-your-email-list",
+      "title": "How to clean your email list?",
+      "paragraphs": [
+        "It’s not a good idea to send cold emails to non-existent email addresses.",
+        "It won’t take Google or other email providers long to find out.",
+        "You will keep getting hard bounces if you keep sending to invalid addresses. Receiving a hard bounce affects your sender’s reputation.",
+        "Verifying emails will get you out of this problem. Here is a tool that verifies emails and gives results as valid, invalid, unknown, catch-all. This tool has an industry-first solution that verifies the catch-all domain and gives you results as catch-all valid and catch-all invalid.",
+        "Sign up for Emailchecker ( email verification tool)"
+      ]
+    },
+    {
+      "id": "3-building-a-cold-email-list",
+      "title": "3. Building a cold email list",
+      "paragraphs": [
+        "Our next step will be to show you how to find the right audience and their email addresses."
+      ]
+    },
+    {
+      "id": "how-to-create-an-ideal-customer-profile",
+      "title": "How to create an ideal customer profile?",
+      "paragraphs": [
+        "In cold emailing you are not supposed to send emails to every human on this planet, It does not work in that way.",
+        "Create a customer profile that helps to target the right human who needs your service/product.",
+        "Here are some of the best ways to create a ideal customer profile ."
+      ]
+    },
+    {
+      "id": "how-to-find-email-addresses",
+      "title": "How to find email addresses?",
+      "paragraphs": [
+        "There are 2 ways to find email addresses.",
+        "Free – At first understand the email pattern. After trying different formats using the email verification tools, find the format that works for the company you want.",
+        "Paid – There are tons of resources available (such as Leadiro ) on the internet to find the email addresses of the prospects."
+      ]
+    },
+    {
+      "id": "subject-line",
+      "title": "Subject line",
+      "paragraphs": [
+        "They will not open your emails if the subject line fails to grab their curiosity and imagination. Then, no matter how good your email content is, your cold emails are a waste of effort.",
+        "1. Never use spammy words like free, $, etc.",
+        "2. Use personalized subject lines like using the prospect’s name or company name. It will give a one-on-one feel to your recipient.",
+        "Example Hi {Name}, quick question."
+      ]
+    },
+    {
+      "id": "body",
+      "title": "Body",
+      "paragraphs": [
+        "There are many email templates available, but Eva’s three-sentence template would be an ideal strategy to get magnificent email replies.",
+        "On mobile devices, shorter emails work well, and they’re becoming increasingly popular.",
+        "Hi {!name},",
+        "My name is {!Your name}, and I’ll keep this quick.",
+        "I’m the founder of a {!Product} that {!Value proposition}",
+        "Could I have ten minutes of your time next week for a personalized demo that’ll make clear why business people like {!Person 1}, {!Person 2}, and {!Person 3} love our product?",
+        "Best,",
+        "{!Your name}",
+        "{!Company}",
+        "How can we enhance text personalization?",
+        "It is proven that personalizing your emails can increase your open and click-through rates and increase your ROI and revenue. Emails can be tailored to the prospect’s data to provide better offers and a better communication experience.",
+        "Personalization can take many forms, including using prospects’ names, noting the company’s accomplishments, mentioning the prospect’s achievement in the introduction, etc.",
+        "Make sure you include a call to action."
+      ]
+    },
+    {
+      "id": "how-can-dynamic-landing-pages-increase-your-conversions",
+      "title": "How can dynamic landing pages increase your conversions?",
+      "paragraphs": [
+        "Let’s put it this way, today’s consumer is sophisticated.",
+        "As consumers, they expect companies to look out for their interests. This is what dynamic landing pages allow you to do.",
+        "Dynamic landing pages allow you to personalize your content for the users. Ideally, this will allow your prospects to find something more specific to their needs.",
+        "The more content you have tailored to a prospect’s needs, the more likely they are to trust you and buy your product.",
+        "Here are some ways to create dynamic landing pages."
+      ]
+    },
+    {
+      "id": "how-to-ab-test-your-cold-emails",
+      "title": "How to A/B test your cold emails?",
+      "paragraphs": [
+        "Cold emailing requires lots of trial and error experimentation. There is no better option than the A/B test .",
+        "In this process, one variation of your campaign is sent to a subset of your subscribers, while another variation is sent to another subset, with the ultimate goal of working out which variation of the campaign gathers the best results."
+      ]
+    },
+    {
+      "id": "how-to-follow-up-on-a-no-response-email",
+      "title": "How to follow up on a no-response email?",
+      "paragraphs": [
+        "There is no strict rule for setting the delay between each mail. Generally, we recommend that we use the following model:",
+        "2-day delay between each mail.",
+        "Make sure to only email follow-ups when necessary. Try not to be pushy. Make sure you keep a good relationship with your clients.",
+        "Be sure to include custom variables in the body of your emails. This increases the likelihood that your prospects will open and read your email."
+      ]
+    },
+    {
+      "id": "5-cold-emailing-in-bulk-how-to-do-it",
+      "title": "5. Cold emailing in bulk: how to do it",
+      "paragraphs": [
+        "Sending too many cold emails or sending them on a regular basis may not be a good idea.",
+        "You are putting your email reputation at risk by doing this.",
+        "Then what should be the best practice to send email?"
+      ]
+    },
+    {
+      "id": "what-is-your-daily-limit-for-cold-emails",
+      "title": "What is your daily limit for cold emails?",
+      "paragraphs": [
+        "That’s a tricky question! It’s hard to say something with a 100% guarantee. There are different algorithms for each email provider.",
+        "A rule of thumb is that you should not send more than 120 cold emails per day if you want to avoid losing your email account.",
+        "Based on our experience, there are rules that you need to follow:",
+        "70-80 emails per day if your email is new. Before sending the mentioned number of emails, don’t forget to warm up your email. Send 5-10 emails per day for one week to improve the authenticity of the account. After one week gradually increases the number of emails.",
+        "100-120 emails per day if your email is old."
+      ]
+    },
+    {
+      "id": "how-to-send-cold-emails",
+      "title": "How to send cold emails?",
+      "paragraphs": [
+        "It’s easy to conduct cold email outreach with cold email outreach tools. This program automates the process of sending out cold emails so you can send them more effectively. The software offers features like personalization, tracking, preloaded templates, etc., that facilitate sending follow-ups.",
+        "When compared to sales engagement tools, Yesware allows you to build better relationships with prospects. Generally, most of the commonly used systems automate most of the tasks of representatives, so the emails look too mechanical. Reps can use Yesware to focus on crafting personalized emails that resonate with prospects and existing clients, saving them time. Giving cold emails a human touch is the key to success.",
+        "Yesware integrates with Gmail and Outlook, so there is no need for a separate app. It automatically schedules follow-ups and lets you personalize emails with customizable variables. In addition, the tool provides a campaign dashboard that can track email opens, clicks, bounces, and replies so that you can see how your campaign performed."
+      ]
+    },
+    {
+      "id": "when-it-comes-to-cold-email-what-is-a-good-open-rate",
+      "title": "When it comes to cold email, what is a good open rate?",
+      "paragraphs": [
+        "If you can consistently achieve a 30% open rate or higher, regardless of the total number of emails sent, you are really free to send as many emails (max cap 120 per day) as you want. If you cannot achieve this, you should slow down and follow best practices to ensure you get at least a 30% open rate and then increase the volume. Even after increasing your volume, you should still achieve an open rate of at least 30%. If not, you should reduce the number again."
+      ]
+    },
+    {
+      "id": "what-is-the-average-cold-email-response-rate",
+      "title": "What is the average cold email response rate?",
+      "paragraphs": [
+        "A cold email response rate of 8% is considered average. A 20% response rate is what you should aim for when sending outbound campaigns that are targeted and well-researched."
+      ]
+    },
+    {
+      "id": "what-are-good-conversion-metrics-for-cold-emails",
+      "title": "What are good conversion metrics for cold emails?",
+      "paragraphs": [
+        "A conversion metric of 10% is good for cold emails. This means that for every 100 emails you send, you should be able to book 10 meetings. Marketing, recruiting, event promotion… no matter your field, you should aim for a conversion rate of 10%."
+      ]
+    }
+  ],
+  "conclusion": "Rather than going straight for the sale with a cold email, it is all about warming up your prospect. Keep the sales pitch for later in the relationship so that the client is more open to hearing what you can offer them. Focus more on establishing recognition and connections for now. Putting customer relationships first will naturally lead to sales. Have you found any best practices for cold email outreach to be most effective? Please share your experiences in the comments below."
+}

@@ -1,0 +1,94 @@
+{
+  "slug": "3-reasons-your-email-marketing-deliverability-is-broken-and-how-to-fix-it",
+  "title": "3 Reasons Your Email Marketing Deliverability Is Broken (And How to Fix It)",
+  "excerpt": "In many different industries, email marketing is the key to increasing ROI. There are a variety of barriers that stand in the way of email marketing. In this blog, we will look at the top three issues that stand in the way of email marketing and we will see what can be done to address […]",
+  "category": "Email Warmup",
+  "date": "2022-12-26T00:00:00.000Z",
+  "readTime": "6 min read",
+  "image": "/uploads/1-5f02bf.png",
+  "introduction": "In many different industries, email marketing is the key to increasing ROI. There are a variety of barriers that stand in the way of email marketing. In this blog, we will look at the top three issues that stand in the way of email marketing and we will see what can be done to address them.",
+  "sections": [
+    {
+      "id": "1-domain-authentication",
+      "title": "1) Domain Authentication",
+      "paragraphs": [
+        "The first thing you should do when you start an email campaign is to make sure technical standards such as SPF and DKIM are activated. Unless it is activated, your cold outreaching email or email domain may be spoofed, or phished for some illegal activities. So let us discuss SPF and DKIM briefly."
+      ]
+    },
+    {
+      "id": "dkim",
+      "title": "DKIM:",
+      "paragraphs": [
+        "DomainKeys Identified Mail (DKIM) is a technical standard security layer. If you fail to authenticate or if your DKIM fails then your email will get categorized as spam, spoofing, and phishing. If you would like to set up DKIM with your domain provider, you can go to their website and follow the steps they provide."
+      ]
+    },
+    {
+      "id": "spf",
+      "title": "SPF:",
+      "paragraphs": [
+        "When you fail to authenticate SPF, your email domain is at risk of being spoofed and your outgoing email messages may be marked as spam by receiving servers. To avoid this problem, ensure you have authenticated SPF via your domain provider and follow the instructions on their website to set it up.",
+        "You should ensure that email authentication is done for each email domain you use to prevent phishing or other illegal activities."
+      ]
+    },
+    {
+      "id": "2-manual-warmup-whitelisting-email-content",
+      "title": "2) Manual Warmup – Whitelisting email content",
+      "paragraphs": [
+        "What does warmup mean?",
+        "In simple terms, email warmup involves sending and receiving emails from several different accounts to establish good sender reputation on a domain.",
+        "If you don’t email warmup, what happens?",
+        "During cold outreaching, there is a high chance that your email might get filtered into spam by the receiver or the receiver’s server. Email warmup is the solution to overcome this problem. By doing warmup, your domain sender reputation increases and receiver ISP will consider your email a not-scam email. By doing so, you will increase your open rate and gain a good sender reputation."
+      ]
+    },
+    {
+      "id": "what-is-the-best-way-to-warm-up-email",
+      "title": "What is the best way to warm up email?",
+      "paragraphs": [
+        "There are two ways to perform the warming process: manually or as an automated system, but the manual method is best in the market. You ensure that it is a correct process by doing it manually, but an automated process may result in errors and if you do it manually, Google is less likely to mark your email spam because it thinks you are a real person."
+      ]
+    },
+    {
+      "id": "which-warmup-provider-is-best-for-you",
+      "title": "Which warmup provider is best for you?",
+      "paragraphs": [
+        "Email warmup service providers are plentiful in the market, but it is important to select the best warmup service provider. Manual warmup is better than automated warmup, which is why choose a provider that provides manual warmup services. Interested in finding the best email warmup service provider? If so, don’t worry, you can choose EvaWarm warmup service. EvaWarm can provide manual email warming services, and more importantly, it has an industry-leading tool. Click here to find out more."
+      ]
+    },
+    {
+      "id": "3-poor-target-list",
+      "title": "3) Poor target list",
+      "paragraphs": [
+        "Targeting the relevant audience who could show interest in your value proposition is very important. If you target some random audience who finds your email irrelevant have more possibilities to mark your email as Spam."
+      ]
+    },
+    {
+      "id": "i-choosing-irrelevant-segement",
+      "title": "(i)  Choosing irrelevant segement",
+      "paragraphs": [
+        "In order to make your marketing more effective, it is important to target the right industry for your product or service. If you spread the word to an industry that is irrelevant to your product or service, you will more likely end up in spam and lose your marketing effectiveness."
+      ]
+    },
+    {
+      "id": "ii-reaching-wrong-person",
+      "title": "(ii) Reaching wrong person",
+      "paragraphs": [
+        "After choosing the relavent industry the next step you have to choose the right title who can make decisions on purchase of your product or service. For example, if you are sending an email outlining your IT services, you can choose titles like Project manager, IT team, CTO, Director/Vice President of IT and so on, but when you reach out to a marketing person, you have just reached an incompatible person which will waste your marketing quality."
+      ]
+    },
+    {
+      "id": "iii-reaching-during-off-hours",
+      "title": "(iii) Reaching during off-hours",
+      "paragraphs": [
+        "The best time to reach email recipients is between the hours of 10 am, 2 pm, 4 pm and 5 pm. Several studies shows that emails are opened at this time. So, make sure you reach out at that time, and one other important thing to consider is the target audience’s location. For instance, if you work in India but your client works in the U.S., adjust the drip timings according to their working hours."
+      ]
+    },
+    {
+      "id": "iv-avoid-getting-list-from-substandard-companies",
+      "title": "(iv) Avoid getting list from substandard companies",
+      "paragraphs": [
+        "It is important to ensure the quality of the email list. Avoid getting it from substandard companies, this may result in wrong email ids or titles, which can harm your email domain. Therefore, try and get it from in-house so you can ensure the quality.",
+        "Hope you understand why email deliverability is broken and how it can be fixed. Best wishes for your email marketing success. In case you have any email marketing issues, EvaWarm Email deliverability consultant chennai is there to assist you. We help you resolve all issues related to email marketing. Book an appointment right now. Click here for more information."
+      ]
+    }
+  ]
+}

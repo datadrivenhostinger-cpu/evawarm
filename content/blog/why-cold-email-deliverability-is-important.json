@@ -1,0 +1,77 @@
+{
+  "slug": "why-cold-email-deliverability-is-important",
+  "title": "Why cold email deliverability is important in 2025 and where can I start?",
+  "excerpt": "Cold email deliverability is crucial for successful outreach campaigns. Learn why it's important and discover actionable tips to improve inbox placement, boost open rates, and enhance your sender reputation.",
+  "category": "Email Warmup",
+  "date": "2023-02-28T00:00:00.000Z",
+  "readTime": "4 min read",
+  "image": "/uploads/1-2-bc9bc3.png",
+  "introduction": "Let me begin with a simple query. What exactly does email deliverability mean? and What distinguishes deliverability from open rate? Never be concerned if you don’t know since I am here. Deliverability refers to your emails’ capacity to reach the recipient’s inbox. How many people really opened your emails is determined by the open rate.Calculate the open rate using the formula below The following are standard procedures to be followed to improve your deliverability:",
+  "sections": [
+    {
+      "id": "1-using-a-secondary-domain",
+      "title": "1. Using a secondary domain",
+      "paragraphs": [
+        "You may be blacklisted by your Internet Service Provider or even suspended if you engage in bulk emailing, get more spam hits in a short period of time, and so on. Cold emailing requires you to use a secondary domain that redirects to your primary domain when sending email campaigns."
+      ]
+    },
+    {
+      "id": "2-technical-authentication",
+      "title": "2. Technical Authentication",
+      "paragraphs": [
+        "To secure your domain from spammers and phishers you must ensure the security layers DKIM, SPF, and DMARC are authenticated."
+      ]
+    },
+    {
+      "id": "i-domain-keys-identified-mail-dkim",
+      "title": "(i) Domain Keys Identified Mail (DKIM)",
+      "paragraphs": [
+        "By using DKIM, a unique email signature will be validated while sharing emails between the sender and recipient, protecting against spammers and phishers."
+      ]
+    },
+    {
+      "id": "ii-sender-policy-framework-spf",
+      "title": "(ii) Sender Policy Framework (SPF)",
+      "paragraphs": [
+        "With SPF, you can protect your domain from spoofing and prevent your outbound messages from being marked as spam."
+      ]
+    },
+    {
+      "id": "iii-domain-based-message-authentication-reporting-conformanc",
+      "title": "(iii) Domain-based Message Authentication, Reporting, & Conformance (DMARC)",
+      "paragraphs": [
+        "The DMARC protocol (Domain-based Message Authentication, Reporting, and Conformance) enables domain owners to protect their email domains against unauthorized use, also known as email spoofing."
+      ]
+    },
+    {
+      "id": "3-email-warmup",
+      "title": "3. Email Warmup",
+      "paragraphs": [
+        "By doing an email warm-up, you obtain a good sender reputation and ensure your message lands in the inbox of your prospects rather than in their spam folder.",
+        "Many email warmup service providers exist in the market, but EvaWarm offers an industry-first solution for email deliverability consulting and email warmup services ."
+      ]
+    },
+    {
+      "id": "4-appropriate-recipients",
+      "title": "4. Appropriate recipients",
+      "paragraphs": [
+        "The importance of targeting the correct audience is vital. If you target some random audience who finds your email irrelevant, your email is much more likely to get marked as spam."
+      ]
+    },
+    {
+      "id": "5-checking-spam-keyword",
+      "title": "5. Checking Spam Keyword",
+      "paragraphs": [
+        "When writing Marketing/Sales content, you can substitute spam words with special characters, such as sales, which can be written as s@les. Using Spam Checker , you can change spam words with other words or change the character."
+      ]
+    },
+    {
+      "id": "6-start-with-lesser-emails",
+      "title": "6. Start with lesser emails",
+      "paragraphs": [
+        "In the case of a new domain older than four months, you should avoid sending more than 40 recipients per week. Additionally, the server is more likely to detect it as spam when it comes to new domains. You must be aware while sending in new domains, but you can increase your recipient’s volume based on your open rate when your open rate starts to increase rapidly or above 70%.",
+        "It is our sincere hope that this blog will help you learn how to achieve cold email deliverability. Wishing you success in cold email outreach. Our goal at EvaWarm is to improve cold email deliverability by offering a warmup tool for your email account that offers user engagements at scale, so you do not land in SPAM. We also offer email deliverability consultations so you can become an expert in cold email delivery. For a consultation about email deliverability, click here or for more contact details ."
+      ]
+    }
+  ]
+}

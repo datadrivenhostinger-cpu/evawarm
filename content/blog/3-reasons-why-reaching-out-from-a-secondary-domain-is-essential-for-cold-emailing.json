@@ -1,0 +1,35 @@
+{
+  "slug": "3-reasons-why-reaching-out-from-a-secondary-domain-is-essential-for-cold-emailing",
+  "title": "3 Reasons Why reaching out from a secondary domain is essential for cold emailing",
+  "excerpt": "Discover 3 vital reasons why sending cold emails from a secondary domain boosts deliverability, protects your main domain, and ensures better outreach results.",
+  "category": "Cold Email",
+  "date": "2023-01-13T00:00:00.000Z",
+  "readTime": "3 min read",
+  "image": "/uploads/1-2-985f4a.png",
+  "introduction": "Have you ever wondered what happens when you run a COLD email campaign from your primary domain? First Let’s understand what the Primary domain is. It is the domain where all your online business activities are carried out. Now, coming to the original question “Can we run a Cold email campaign from the Primary domain?” Well, it can do a lot of damage to your domain reputation. The main reason is that running a cold campaign and getting more SPAM hits from your primary domain is going to put your domain at risk of being burnt. Burning your domain would mean that all emails sent by that domain, including transaction emails and newsletters, could end up in SPAM folders, where they may be easily missed by prospects who want their email delivered immediately. This is not ideal. However, there is good news. You can conduct A/B testing in your cold email campaigns using your secondary domains. In the event that the secondary domain is “burnt,” it will not greatly affect your primary domain. Let us see 3 main reasons why the secondary domain is important for cold email outreach. Experiment without hesitation Try different target segments from other domains Outsource your Email Marketing efforts",
+  "sections": [
+    {
+      "id": "1-experiment-without-hesitation",
+      "title": "1. Experiment without hesitation",
+      "paragraphs": [
+        "In the email marketing journey, everyone at one point in time might be stuck in a situation where we hesitate to increase the outreach volume to avoid domain block even in a critical situation. Here is where running from the secondary domain comes in handy. You can have two or more domains where you can increase the outreach volume in one domain and if it gets blocked, you can continue your marketing in another domain till the older one recovers. This experiment can’t be done using the Primary domain."
+      ]
+    },
+    {
+      "id": "2-try-different-target-segments-from-other-domains",
+      "title": "2. Try different target segments from other domains",
+      "paragraphs": [
+        "Usually, we have different target segments for our products/services. When we want to explore a new segment it’s good to have a new domain that is more relevant to the target audience. For Example, To target countries like the US, CA, or UK it is more appropriate to have domains ending with .us, .net rather than .in. and have domain names such as example-services-uk.co.in or example-services-us.net",
+        "Purchase domain names from GoDaddy (the most trustworthy), and purchase email accounts from providers such as Zoho (the cheapest), Google Workspace, or Office 365."
+      ]
+    },
+    {
+      "id": "outsource-your-email-marketing-efforts",
+      "title": "Outsource your Email Marketing efforts",
+      "paragraphs": [
+        "Some of you might plan to outsource email marketing but sharing your primary domain will be a show-stopper. You can have a secondary domain that redirects to the Primary domain. It is always safer to have a secondary domain to share with third parties."
+      ]
+    }
+  ],
+  "conclusion": "When you purchase new domains don’t forget to update the DNS (authentication) records. Two mandatory records to be updated: 1. DKIM (Domain Keys Identified Mail) is a protocol that allows an organization to take responsibility for transmitting a message by signing it in a way that mailbox providers can verify. 2. An SPF record identifies the mail servers and domains that are allowed to send an email on behalf of your domain. These records play a major role in email deliverability."
+}
