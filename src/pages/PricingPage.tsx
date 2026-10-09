@@ -153,8 +153,8 @@ function PricingCards() {
     plan.name === 'Growth'
       ? 'https://calendar.app.google/gt6J1J4rvFomHMgi8'
       : plan.name === 'Enterprise'
-        ? '#/contact?plan=enterprise'
-        : '#/contact?plan=starter'
+        ? '/contact?plan=enterprise'
+        : '/contact?plan=starter'
   }
   target={plan.name === 'Growth' ? '_blank' : undefined}
   rel={plan.name === 'Growth' ? 'noopener noreferrer' : undefined}
@@ -215,11 +215,11 @@ function PricingCards() {
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 
 const pricingFaqs = [
-  { q: 'How is pricing determined?', a: 'We tailor pricing to your specific situation — number of domains, sending volume, current reputation, and the scope of work. Book a free consultation and we will give you a clear quote.' },
-  { q: 'Is there a contract or minimum commitment?', a: 'No long-term contracts required. We work on a flexible basis, and most clients stay with us because they see results — not because they are locked in.' },
+  { q: 'How is pricing determined?', a: 'We tailor pricing to your specific situation, number of domains, sending volume, current reputation, and the scope of work. Book a free consultation and we will give you a clear quote.' },
+  { q: 'Is there a contract or minimum commitment?', a: 'No long-term contracts required. We work on a flexible basis, and most clients stay with us because they see results, not because they are locked in.' },
   { q: 'Do you offer a free trial or consultation?', a: 'Yes. Every engagement starts with a free deliverability consultation where we assess your current setup, identify issues, and recommend a path forward.' },
   { q: 'What is included in the warmup service?', a: 'Manual warmup of your domain, reputation monitoring, progress reports, and direct access to your deliverability expert. We handle the execution end-to-end.' },
-  { q: 'How quickly can you start?', a: "Typically within 24–48 hours of an initial consultation. We move fast because we know delayed warmup means delayed results for you." },
+  { q: 'How quickly can you start?', a: "Typically within 24-48 hours of an initial consultation. We move fast because we know delayed warmup means delayed results for you." },
 ]
 
 function PricingFAQ() {

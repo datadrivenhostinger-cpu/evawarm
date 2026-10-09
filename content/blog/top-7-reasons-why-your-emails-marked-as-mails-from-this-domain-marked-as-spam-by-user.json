@@ -28,7 +28,7 @@
       "id": "grammar-and-spell-check",
       "title": "GRAMMAR AND SPELL CHECK",
       "paragraphs": [
-        "This is why most scam emails are badly worded – it’s not because the scammer speaks lousy English or is inattentive. It’s because a badly written email automatically chooses the most gullible recipient.",
+        "This is why most scam emails are badly worded, it’s not because the scammer speaks lousy English or is inattentive. It’s because a badly written email automatically chooses the most gullible recipient.",
         "What would you do if you were actually duped? Would you call the cops?",
         "This is not a good ending for a con artist. They’d prefer you ignore the email or classify it as SPAM, which is exactly what a badly worded email does!",
         "Then there’s the reality that if you can’t spot their lousy grammatical method, you’re probably too gullible or eager for their offer.",
@@ -60,7 +60,7 @@
       "title": "4. Email HTML is NOT equal to Web HTML.",
       "paragraphs": [
         "HTML for email is NOT the same as HTML for the web.",
-        "There are a number of obvious HTML tags and CSS characteristics that popular email clients do not support (the major culprit being – Microsoft Outlook).",
+        "There are a number of obvious HTML tags and CSS characteristics that popular email clients do not support (the major culprit being, Microsoft Outlook).",
         "Forms should not be embedded in emails. The form’s submit button will need the use of JavaScript (which is a problem).",
         "Because flash content is considered hazardous for something as delicate as email, most email clients simply do not support it. Flash-based emails are blocked by most email clients. To make your emails more appealing, you might include GIFs as an alternative.",
         "Spam filters, and especially firewalls, always take the precautionary attitude of “better safe than sorry.” As a result, any of your well-intentioned emails containing any form of the script will end up in the SPAM folder.",
@@ -91,16 +91,16 @@
       "id": "7-email-that-fails-to-authentication-protocol",
       "title": "7. Email that fails to Authentication Protocol",
       "paragraphs": [
-        "Email authentication is an important topic if you are using a 3rd party ESP. If you are using a mailbox provider like – Gmail, Yahoo Mail, AOL, Apple Mail, etc then your emails will be authenticated by default. Below is a list of the authentication process to increase the  Domain Reputation and mail Deliverability.",
-        "Warmup your Email – You’ll need to warm up your new domain and outbound email accounts once you’ve set them up. The trick is to start sending a limited number of emails from them at different times of the day and to respond to some of those emails if possible.",
-        "Verify the Reputation of your IP – Email is sent using the SMTP (Simple Mail Transfer Protocol) protocol, which is by its very nature unencrypted. TLS, or transport-level security, is a means for encrypting email communications so that the content cannot be read by anybody other than the intended receivers. When you get emails, check the headers to see if this is the case. It will harm your ESP’s reputation if they do not use TLS authentication for their IPs.",
+        "Email authentication is an important topic if you are using a 3rd party ESP. If you are using a mailbox provider like, Gmail, Yahoo Mail, AOL, Apple Mail, etc then your emails will be authenticated by default. Below is a list of the authentication process to increase the  Domain Reputation and mail Deliverability.",
+        "Warmup your Email, You’ll need to warm up your new domain and outbound email accounts once you’ve set them up. The trick is to start sending a limited number of emails from them at different times of the day and to respond to some of those emails if possible.",
+        "Verify the Reputation of your IP, Email is sent using the SMTP (Simple Mail Transfer Protocol) protocol, which is by its very nature unencrypted. TLS, or transport-level security, is a means for encrypting email communications so that the content cannot be read by anybody other than the intended receivers. When you get emails, check the headers to see if this is the case. It will harm your ESP’s reputation if they do not use TLS authentication for their IPs.",
         "Checking your ” From Or Reply to “ address -When a domain has an inbox, but the “from email” used to send the email does not. No-reply>@ email addresses are a good illustration of this. When your receipts try to reply, SPAM filter=s will identify this as an invalid email (because the reply emails will bounce).If this happens on a regular schedule, your IP reputation will suffer.",
-        "Not Adding SPF and DKIM Records – It stands for Sender Policy Framework . This is checked by email inbox providers, who either reject the message or send it to the recipient’s Spam folder (so that no one else exploits you as a sender). It is a best practice not to enable more than 10 servers to send emails on your behalf.",
+        "Not Adding SPF and DKIM Records, It stands for Sender Policy Framework . This is checked by email inbox providers, who either reject the message or send it to the recipient’s Spam folder (so that no one else exploits you as a sender). It is a best practice not to enable more than 10 servers to send emails on your behalf.",
         "To check this, open any email you’ve received and look at the headers and/or the original message. The “mailed by” domain indicates whether or not the SPF has been properly applied. It should be the same as the email address’s domain.",
         "Domain Keys Identified Mail is the abbreviation. It gives a technique to confirm that the email message came from the domain it claims to have come from and that the message hasn’t been tampered with along the route.",
         "A two-way (private key and public key combination) authentication is used to accomplish this. The ESPs normally provide the public key (again, in the form of a TXT DNS record that can be queried globally), and the private key is used by them to encrypt the full or a portion of the email, which can then be decrypted on the receiving end using the public key.",
         "If the decryption fails, the recipient will know that either the domain hasn’t authorized this email to be transmitted, or someone has intercepted it.",
-        "Adding Incorrect DMARK Declaration – DMARC is a declaration from the sender domain that their owner is aware of email authentication and that recipients should get fully authenticated emails from them (containing both SPF and DKIM).",
+        "Adding Incorrect DMARK Declaration, DMARC is a declaration from the sender domain that their owner is aware of email authentication and that recipients should get fully authenticated emails from them (containing both SPF and DKIM).",
         "It also specifies what should be done with emails that do not have adequate authentication. They could include leaving them alone or not affecting them, sending them to the spam bin, or completely blocking them."
       ]
     },

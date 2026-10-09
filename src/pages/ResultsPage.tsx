@@ -92,7 +92,7 @@ function BrysaCaseStudy() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="cs-header-grid">
             <div>
               <h2 style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 'clamp(28px, 3.8vw, 52px)', color: '#edf0ff', letterSpacing: -1.5, lineHeight: 1.06, marginBottom: 20 }}>
-                Brysa — From 15% to<br /><span className="g-text">70%+ Open Rate</span>
+                Brysa, From 15% to<br /><span className="g-text">70%+ Open Rate</span>
               </h2>
               <p style={{ fontFamily: 'Inter', fontSize: 16, color: '#6e7e9e', lineHeight: 1.8, marginBottom: 20 }}>
                 <strong style={{ color: '#c4d0ee', fontWeight: 600 }}>Brysa</strong> (<a href="https://brysa.co.uk" target="_blank" rel="noopener noreferrer" style={{ color: '#06b6d4', textDecoration: 'none' }}>brysa.co.uk</a>) is a certified Salesforce partner based in the UK, focused on management services. They were struggling to improve open rates in their outbound email campaigns used for lead generation.
@@ -223,17 +223,19 @@ const testimonials = [
     name: 'Jonathan Rodger', title: 'Founder', company: 'Datyle',
     initials: 'JR', color: '#06b6d4',
     quote: "Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I would recommend his services to anyone in the B2B space.",
+    linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/',
   },
   {
     name: 'Natarajan', title: 'Co-Founder', company: 'LeadWalut',
     initials: 'NT', color: '#8b5cf6',
     quote: "With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates.",
+    linkedin: 'https://www.linkedin.com/in/meetnattu/',
   },
   {
     name: 'Ankur', title: 'Growth Marketer', company: 'Attentive',
     initials: 'AK', color: '#f59e0b',
     quote: "We are seeing a good open rate of 65% thanks to EvaWarm's warm-up service.",
-    highlight: { v: '65%', l: 'Open Rate Achieved' },
+    linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/',
   },
 ]
 
@@ -250,30 +252,37 @@ function TestimonialsSection() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 22 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 22, alignItems: 'stretch' }}>
           {testimonials.map((t) => {
             const ref = useReveal<HTMLDivElement>()
             return (
-              <div key={t.name} ref={ref} className="card reveal" style={{ padding: '36px 30px', position: 'relative', overflow: 'hidden' }}>
+              <div key={t.name} ref={ref} className="card reveal" style={{ padding: '36px 30px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ position: 'absolute', top: -20, right: -20, width: 150, height: 150, background: `radial-gradient(circle, ${t.color}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
                 <div style={{ fontFamily: 'Georgia, serif', fontSize: 56, lineHeight: 0.6, color: `${t.color}20`, marginBottom: 18, userSelect: 'none' }}>"</div>
-                <p style={{ fontFamily: 'Inter', fontSize: 15, color: '#c4d0ee', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
+                <p style={{ fontFamily: 'Inter', fontSize: 15, color: '#c4d0ee', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1, flex: 1 }}>
                   {t.quote}
                 </p>
-                {'highlight' in t && t.highlight && (
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: `${t.color}0a`, border: `1px solid ${t.color}20`, borderRadius: 10, padding: '10px 16px', marginBottom: 20 }}>
-                    <span style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 28, color: t.color }}>{t.highlight.v}</span>
-                    <span style={{ fontFamily: 'Inter', fontSize: 12, color: '#6e7e9e' }}>{t.highlight.l}</span>
-                  </div>
-                )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                   <div style={{ width: 42, height: 42, borderRadius: '50%', background: `linear-gradient(135deg, ${t.color}22, ${t.color}08)`, border: `1.5px solid ${t.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 13, color: t.color, flexShrink: 0 }}>
                     {t.initials}
                   </div>
-                  <div>
+                  <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 14, color: '#edf0ff' }}>{t.name}</div>
                     <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#3a4762' }}>{t.title}, {t.company}</div>
                   </div>
+                  <a
+                    href={t.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${t.name} on LinkedIn`}
+                    style={{ color: '#0a66c2', display: 'flex', alignItems: 'center', flexShrink: 0, opacity: 0.85, transition: 'opacity 0.2s' }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '1'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '0.85'}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             )
@@ -351,10 +360,10 @@ function MeetClientsCTA({ navigate }: { navigate: (p: string) => void }) {
 // ─── ResultsPage ──────────────────────────────────────────────────────────────
 
 const resultsFaqs = [
-  { q: 'How quickly will I see results after starting warmup?', a: 'Most clients see measurable inbox placement improvement within 2–3 weeks. Open rates typically increase within the first campaign run after warmup completes. Full, stable reputation is reached by the 4–6 week mark.' },
-  { q: 'Are your case studies from real clients?', a: 'Yes — every case study and testimonial on this page is from a real EvaWarm client. We do not publish anonymised or composite results; the companies, names, and metrics are all genuine.' },
-  { q: 'What open rates can I realistically expect?', a: 'Our clients average 65%+ open rates post-warmup, compared to industry averages of 20–30%. The exact improvement depends on your sending volume, audience quality, and content — but the inbox placement improvement is consistent across all accounts.' },
-  { q: 'Do these results hold over time?', a: 'Yes — with proper list hygiene, authentication maintenance, and sensible sending behaviour, the reputation we build persists. We provide post-warmup guidance to keep your deliverability strong long after the engagement ends.' },
+  { q: 'How quickly will I see results after starting warmup?', a: 'Most clients see measurable inbox placement improvement within 2-3 weeks. Open rates typically increase within the first campaign run after warmup completes. Full, stable reputation is reached by the 4-6 week mark.' },
+  { q: 'Are your case studies from real clients?', a: 'Yes, every case study and testimonial on this page is from a real EvaWarm client. We do not publish anonymised or composite results; the companies, names, and metrics are all genuine.' },
+  { q: 'What open rates can I realistically expect?', a: 'Our clients average 65%+ open rates post-warmup, compared to industry averages of 20-30%. The exact improvement depends on your sending volume, audience quality, and content, but the inbox placement improvement is consistent across all accounts.' },
+  { q: 'Do these results hold over time?', a: 'Yes, with proper list hygiene, authentication maintenance, and sensible sending behaviour, the reputation we build persists. We provide post-warmup guidance to keep your deliverability strong long after the engagement ends.' },
   { q: 'What if I do not see the expected results?', a: 'We monitor deliverability throughout the engagement and adjust the warmup strategy if we see anomalies. If results are not meeting targets, we diagnose the root cause and continue the engagement until inbox placement meets the agreed benchmark.' },
 ]
 

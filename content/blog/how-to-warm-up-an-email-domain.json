@@ -62,7 +62,7 @@
         "Manual warm-up is ideal for those with small email lists or a hands-on approach to marketing. Here’s how to do it:",
         "Ensure Domain Authentication: Set up SPF, DKIM, and DMARC records to authenticate your domain.",
         "Start Small: Send emails to a limited number of trusted recipients (e.g., colleagues or friends) in the initial weeks. Keep the volume low, around 10-20 emails daily in the first week.",
-        "Increase Volume Gradually: Over time, increase the number of emails sent daily. For example: Week 1: 5–10 emails/day Week 2: 10–20 emails/day Week 3: 20–30 emails/day",
+        "Increase Volume Gradually: Over time, increase the number of emails sent daily. For example: Week 1: 5-10 emails/day Week 2: 10-20 emails/day Week 3: 20-30 emails/day",
         "Focus on Engagement: Encourage recipients to open, reply to, add stars, click links, mark your emails as important and forward the email. Mark email as not spam if the email landed in the spam folder.",
         "Subscribe to Newsletters: Subscribe to newsletters from the reputable sites to receive newsletters to your email.",
         "Whitelist your email content: Use your email outreach content in the warm up to make ESPs understand your email content is genuine.",

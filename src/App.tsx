@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import {
   Hero,
   Marquee,
+  VideoSection,
   WhyPartner,
   WhoBenefits,
   Stats,
@@ -31,67 +32,110 @@ import EmailDeliverabilityAssets from '@/pages/EmailDeliverabilityAssets'
 import TermsAndConditions from '@/pages/TermsAndConditions'
 import BulkEmailWarmupPage from '@/pages/BulkEmailWarmupPage'
 import ServiceLandingPage from '@/pages/ServiceLandingPage'
+import CaseStudyEmailDeliverabilityPage from '@/pages/CaseStudyEmailDeliverabilityPage'
 import { serviceLandings } from '@/data/serviceLandings'
+import { setSeo } from '@/utils/seo'
+import { SEO_META } from '@/utils/seoMeta'
+import { blogPosts } from '@/data/blog'
 
-type Page = 'home' | 'services' | 'how-it-works' | 'results' | 'testimonials' | 'about' | 'pricing' | 'faq' | 'contact' | 'blog' | 'blog-post' | 'email-warmup' | `services/${string}` | 'email-deliverability-assets' | 'terms-conditions' | 'privacy-policy' | '404'
+type Page =
+  | 'home' | 'services' | 'how-it-works' | 'results' | 'testimonials'
+  | 'about' | 'pricing' | 'faq' | 'contact' | 'blog' | 'blog-post'
+  | 'email-warmup' | `services/${string}`
+  | 'resources/email-deliverability-assets'
+  | 'resources/case-study-emaildeliverability'
+  | 'terms-conditions' | 'privacy-policy' | '404'
 
-function getInitialPage(): Page {
-  const h = window.location.hash
-  if (h === '#/services') return 'services'
-  if (h === '#/how-it-works') return 'how-it-works'
-  if (h === '#/results') return 'results'
-  if (h === '#/testimonials') return 'testimonials'
-  if (h === '#/about') return 'about'
-  if (h === '#/pricing') return 'pricing'
-  if (h === '#/faq') return 'faq'
-  if (h === '#/contact') return 'contact'
-  if (h === '#/blog') return 'blog'
-  if (h.startsWith('#/blog/')) return 'blog-post'
-  if (h === '#/email-warmup') return 'email-warmup'
-  if (h === '#/services/bulk-email-warmup') return 'services/bulk-email-warmup'
-  if (h === '#/services/email-verification-services') return 'services/email-verification-services'
-  if (h === '#/email-deliverability-assets') return 'email-deliverability-assets'
-  if (h === '#/terms-conditions') return 'terms-conditions'
-  if (h === '#/privacy-policy') return 'privacy-policy'
-  const sl = serviceLandings.find(x => h === `#/services/${x.slug}`)
-  if (sl) return `services/${sl.slug}`
-  return 'home'
+// ── Derive the active Page from the current pathname ────────────────────────
+function pageFromPath(p: string): Page {
+  if (p === '/' || p === '') return 'home'
+  if (p === '/services') return 'services'
+  if (p === '/how-it-works') return 'how-it-works'
+  if (p === '/results') return 'results'
+  if (p === '/testimonials') return 'testimonials'
+  if (p === '/about') return 'about'
+  if (p === '/pricing') return 'pricing'
+  if (p === '/faq') return 'faq'
+  if (p === '/contact') return 'contact'
+  if (p === '/blog') return 'blog'
+  if (p.startsWith('/blog/')) return 'blog-post'
+  if (p === '/email-warmup') return 'email-warmup'
+  if (p === '/services/bulk-email-warmup') return 'services/bulk-email-warmup'
+  if (p === '/services/email-verification-services') return 'services/email-verification-services'
+  if (p === '/resources/email-deliverability-assets') return 'resources/email-deliverability-assets'
+  if (p === '/resources/case-study-emaildeliverability') return 'resources/case-study-emaildeliverability'
+  if (p === '/terms-conditions') return 'terms-conditions'
+  if (p === '/privacy-policy') return 'privacy-policy'
+  const sl = serviceLandings.find(x => p === `/services/${x.slug}`)
+  if (sl) return `services/${sl.slug}` as Page
+  return '404'
 }
 
 export default function App() {
-  const [page, setPage] = useState<Page>(getInitialPage)
+  const [page, setPage] = useState<Page>(() => pageFromPath(window.location.pathname))
+  const [currentPath, setCurrentPath] = useState<string>(() => window.location.pathname)
 
+  // ── Navigate: update state + push clean URL ────────────────────────────────
   const navigate = (p: string) => {
-    setPage(p as Page)
-    window.location.hash = `#/${p}`
+    // Blog post calls arrive as "blog/slug" — map to the 'blog-post' page state
+    // but push the full clean path so the slug is in the URL.
+    let pageName: Page = p as Page
+    if (p.startsWith('blog/')) pageName = 'blog-post'
+
+    setPage(pageName)
+    const path = p === 'home' ? '/' : `/${p}`
+    window.history.pushState(null, '', path)
+    setCurrentPath(path)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
+  // ── Handle browser back/forward ────────────────────────────────────────────
   useEffect(() => {
-    const onHash = () => {
-      const h = window.location.hash
-      if (h === '#/services') setPage('services')
-      else if (h === '#/how-it-works') setPage('how-it-works')
-      else if (h === '#/results') setPage('results')
-      else if (h === '#/testimonials') setPage('testimonials')
-      else if (h === '#/about') setPage('about')
-      else if (h === '#/pricing') setPage('pricing')
-      else if (h === '#/faq') setPage('faq')
-      else if (h === '#/contact') setPage('contact')
-      else if (h === '#/blog') setPage('blog')
-      else if (h.startsWith('#/blog/')) setPage('blog-post')
-      else if (h === '#/email-warmup') setPage('email-warmup')
-      else if (h === '#/services/bulk-email-warmup') setPage('services/bulk-email-warmup')
-      else if (h === '#/services/email-verification-services') setPage('services/email-verification-services')
-      else if (h === '#/email-deliverability-assets') setPage('email-deliverability-assets')
-      else if (h === '#/terms-conditions') setPage('terms-conditions')
-      else if (h === '#/privacy-policy') setPage('privacy-policy')
-      else if (serviceLandings.some(x => h === `#/services/${x.slug}`)) setPage(h.slice(2) as Page)
-      else setPage('home')
+    const onPop = () => {
+      const pathname = window.location.pathname
+      setPage(pageFromPath(pathname))
+      setCurrentPath(pathname)
     }
-    window.addEventListener('hashchange', onHash)
-    return () => window.removeEventListener('hashchange', onHash)
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
   }, [])
+
+  // ── SEO metadata — title, description, canonical ───────────────────────────
+  useEffect(() => {
+    // Blog posts: look up from the already-bundled blogPosts array
+    if (page === 'blog-post') {
+      const slug = currentPath.slice('/blog/'.length)
+      const post = blogPosts.find(b => b.slug === slug)
+      if (post) {
+        const rawTitle = (post.title ?? '').trim()
+        const title = rawTitle.toLowerCase().includes('evawarm')
+          ? `${rawTitle} | Blog`
+          : `${rawTitle} | EvaWarm`
+        const description = (post.excerpt ?? '').trim().slice(0, 160)
+        setSeo(title, description, `/blog/${slug}`)
+      } else {
+        setSeo('Blog | EvaWarm', 'Expert email deliverability and warmup insights from EvaWarm.', `/blog/${slug}`)
+      }
+      return
+    }
+
+    // Service landing pages: use dedicated metaTitle + metaDescription
+    const landing = serviceLandings.find(x => page === `services/${x.slug}`)
+    if (landing) {
+      setSeo(
+        landing.metaTitle,
+        landing.metaDescription,
+        `/services/${landing.slug}`,
+      )
+      return
+    }
+
+    // All other static pages
+    const meta = SEO_META[page as string]
+    if (meta) {
+      setSeo(meta.title, meta.description, meta.canonical)
+    }
+  }, [page, currentPath])
 
   const landing = serviceLandings.find(x => page === `services/${x.slug}`)
   const showFooter = page !== '404'
@@ -103,6 +147,7 @@ export default function App() {
       {page === 'home' ? (
         <>
           <Hero navigate={navigate} />
+          <VideoSection />
           <Marquee />
           <WhyPartner />
           <WhoBenefits />
@@ -132,15 +177,17 @@ export default function App() {
       ) : page === 'blog' ? (
         <BlogPage navigate={navigate} />
       ) : page === 'blog-post' ? (
-        <BlogPostPage slug={window.location.hash.slice('#/blog/'.length)} navigate={navigate} />
+        <BlogPostPage slug={currentPath.slice('/blog/'.length)} navigate={navigate} />
       ) : page === 'email-warmup' ? (
         <EmailWarmupPage navigate={navigate} />
       ) : page === 'services/bulk-email-warmup' ? (
         <BulkEmailWarmupPage />
       ) : page === 'services/email-verification-services' ? (
         <EmailVerificationPage navigate={navigate} />
-      ) : page === 'email-deliverability-assets' ? (
+      ) : page === 'resources/email-deliverability-assets' ? (
         <EmailDeliverabilityAssets navigate={navigate} />
+      ) : page === 'resources/case-study-emaildeliverability' ? (
+        <CaseStudyEmailDeliverabilityPage navigate={navigate} />
       ) : page === 'terms-conditions' ? (
         <TermsAndConditions navigate={navigate} />
       ) : page === 'privacy-policy' ? (

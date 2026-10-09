@@ -301,11 +301,11 @@
       "title": "How Does an Email Warm Up Tool Work?",
       "paragraphs": [
         "An email warm up tool automates the process of gradually building sending activity for a new or inactive mailbox. The basic process typically involves:",
-        "Connect your mailbox – Link your Google Workspace, Microsoft 365, or other supported email account.",
-        "Start with controlled activity – The tool begins with a lower level of email activity.",
-        "Increase activity gradually – Sending activity is adjusted progressively rather than increasing suddenly.",
-        "Monitor deliverability – Depending on the platform, you can monitor mailbox health, spam placement, and other deliverability signals.",
-        "Begin real outreach – Once your setup is ready, introduce your B2B campaigns gradually rather than immediately sending at high volume."
+        "Connect your mailbox, Link your Google Workspace, Microsoft 365, or other supported email account.",
+        "Start with controlled activity, The tool begins with a lower level of email activity.",
+        "Increase activity gradually, Sending activity is adjusted progressively rather than increasing suddenly.",
+        "Monitor deliverability, Depending on the platform, you can monitor mailbox health, spam placement, and other deliverability signals.",
+        "Begin real outreach, Once your setup is ready, introduce your B2B campaigns gradually rather than immediately sending at high volume."
       ]
     },
     {
@@ -327,12 +327,12 @@
       "title": "Common Email Warmup Mistakes to Avoid",
       "paragraphs": [
         "Using an email warmup service doesn’t automatically make an outreach campaign deliverable. Businesses can still encounter problems if they use poor sending practices.",
-        "Sending Too Much Too Quickly – Avoid making a sudden jump from minimal activity to a large outbound campaign.",
-        "Ignoring Email Authentication – Make sure SPF, DKIM, and DMARC are properly configured for your domain.",
-        "Using Poor-Quality Email Lists – Invalid or outdated email addresses can increase bounce rates and negatively affect campaign performance.",
-        "Treating Warmup as a Guarantee – Warmup does not guarantee that every email will reach the inbox. Mailbox providers consider multiple reputation and engagement signals.",
-        "Ignoring Recipient Feedback – If recipients frequently report messages as spam or show little engagement, reassess your targeting, messaging, and sending practices.",
-        "Scaling Without Monitoring – Don’t increase email volume simply because a warmup period has ended. Monitor your actual campaign performance and deliverability signals as you scale",
+        "Sending Too Much Too Quickly, Avoid making a sudden jump from minimal activity to a large outbound campaign.",
+        "Ignoring Email Authentication, Make sure SPF, DKIM, and DMARC are properly configured for your domain.",
+        "Using Poor-Quality Email Lists, Invalid or outdated email addresses can increase bounce rates and negatively affect campaign performance.",
+        "Treating Warmup as a Guarantee, Warmup does not guarantee that every email will reach the inbox. Mailbox providers consider multiple reputation and engagement signals.",
+        "Ignoring Recipient Feedback, If recipients frequently report messages as spam or show little engagement, reassess your targeting, messaging, and sending practices.",
+        "Scaling Without Monitoring, Don’t increase email volume simply because a warmup period has ended. Monitor your actual campaign performance and deliverability signals as you scale",
         "Ready to Improve Your Email Outreach? Find out how EvaWarm can help you build a more reliable foundation for your B2B email campaigns. ."
       ]
     }

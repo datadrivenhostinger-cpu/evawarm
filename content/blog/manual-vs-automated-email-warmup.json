@@ -12,7 +12,7 @@
       "id": "what-is-email-warmup",
       "title": "What is Email Warmup?",
       "paragraphs": [
-        "Email Warmup is the process of gradually increasing your email sending volume to build sender reputation and improve deliverability. Email providers (Gmail, Outlook, etc.) monitor how recipients interact with your emails—if too many are ignored or marked as spam, your email reputation suffers.",
+        "Email Warmup is the process of gradually increasing your email sending volume to build sender reputation and improve deliverability. Email providers (Gmail, Outlook, etc.) monitor how recipients interact with your emails, if too many are ignored or marked as spam, your email reputation suffers.",
         "By warming up an email properly, you signal to email service providers (ESPs) that your emails are legitimate and trustworthy."
       ]
     },
@@ -27,29 +27,29 @@
       "id": "steps-for-manual-email-warmup",
       "title": "Steps for Manual Email Warmup:",
       "paragraphs": [
-        "Start Small – Send a few emails (10-20 per day) to trusted contacts.",
-        "Increase Gradually – Increase volume by 10-15 emails daily over 3-4 weeks.",
-        "Engagement Matters – Ensure recipients open, reply, and mark your emails as important to build a good reputation.",
-        "Avoid Spam Triggers – No promotional content, spammy words, or mass emailing too soon.",
-        "Use a Mix of Content – Send varied emails (plain text, replies, and forwards) to make interactions look natural."
+        "Start Small, Send a few emails (10-20 per day) to trusted contacts.",
+        "Increase Gradually, Increase volume by 10-15 emails daily over 3-4 weeks.",
+        "Engagement Matters, Ensure recipients open, reply, and mark your emails as important to build a good reputation.",
+        "Avoid Spam Triggers, No promotional content, spammy words, or mass emailing too soon.",
+        "Use a Mix of Content, Send varied emails (plain text, replies, and forwards) to make interactions look natural."
       ]
     },
     {
       "id": "pros-of-manual-email-warmup",
       "title": "Pros of Manual Email Warmup:",
       "paragraphs": [
-        "More Control – You decide when and how to increase the volume.",
-        "Better Engagement – Emails sent to real contacts lead to authentic responses.",
-        "No Additional Costs – No need for paid automation tools."
+        "More Control, You decide when and how to increase the volume.",
+        "Better Engagement, Emails sent to real contacts lead to authentic responses.",
+        "No Additional Costs, No need for paid automation tools."
       ]
     },
     {
       "id": "cons-of-manual-email-warmup",
       "title": "Cons of Manual Email Warmup:",
       "paragraphs": [
-        "Time-Consuming – Takes weeks of manual effort to build email credibility.",
-        "Human Error – Missing a day or over-sending can harm your Warmup progress.",
-        "Difficult to Scale – Not feasible for businesses managing multiple email accounts."
+        "Time-Consuming, Takes weeks of manual effort to build email credibility.",
+        "Human Error, Missing a day or over-sending can harm your Warmup progress.",
+        "Difficult to Scale, Not feasible for businesses managing multiple email accounts."
       ]
     },
     {
@@ -63,29 +63,29 @@
       "id": "how-automated-warmup-works",
       "title": "How Automated Warmup Works:",
       "paragraphs": [
-        "Connect Your Email to a Warmup Tool – Platforms like Mailwarm, Lemlist, and Warmbox handle the process.",
-        "Automated Sending & Replies – The tool sends gradual emails and ensures replies, helping you avoid spam filters.",
-        "Inbox Placement Monitoring – Some tools provide reports on inbox vs. spam folder placement.",
-        "AI-Based Adjustments – Smart tools adjust sending patterns based on email performance."
+        "Connect Your Email to a Warmup Tool, Platforms like Mailwarm, Lemlist, and Warmbox handle the process.",
+        "Automated Sending & Replies, The tool sends gradual emails and ensures replies, helping you avoid spam filters.",
+        "Inbox Placement Monitoring, Some tools provide reports on inbox vs. spam folder placement.",
+        "AI-Based Adjustments, Smart tools adjust sending patterns based on email performance."
       ]
     },
     {
       "id": "pros-of-automated-email-warmup",
       "title": "Pros of Automated Email Warmup:",
       "paragraphs": [
-        "Saves Time – Fully automated process with minimal effort.",
-        "Scalable – Easily warm up multiple email accounts at once.",
-        "Consistent & Reliable – Eliminates human errors and maintains a steady Warmup pace.",
-        "Advanced Features – Some tools offer analytics, spam score tracking, and deliverability insights."
+        "Saves Time, Fully automated process with minimal effort.",
+        "Scalable, Easily warm up multiple email accounts at once.",
+        "Consistent & Reliable, Eliminates human errors and maintains a steady Warmup pace.",
+        "Advanced Features, Some tools offer analytics, spam score tracking, and deliverability insights."
       ]
     },
     {
       "id": "cons-of-automated-email-warmup",
       "title": "Cons of Automated Email Warmup:",
       "paragraphs": [
-        "Costs Money – Most reliable tools come with a subscription fee.",
-        "Less Personal Engagement – While interactions are simulated, they aren’t real human conversations.",
-        "Possible Detection by ESPs – Some email providers might detect automation and flag the activity.",
+        "Costs Money, Most reliable tools come with a subscription fee.",
+        "Less Personal Engagement, While interactions are simulated, they aren’t real human conversations.",
+        "Possible Detection by ESPs, Some email providers might detect automation and flag the activity.",
         "Need help improving your email deliverability? Explore the best email Warmup strategies today!"
       ]
     },

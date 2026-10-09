@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react'
 import React from 'react'
-import { ArrowRight, CheckCircle2, SlidersHorizontal, BarChart3, Headphones, Mail, ShieldCheck, TrendingUp, Calendar, ChevronRight, ChevronLeft } from 'lucide-react'
+import { ArrowRight, CheckCircle2, SlidersHorizontal, BarChart3, Headphones, Mail, ShieldCheck, TrendingUp, Calendar, ChevronRight, ChevronLeft, Building2, Rocket, ShoppingBag, Landmark } from 'lucide-react'
 import PageFAQ from '@/components/FAQ'
 
 // ─── Hooks ──────────────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ function useCounter(target: number, suffix: string) {
 // ─── Dashboard Mock ───────────────────────────────────────────────────────────
 
 const CIRC = 2 * Math.PI * 48 // ≈ 301.59 for r=48 in 120×120 viewBox
-const SCORE_OFFSET = CIRC * (1 - 0.943) // ≈ 17.2 — leaves 94.3% arc visible
+const SCORE_OFFSET = CIRC * (1 - 0.943) // ≈ 17.2, leaves 94.3% arc visible
 
 const activity = [
   { time: '2m ago',  text: '3 warmup emails delivered to Gmail',     dot: '#4ade80' },
@@ -180,12 +180,12 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Floating badge — top right */}
+      {/* Floating badge, top right */}
       <div style={{ position: 'absolute', top: -16, right: -12, background: 'linear-gradient(135deg, #0891b2, #7c3aed)', borderRadius: 12, padding: '7px 14px', fontFamily: 'Sora', fontWeight: 800, fontSize: 12, color: '#fff', boxShadow: '0 8px 24px rgba(6,182,212,0.38)', zIndex: 2, whiteSpace: 'nowrap' }}>
         +40% Open Rate
       </div>
 
-      {/* Floating badge — bottom left */}
+      {/* Floating badge, bottom left */}
       <div style={{ position: 'absolute', bottom: 56, left: -18, background: 'rgba(10,20,40,0.92)', border: '1px solid rgba(16,185,129,0.28)', borderRadius: 11, padding: '7px 13px', fontFamily: 'Sora', fontWeight: 700, fontSize: 11, color: '#34d399', boxShadow: '0 8px 24px rgba(0,0,0,0.35)', zIndex: 2, backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', gap: 7, whiteSpace: 'nowrap' }}>
         <TrendingUp size={11} color="#34d399" />
         Sender Trust: Excellent
@@ -270,6 +270,73 @@ export function Hero({ navigate }: { navigate: (p: string) => void }) {
   )
 }
 
+// ─── Video Section ────────────────────────────────────────────────────────────
+
+export function VideoSection() {
+  const videos = [
+    { id: 'RAL0C7HIg-Y', title: 'EvaWarm in Action, Part 1' },
+    { id: 'zQZf75WmCtQ', title: 'EvaWarm in Action, Part 2' },
+  ]
+
+  return (
+    <section style={{ background: '#0b1324', padding: '80px 32px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+        {/* Heading */}
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <h2 style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 'clamp(26px, 3.5vw, 44px)', color: '#edf0ff', letterSpacing: -1.3, lineHeight: 1.1, marginBottom: 14 }}>
+            See EvaWarm <span className="g-text">in Action</span>
+          </h2>
+          <p style={{ fontFamily: 'Inter', fontSize: 16, color: '#6e7e9e', lineHeight: 1.75, maxWidth: 480, margin: '0 auto' }}>
+            Watch how EvaWarm improves email deliverability and inbox placement for real senders.
+          </p>
+        </div>
+
+        {/* 2-column video grid */}
+        <div className="vid-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          {videos.map(({ id, title }) => (
+            <div
+              key={id}
+              style={{
+                background: '#0f1b30',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: 16,
+                overflow: 'hidden',
+                boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
+              }}
+            >
+              {/* 16:9 responsive wrapper */}
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${id}`}
+                  title={title}
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 700px) {
+          .vid-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  )
+}
+
 // ─── Marquee ─────────────────────────────────────────────────────────────────
 
 const clientLogos = [
@@ -338,7 +405,7 @@ const whyItems = [
     color: '#06b6d4',
     Icon: CheckCircle2,
     title: 'Unmatched Expertise',
-    desc: "Years of hands-on experience across email infrastructure, ISP relationships, and warmup protocols — distilled into a proven process.",
+    desc: "Years of hands-on experience across email infrastructure, ISP relationships, and warmup protocols, distilled into a proven process.",
   },
   {
     color: '#f59e0b',
@@ -356,7 +423,7 @@ const whyItems = [
     color: '#06b6d4',
     Icon: Headphones,
     title: 'Dedicated Support',
-    desc: "A dedicated deliverability expert — not a ticketing queue. Direct communication, fast turnaround, and a partner invested in your results.",
+    desc: "A dedicated deliverability expert, not a ticketing queue. Direct communication, fast turnaround, and a partner invested in your results.",
   },
 ]
 
@@ -400,30 +467,30 @@ export function WhyPartner() {
 
 // ─── Who Benefits ────────────────────────────────────────────────────────────
 
-const tabs = [
+const tabs: { label: string; icon: React.ElementType; heading: string; body: string; points: string[]; stat: { v: string; l: string } }[] = [
   {
-    label: 'B2B Companies', icon: '🏢',
+    label: 'B2B Companies', icon: Building2,
     heading: 'Fuel Your B2B Pipeline',
     body: "Cold outreach is the lifeblood of B2B growth. A compromised sender reputation kills pipeline before it starts. We ensure your prospecting sequences, SDR campaigns, and nurture flows consistently reach decision-makers' primary inboxes.",
     points: ['Domain warmup for new sending infrastructure', 'Outreach volume scaling without reputation loss', 'Sales sequence deliverability audits'],
     stat: { v: '3×', l: 'Avg pipeline growth' },
   },
   {
-    label: 'Agencies & Startups', icon: '🚀',
+    label: 'Agencies & Startups', icon: Rocket,
     heading: 'Ship Fast, Land Reliably',
     body: 'Agencies managing multiple client domains and startups launching their first campaigns face the same challenge: establishing sender trust quickly. We build that trust systematically so you focus on growth, not firefighting.',
     points: ['Multi-domain warmup management', 'Rapid reputation building for new domains', 'White-label deliverability reporting'],
     stat: { v: '2 wks', l: 'Avg time to inbox-ready' },
   },
   {
-    label: 'B2C Companies', icon: '🛍️',
+    label: 'B2C Companies', icon: ShoppingBag,
     heading: 'Drive Revenue from Every Send',
-    body: 'For B2C brands, email is still the highest-ROI channel — but only if it lands. Promotional, transactional, and lifecycle emails all require maintained sender reputation. We keep your list healthy and your inbox placement strong.',
+    body: 'For B2C brands, email is still the highest-ROI channel, but only if it lands. Promotional, transactional, and lifecycle emails all require maintained sender reputation. We keep your list healthy and your inbox placement strong.',
     points: ['Promotional campaign deliverability tuning', 'Transactional email infrastructure audit', 'List hygiene and bounce reduction'],
     stat: { v: '65%', l: 'Avg open rate achieved' },
   },
   {
-    label: 'Enterprises', icon: '🏛️',
+    label: 'Enterprises', icon: Landmark,
     heading: 'Enterprise-Grade Reliability',
     body: 'Large-scale sending at enterprise volumes demands precision. Whether managing IP warming, migrating ESPs, or resolving ISP-level blocks, we operate at the complexity your business demands with senior-level expertise.',
     points: ['IP pool warming and management', 'ESP migration deliverability continuity', 'Postmaster and FBL monitoring'],
@@ -447,17 +514,21 @@ export function WhoBenefits() {
         </div>
 
         <div style={{ display: 'flex', gap: 10, marginBottom: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
-          {tabs.map((tab, i) => (
-            <button key={tab.label} onClick={() => setActive(i)} className={`tab-btn${i === active ? ' active' : ''}`}>
-              {tab.icon} {tab.label}
-            </button>
-          ))}
+          {tabs.map((tab, i) => {
+            const TabIcon = tab.icon
+            return (
+              <button key={tab.label} onClick={() => setActive(i)} className={`tab-btn${i === active ? ' active' : ''}`}>
+                <TabIcon size={15} strokeWidth={1.8} aria-hidden="true" style={{ display: 'inline', verticalAlign: 'middle', marginRight: 6 }} />
+                {tab.label}
+              </button>
+            )
+          })}
         </div>
 
         <div key={active} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, animation: 'hero-up 0.45s ease both' }} className="tab-content">
           <div style={{ background: '#0f1b30', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: '36px 32px', boxShadow: '0 4px 24px rgba(0,0,0,0.25)' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', borderRadius: 10, padding: '8px 14px', marginBottom: 20 }}>
-              <span style={{ fontSize: 20 }}>{t.icon}</span>
+              {(() => { const TabIcon = t.icon; return <TabIcon size={18} strokeWidth={1.8} color="#22d3ee" aria-hidden="true" /> })()}
               <span style={{ color: '#22d3ee', fontFamily: 'Sora', fontWeight: 700, fontSize: 14 }}>{t.label}</span>
             </div>
             <h3 style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 26, color: '#edf0ff', marginBottom: 14, letterSpacing: -0.5 }}>{t.heading}</h3>
@@ -539,7 +610,7 @@ const steps = [
   { num: '01', color: '#06b6d4', title: 'Initial Consultation',    desc: 'We audit your email infrastructure, domain history, and sending patterns to understand where you stand and what your warmup strategy must achieve.' },
   { num: '02', color: '#8b5cf6', title: 'Warmup & Optimization',   desc: 'Structured manual warmup: progressively increasing volume, seeding positive engagement signals, and adjusting in real time based on ISP feedback.' },
   { num: '03', color: '#f59e0b', title: 'Performance Monitoring',  desc: 'Continuous monitoring across inbox placement, bounce rates, spam complaints, and sender score. We catch issues before they compound.' },
-  { num: '04', color: '#10b981', title: 'Support & Iteration',     desc: 'Monthly reviews, proactive recommendations, and on-demand expertise. Your email program evolves — so does our support.' },
+  { num: '04', color: '#10b981', title: 'Support & Iteration',     desc: 'Monthly reviews, proactive recommendations, and on-demand expertise. Your email program evolves, so does our support.' },
 ]
 
 export function HowWeWork() {
@@ -583,7 +654,7 @@ const svcPreview = [
     color: '#06b6d4',
     Icon: Mail,
     title: 'Manual Email Warmup',
-    desc: 'Human-driven warmup that mimics organic sending — not bots. We build genuine sender reputation with ISPs through real engagement.',
+    desc: 'Human-driven warmup that mimics organic sending, not bots. We build genuine sender reputation with ISPs through real engagement.',
     stat: '94% inbox placement',
   },
   {
@@ -663,7 +734,7 @@ const testimonials = [
   { name: 'Natarajan', title: 'Co-Founder', company: 'LeadWalut', initials: 'NT', color: '#8b5cf6',
     quote: "As a startup, we couldn't afford to waste budget on campaigns that never got seen. EvaWarm's customized approach meant our new domain was trusted from day one. Their understanding of ISP behavior and warmup timing is genuinely unmatched.", highlight: null },
   { name: 'Ankur', title: 'Growth Marketer', company: 'Attentive', initials: 'AK', color: '#f59e0b',
-    quote: "After EvaWarm's full deliverability overhaul — warmup, authentication cleanup, and sequence optimization — we went from 22% to 65% open rates on our outbound campaigns. That's not incremental. That's a business transformation.", highlight: { v: '65%', l: 'Open Rate Achieved' } },
+    quote: "After EvaWarm's full deliverability overhaul, warmup, authentication cleanup, and sequence optimization, we went from 22% to 65% open rates on our outbound campaigns. That's not incremental. That's a business transformation.", highlight: { v: '65%', l: 'Open Rate Achieved' } },
 ]
 
 export function Testimonials() {
@@ -728,11 +799,11 @@ export function Testimonials() {
 
 const homeFaqs = [
   { q: 'What is email warmup and why do I need it?', a: 'Email warmup is the process of gradually increasing your sending volume from a new or dormant domain to build a positive sender reputation with ISPs. Without it, ISPs flag your domain as suspicious and route emails to spam. A proper warmup ensures your messages reach the primary inbox from day one.' },
-  { q: 'How is manual warmup different from automated warmup tools?', a: 'Automated tools send emails between pools of fake accounts — ISPs are fully aware of this and discount those signals. Manual warmup uses real human inboxes, real opens, and real replies. That authentic engagement is what ISPs actually trust, producing faster and more durable reputation gains.' },
-  { q: 'How long does a warmup take?', a: 'Typically 3–6 weeks depending on your domain age, current reputation, and target sending volume. New domains require a full warmup cycle while established domains recovering from reputation issues often see improvement in 2–3 weeks.' },
-  { q: 'What results can I expect?', a: 'Most clients reach 90%+ primary inbox placement by the end of their warmup. Open rates typically improve 2–3× as emails stop landing in spam. Ongoing deliverability monitoring keeps those gains sustained after the warmup completes.' },
-  { q: 'Do you work with our existing ESP and CRM?', a: 'Yes — we are ESP-agnostic. We work with HubSpot, Salesforce, Mailchimp, Instantly, Smartlead, Apollo, Outreach, Salesloft, and all custom SMTP setups. No platform migration required.' },
-  { q: 'How do I get started?', a: 'Book a free 30-minute consultation through our Calendly link. We will review your current setup, identify issues, and give you a clear warmup plan — no commitment required for the initial call.' },
+  { q: 'How is manual warmup different from automated warmup tools?', a: 'Automated tools send emails between pools of fake accounts, ISPs are fully aware of this and discount those signals. Manual warmup uses real human inboxes, real opens, and real replies. That authentic engagement is what ISPs actually trust, producing faster and more durable reputation gains.' },
+  { q: 'How long does a warmup take?', a: 'Typically 3-6 weeks depending on your domain age, current reputation, and target sending volume. New domains require a full warmup cycle while established domains recovering from reputation issues often see improvement in 2-3 weeks.' },
+  { q: 'What results can I expect?', a: 'Most clients reach 90%+ primary inbox placement by the end of their warmup. Open rates typically improve 2-3× as emails stop landing in spam. Ongoing deliverability monitoring keeps those gains sustained after the warmup completes.' },
+  { q: 'Do you work with our existing ESP and CRM?', a: 'Yes, we are ESP-agnostic. We work with HubSpot, Salesforce, Mailchimp, Instantly, Smartlead, Apollo, Outreach, Salesloft, and all custom SMTP setups. No platform migration required.' },
+  { q: 'How do I get started?', a: 'Book a free 30-minute consultation through our Calendly link. We will review your current setup, identify issues, and give you a clear warmup plan, no commitment required for the initial call.' },
 ]
 
 export function HomeFAQ() {

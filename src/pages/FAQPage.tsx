@@ -55,10 +55,10 @@ const faqSections = [
     category: 'Email Warmup',
     color: '#06b6d4',
     items: [
-      { q: 'What is email warmup?', a: 'Email warmup is the process of gradually increasing your sending volume from a new or dormant domain to build a positive sender reputation with ISPs and email providers. It involves sending emails in a controlled, escalating pattern that mimics natural human engagement — opens, replies, and moving emails out of spam.' },
+      { q: 'What is email warmup?', a: 'Email warmup is the process of gradually increasing your sending volume from a new or dormant domain to build a positive sender reputation with ISPs and email providers. It involves sending emails in a controlled, escalating pattern that mimics natural human engagement, opens, replies, and moving emails out of spam.' },
       { q: 'Why do I need to warm up my email domain?', a: "When you start sending from a new domain or after a period of inactivity, ISPs don't know your sending patterns. High volumes from unknown senders trigger spam filters. Warmup establishes your domain as a trustworthy, legitimate sender before you ramp up to full campaign volume." },
-      { q: 'How long does email warmup take?', a: 'A typical warmup takes 4–8 weeks depending on your target sending volume, current domain reputation, and the ISPs involved. EvaWarm accelerates this with manual warmup techniques that build reputation faster than automated tools.' },
-      { q: 'What is manual warmup vs. automated warmup?', a: "Automated warmup tools use software to simulate email activity. Manual warmup involves real human interactions — EvaWarm uses actual inboxes and real engagement signals, which ISPs trust significantly more and which produce faster, more durable results." },
+      { q: 'How long does email warmup take?', a: 'A typical warmup takes 4-8 weeks depending on your target sending volume, current domain reputation, and the ISPs involved. EvaWarm accelerates this with manual warmup techniques that build reputation faster than automated tools.' },
+      { q: 'What is manual warmup vs. automated warmup?', a: "Automated warmup tools use software to simulate email activity. Manual warmup involves real human interactions, EvaWarm uses actual inboxes and real engagement signals, which ISPs trust significantly more and which produce faster, more durable results." },
     ],
   },
   {
@@ -76,7 +76,7 @@ const faqSections = [
     color: '#f59e0b',
     items: [
       { q: 'How does EvaWarm work?', a: "You share your domain and sending credentials with us, and we begin a structured manual warmup process. We gradually scale your sending volume using real inbox engagement, monitor your reputation metrics daily, and report back to you with full transparency on progress." },
-      { q: 'What results can I expect?', a: 'Most clients see measurable improvement in inbox placement within 2–3 weeks. By the end of a full warmup, you should expect to consistently land in the primary inbox with minimal spam placement. Our clients average 95%+ inbox rates post-warmup.' },
+      { q: 'What results can I expect?', a: 'Most clients see measurable improvement in inbox placement within 2-3 weeks. By the end of a full warmup, you should expect to consistently land in the primary inbox with minimal spam placement. Our clients average 95%+ inbox rates post-warmup.' },
       { q: 'Do you work with all email service providers?', a: "Yes. We work with Gmail, Outlook, Yahoo, AWS SES, Sendgrid, Mailchimp, ActiveCampaign, HubSpot, and virtually any ESP or sending infrastructure." },
       { q: 'Is my data secure?', a: "Absolutely. We follow strict data handling protocols, do not store email content, and limit access to your credentials to only the team members actively working on your campaign. We can sign NDAs on request." },
       { q: 'How do I get started?', a: "Book a free 30-minute consultation through our Calendly link. We will review your current setup, identify issues, and recommend a clear plan. No commitment required for the consultation." },

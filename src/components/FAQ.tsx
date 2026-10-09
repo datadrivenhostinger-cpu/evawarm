@@ -8,7 +8,7 @@ export interface FAQEntry {
   a: string
 }
 
-// ─── useReveal (local copy — avoids cross-file hook import complexity) ─────────
+// ─── useReveal (local copy, avoids cross-file hook import complexity) ─────────
 
 function useReveal<T extends HTMLElement>(threshold = 0.12) {
   const ref = useRef<T>(null)

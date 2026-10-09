@@ -109,7 +109,7 @@ export default function Footer({ navigate }: FooterProps) {
           </span>
           <div style={{ display: 'flex', gap: 20 }}>
             {['Privacy Policy', 'Terms of Service'].map(l => { const route: Record<string, string> = { 'Privacy Policy': 'privacy-policy', 'Terms of Service': 'terms-conditions' }; return (
-              <a key={l} onClick={route[l] ? (e) => { e.preventDefault(); navigate(route[l]) } : undefined} href={route[l] ? `#/${route[l]}` : `#${l.toLowerCase().replace(/\s+/g, '-')}`}
+              <a key={l} onClick={route[l] ? (e) => { e.preventDefault(); navigate(route[l]) } : undefined} href={route[l] ? `/${route[l]}` : `#${l.toLowerCase().replace(/\s+/g, '-')}`}
                 style={{ color: '#3a4560', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s', cursor: 'pointer' }}
                 onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#6e7e9e')}
                 onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#3a4560')}

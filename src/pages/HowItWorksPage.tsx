@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import React from 'react'
-import { ArrowLeft, Calendar, Mail, BarChart3, Users, TrendingUp, CheckCircle2, ShieldCheck, Eye, Heart, Plus, Minus } from 'lucide-react'
+import { ArrowLeft, Calendar, Mail, BarChart3, Users, TrendingUp, CheckCircle2, ShieldCheck, Eye, Heart, Plus, Minus, Rocket, Megaphone, Building2, Target } from 'lucide-react'
 
 function useReveal<T extends HTMLElement>(threshold = 0.13) {
   const ref = useRef<T>(null)
@@ -45,7 +45,7 @@ function PageHero({ navigate }: { navigate: (p: string) => void }) {
             Improve Your Email Deliverability with Our Warmup Service
           </p>
           <p style={{ fontFamily: 'Inter', fontSize: 17, color: '#6e7e9e', lineHeight: 1.78, maxWidth: 600, marginBottom: 36, animation: 'hero-up 0.8s ease both', animationDelay: '0.2s' }}>
-            Boost your sender score and ensure your emails land in inboxes rather than spam. Our manual warmup approach improves deliverability, builds reputation, and increases engagement — through real human interaction, not bots.
+            Boost your sender score and ensure your emails land in inboxes rather than spam. Our manual warmup approach improves deliverability, builds reputation, and increases engagement, through real human interaction, not bots.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', animation: 'hero-up 0.8s ease both', animationDelay: '0.32s' }}>
             <a href="https://calendar.app.google/gt6J1J4rvFomHMgi8" target="_blank" rel="noopener noreferrer" className="btn-primary">
@@ -66,10 +66,10 @@ function PageHero({ navigate }: { navigate: (p: string) => void }) {
 
 const whyFeatures = [
   { color: '#06b6d4', Icon: Mail,         title: 'Improves Deliverability',    desc: 'Emails are far more likely to reach inboxes rather than land in the spam folder when your domain has been properly warmed up.' },
-  { color: '#8b5cf6', Icon: ShieldCheck,  title: 'Builds Domain Reputation',   desc: 'Gradual, consistent warmup builds sustained trust with email service providers — establishing your domain as a credible sender.' },
-  { color: '#f59e0b', Icon: Users,        title: 'Natural Engagement',          desc: "Our warmup mimics real human behavior — emails opened, replied to, forwarded — sending ISPs the right trust signals about your domain." },
+  { color: '#8b5cf6', Icon: ShieldCheck,  title: 'Builds Domain Reputation',   desc: 'Gradual, consistent warmup builds sustained trust with email service providers, establishing your domain as a credible sender.' },
+  { color: '#f59e0b', Icon: Users,        title: 'Natural Engagement',          desc: "Our warmup mimics real human behavior, emails opened, replied to, forwarded, sending ISPs the right trust signals about your domain." },
   { color: '#10b981', Icon: TrendingUp,   title: 'High-Volume Sending',         desc: 'Once a strong reputation is established, you can safely scale to high sending volumes without triggering spam filters or throttling.' },
-  { color: '#06b6d4', Icon: CheckCircle2, title: 'Enhances Email Success',      desc: "Consistent, authentic email engagement builds ESP credibility over time — directly improving your campaign open rates and conversions." },
+  { color: '#06b6d4', Icon: CheckCircle2, title: 'Enhances Email Success',      desc: "Consistent, authentic email engagement builds ESP credibility over time, directly improving your campaign open rates and conversions." },
   { color: '#8b5cf6', Icon: ShieldCheck,  title: 'Avoids Blacklisting',         desc: 'Proper warmup significantly reduces the risk of your domain being flagged or blacklisted by major ISPs and email service providers.' },
 ]
 
@@ -85,7 +85,7 @@ function WhyWarmup() {
             Why Email Warmup<br /><span className="g-text">Is Crucial</span>
           </h2>
           <p style={{ fontFamily: 'Inter', fontSize: 17, color: '#6e7e9e', maxWidth: 560, margin: '0 auto', lineHeight: 1.72 }}>
-            AI algorithms are highly intelligent — manual warmup signals human behavior, improving sender reputation. It is an implicit way to boost email deliverability and raise open rates.
+            AI algorithms are highly intelligent, manual warmup signals human behavior, improving sender reputation. It is an implicit way to boost email deliverability and raise open rates.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
@@ -108,13 +108,13 @@ function WhyWarmup() {
 // ─── 7-Step Process ───────────────────────────────────────────────────────────
 
 const steps = [
-  { num: '01', color: '#06b6d4', Icon: Mail,         title: 'Personalized Email Interactions',  desc: 'We send and reply to emails through real, verified accounts — genuine human interaction that ISPs recognize and trust, not automated bot activity.' },
-  { num: '02', color: '#8b5cf6', Icon: BarChart3,    title: 'Controlled Volume Increase',       desc: 'Sending volume scales gradually day by day — carefully calibrated to your domain history and target volume to avoid triggering spam detection spikes.' },
-  { num: '03', color: '#f59e0b', Icon: Heart,        title: 'Engagement Simulation',            desc: 'Emails are opened, marked as important, and replied to with natural conversational responses — teaching ISPs that your emails are wanted and valued.' },
-  { num: '04', color: '#10b981', Icon: ShieldCheck,  title: 'Domain Reputation Enhancement',   desc: 'Consistent, human-driven interactions steadily improve your domain reputation with all major ISPs — building the trust that ensures inbox delivery.' },
-  { num: '05', color: '#06b6d4', Icon: Eye,          title: 'Continuous SPAM Monitoring',      desc: 'We actively monitor your domain health throughout the warmup — maintaining a low spam score and catching any issues before they affect deliverability.' },
-  { num: '06', color: '#8b5cf6', Icon: BarChart3,    title: 'Real-Time Analytics',              desc: 'You receive regular updates on deliverability rates, engagement scores, and sender reputation — clear visibility into the progress of your warmup.' },
-  { num: '07', color: '#f59e0b', Icon: CheckCircle2, title: 'Ensuring Compliance & Credibility', desc: 'Our manual approach avoids automation red flags entirely — keeping your sending practices compliant, credible, and trusted by ESPs long term.' },
+  { num: '01', color: '#06b6d4', Icon: Mail,         title: 'Personalized Email Interactions',  desc: 'We send and reply to emails through real, verified accounts, genuine human interaction that ISPs recognize and trust, not automated bot activity.' },
+  { num: '02', color: '#8b5cf6', Icon: BarChart3,    title: 'Controlled Volume Increase',       desc: 'Sending volume scales gradually day by day, carefully calibrated to your domain history and target volume to avoid triggering spam detection spikes.' },
+  { num: '03', color: '#f59e0b', Icon: Heart,        title: 'Engagement Simulation',            desc: 'Emails are opened, marked as important, and replied to with natural conversational responses, teaching ISPs that your emails are wanted and valued.' },
+  { num: '04', color: '#10b981', Icon: ShieldCheck,  title: 'Domain Reputation Enhancement',   desc: 'Consistent, human-driven interactions steadily improve your domain reputation with all major ISPs, building the trust that ensures inbox delivery.' },
+  { num: '05', color: '#06b6d4', Icon: Eye,          title: 'Continuous SPAM Monitoring',      desc: 'We actively monitor your domain health throughout the warmup, maintaining a low spam score and catching any issues before they affect deliverability.' },
+  { num: '06', color: '#8b5cf6', Icon: BarChart3,    title: 'Real-Time Analytics',              desc: 'You receive regular updates on deliverability rates, engagement scores, and sender reputation, clear visibility into the progress of your warmup.' },
+  { num: '07', color: '#f59e0b', Icon: CheckCircle2, title: 'Ensuring Compliance & Credibility', desc: 'Our manual approach avoids automation red flags entirely, keeping your sending practices compliant, credible, and trusted by ESPs long term.' },
 ]
 
 function ProcessSteps() {
@@ -129,7 +129,7 @@ function ProcessSteps() {
             How Our Manual Email<br /><span className="g-text">Warmup Service Works</span>
           </h2>
           <p style={{ fontFamily: 'Inter', fontSize: 17, color: '#6e7e9e', maxWidth: 540, margin: '0 auto', lineHeight: 1.72 }}>
-            A structured 7-step process built around real human interaction — the only warmup method ISPs genuinely trust.
+            A structured 7-step process built around real human interaction, the only warmup method ISPs genuinely trust.
           </p>
         </div>
 
@@ -216,10 +216,10 @@ function StepContent({ num: _num, color, title, desc, Icon }: {
 // ─── Results You Can Expect ───────────────────────────────────────────────────
 
 const results = [
-  { color: '#06b6d4', v: 'Up to 95%', label: 'Inbox Placement', desc: 'Achieve up to 95% inbox placement — your emails consistently reaching the primary inbox, not promotions or spam.' },
-  { color: '#8b5cf6', v: 'Consistent', label: 'Cold Email Delivery', desc: 'Ensure consistent cold email delivery across every campaign — no more mysterious bounce spikes or disappearing open rates.' },
+  { color: '#06b6d4', v: 'Up to 95%', label: 'Inbox Placement', desc: 'Achieve up to 95% inbox placement, your emails consistently reaching the primary inbox, not promotions or spam.' },
+  { color: '#8b5cf6', v: 'Consistent', label: 'Cold Email Delivery', desc: 'Ensure consistent cold email delivery across every campaign, no more mysterious bounce spikes or disappearing open rates.' },
   { color: '#f59e0b', v: 'Boosted', label: 'Open & Engagement Rates', desc: 'Boost open and engagement rates across your campaigns as your domain reputation grows and ISP trust solidifies.' },
-  { color: '#10b981', v: 'Improved', label: 'Sender Scores Across ISPs', desc: 'Improve sender scores across all major ISPs simultaneously — Gmail, Outlook, Yahoo, and corporate mail servers.' },
+  { color: '#10b981', v: 'Improved', label: 'Sender Scores Across ISPs', desc: 'Improve sender scores across all major ISPs simultaneously, Gmail, Outlook, Yahoo, and corporate mail servers.' },
 ]
 
 function ResultsSection() {
@@ -254,34 +254,34 @@ function ResultsSection() {
 
 // ─── Who We Serve ─────────────────────────────────────────────────────────────
 
-const audiences = [
+const audiences: { color: string; Icon: React.ElementType; title: string; benefit: string; desc: string }[] = [
   {
     color: '#06b6d4',
-    emoji: '🚀',
+    Icon: Rocket,
     title: 'Startups',
     benefit: 'Build trusted sender reputation from day one',
-    desc: "Starting fresh means building your sending reputation from zero. We give startups a fast, trustworthy foundation — so your first campaigns land in inboxes, not spam.",
+    desc: "Starting fresh means building your sending reputation from zero. We give startups a fast, trustworthy foundation, so your first campaigns land in inboxes, not spam.",
   },
   {
     color: '#f59e0b',
-    emoji: '📣',
+    Icon: Megaphone,
     title: 'Marketers',
     benefit: 'Avoid spam filters; improve deliverability while expanding outreach',
     desc: "Marketers running high-volume campaigns need reliable inbox placement at scale. We handle deliverability so you can focus on copy, segmentation, and results.",
   },
   {
     color: '#8b5cf6',
-    emoji: '🏢',
+    Icon: Building2,
     title: 'Businesses',
     benefit: 'Recover from spam issues; restore domain health',
-    desc: "If your domain has been flagged, bounced, or blocklisted, we diagnose and fix the root cause — then rebuild your reputation systematically to prevent recurrence.",
+    desc: "If your domain has been flagged, bounced, or blocklisted, we diagnose and fix the root cause, then rebuild your reputation systematically to prevent recurrence.",
   },
   {
     color: '#10b981',
-    emoji: '🎯',
+    Icon: Target,
     title: 'Sales Teams',
     benefit: "Increase response rates; land in prospects' primary inbox",
-    desc: "Cold outreach only works when it's seen. We ensure your sales sequences reach decision-makers' primary inboxes — giving your SDRs the best possible chance to connect.",
+    desc: "Cold outreach only works when it's seen. We ensure your sales sequences reach decision-makers' primary inboxes, giving your SDRs the best possible chance to connect.",
   },
 ]
 
@@ -298,11 +298,13 @@ function WhoWeServe() {
           </h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
-          {audiences.map(({ color, emoji, title, benefit, desc }) => {
+          {audiences.map(({ color, Icon, title, benefit, desc }) => {
             const ref = useReveal<HTMLDivElement>()
             return (
               <div key={title} ref={ref} className="card reveal" style={{ padding: '36px 28px' }}>
-                <div style={{ fontSize: 36, marginBottom: 18 }}>{emoji}</div>
+                <div style={{ width: 50, height: 50, borderRadius: 14, background: `${color}12`, border: `1px solid ${color}28`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                  <Icon size={24} color={color} strokeWidth={1.8} aria-hidden="true" />
+                </div>
                 <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 20, color: '#edf0ff', marginBottom: 8 }}>{title}</h3>
                 <p style={{ fontFamily: 'Sora', fontWeight: 600, fontSize: 14, color, marginBottom: 12, lineHeight: 1.45 }}>{benefit}</p>
                 <p style={{ fontFamily: 'Inter', fontSize: 14, color: '#6e7e9e', lineHeight: 1.75 }}>{desc}</p>
@@ -361,7 +363,7 @@ const faqs = [
   },
   {
     q: 'Can I use my existing email platform?',
-    a: 'Yes — our warmup service is compatible with Gmail, Outlook, and all SMTP-based services. We work within your existing email setup without requiring any platform migration.',
+    a: 'Yes, our warmup service is compatible with Gmail, Outlook, and all SMTP-based services. We work within your existing email setup without requiring any platform migration.',
   },
   {
     q: 'How is progress monitored?',
@@ -369,7 +371,7 @@ const faqs = [
   },
   {
     q: 'What is the primary benefit of email warm-up?',
-    a: 'The primary benefits are better deliverability, higher sender reputation, improved open and engagement rates, and compliance with ESP policies — all of which protect your domain from blacklisting and ensure your campaigns actually reach your audience.',
+    a: 'The primary benefits are better deliverability, higher sender reputation, improved open and engagement rates, and compliance with ESP policies, all of which protect your domain from blacklisting and ensure your campaigns actually reach your audience.',
   },
   {
     q: "What happens if I don't warm up my email?",

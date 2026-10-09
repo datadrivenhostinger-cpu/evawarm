@@ -80,7 +80,7 @@ function Hero({ navigate }: { navigate: (p: string) => void }) {
             ) : (
               <>
                 <h2 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 20, color: '#edf0ff', marginBottom: 6 }}>Get Your Free Audit Now!</h2>
-                <p style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e', marginBottom: 24 }}>No commitment required — just an honest look at your setup.</p>
+                <p style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e', marginBottom: 24 }}>No commitment required, just an honest look at your setup.</p>
                 <form onSubmit={async (e) => { e.preventDefault(); setSendError(false); try { const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: form.name, email: form.email, message: (form.phone ? `Phone: ${form.phone}\n\n` : '') + (form.message || 'Warmup service enquiry'), services: 'Email Warmup Service' }) }); if (r.ok) setSent(true); else setSendError(true); } catch { setSendError(true); } }} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   <div>
                     <label style={{ display: 'block', fontFamily: 'Sora', fontSize: 12, fontWeight: 600, color: '#6e7e9e', letterSpacing: 0.5, marginBottom: 6 }}>Name</label>
@@ -136,7 +136,7 @@ function WhyWarmup() {
             Why Email Warmup is Crucial for<br /><span className="g-text">Cold Email Marketing Success</span>
           </h2>
           <p style={{ fontFamily: 'Inter', fontSize: 17, color: '#6e7e9e', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
-            AI algorithms are highly intelligent — manual warmup signals human behavior, improving sender reputation and boosting inbox delivery.
+            AI algorithms are highly intelligent, manual warmup signals human behavior, improving sender reputation and boosting inbox delivery.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
@@ -183,7 +183,7 @@ function HowItWorks() {
             How Our Manual Email<br /><span className="g-text">Warmup Service Works</span>
           </h2>
           <p style={{ fontFamily: 'Inter', fontSize: 17, color: '#6e7e9e', maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
-            A structured 7-step process built around real human interaction — the only warmup method ISPs genuinely trust.
+            A structured 7-step process built around real human interaction, the only warmup method ISPs genuinely trust.
           </p>
         </div>
 

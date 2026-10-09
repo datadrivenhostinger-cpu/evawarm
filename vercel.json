@@ -3,7 +3,12 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "framework": null,
+  "redirects": [
+    { "source": "/email-deliverability-assets", "destination": "/resources/email-deliverability-assets", "permanent": true },
+    { "source": "/case-study-emaildeliverability", "destination": "/resources/case-study-emaildeliverability", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/admin/login", "destination": "/admin/login.html" }
+    { "source": "/admin/login", "destination": "/admin/login.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

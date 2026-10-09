@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Logo from '@/components/Logo'
-import { ArrowRight, Menu, X } from 'lucide-react'
+import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import { serviceLandings } from '@/data/serviceLandings'
 
 interface NavProps {
@@ -8,10 +8,18 @@ interface NavProps {
   navigate: (page: string) => void
 }
 
+// Pages that belong to the Resources group
+const RESOURCE_PAGES = new Set([
+  'resources/email-deliverability-assets',
+  'resources/case-study-emaildeliverability',
+])
+
 export default function Nav({ currentPage, navigate }: NavProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [ddClosed, setDdClosed] = useState(false)
+  // Mobile: track which expandable group is open
+  const [mobileExpanded, setMobileExpanded] = useState<'services' | 'resources' | null>(null)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 30)
@@ -19,11 +27,12 @@ export default function Nav({ currentPage, navigate }: NavProps) {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  // Close menu on nav
+  // Close everything on nav
   const go = (p: string) => {
     navigate(p)
     setMenuOpen(false)
     setDdClosed(true)
+    setMobileExpanded(null)
   }
 
   const mainLinks: [string, string][] = [
@@ -33,10 +42,35 @@ export default function Nav({ currentPage, navigate }: NavProps) {
     ['About', 'about'],
     ['Pricing', 'pricing'],
     ['Blog', 'blog'],
-    ['Resources', 'email-deliverability-assets'],
   ]
 
   const isActive = (p: string) => currentPage === p
+
+  // Resources group is "active" when on either resource page
+  const resourcesActive = RESOURCE_PAGES.has(currentPage)
+
+  // Shared mobile button style
+  const mobileBtn = (active: boolean): React.CSSProperties => ({
+    textAlign: 'left',
+    background: active ? 'rgba(6,182,212,0.07)' : 'none',
+    border: 'none',
+    borderRadius: 9,
+    color: active ? '#22d3ee' : '#c4d0ee',
+    fontFamily: 'Sora, sans-serif',
+    fontSize: 15,
+    fontWeight: 500,
+    padding: '12px 14px',
+    cursor: 'pointer',
+    width: '100%',
+  })
+
+  // Mobile child button (indented)
+  const mobileChildBtn = (active: boolean): React.CSSProperties => ({
+    ...mobileBtn(active),
+    paddingLeft: 28,
+    fontSize: 14,
+    color: active ? '#22d3ee' : '#94a3b8',
+  })
 
   return (
     <nav
@@ -65,57 +99,97 @@ export default function Nav({ currentPage, navigate }: NavProps) {
 
         {/* Desktop links */}
         <div className="hide-mobile" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+          {/* Regular nav links */}
           {mainLinks.map(([label, page]) => (
-            <div key={page} style={{ position: 'relative' }} onMouseLeave={() => setDdClosed(false)} className={page === 'services' || page === 'email-deliverability-assets' ? `nav-dd${ddClosed ? ' closed' : ''}` : undefined}>
+            <div
+              key={page}
+              style={{ position: 'relative' }}
+              onMouseLeave={() => setDdClosed(false)}
+              className={page === 'services' ? `nav-dd${ddClosed ? ' closed' : ''}` : undefined}
+            >
+              <button
+                onClick={() => go(page)}
+                style={{
+                  background: isActive(page) ? 'rgba(6, 182, 212, 0.08)' : 'none',
+                  border: isActive(page) ? '1px solid rgba(6,182,212,0.18)' : '1px solid transparent',
+                  borderRadius: 10,
+                  color: isActive(page) ? '#22d3ee' : '#6e7e9e',
+                  fontFamily: 'Sora, sans-serif',
+                  fontWeight: 500,
+                  fontSize: 13.5,
+                  padding: '7px 13px',
+                  cursor: 'pointer',
+                  transition: 'all 0.18s ease',
+                  letterSpacing: -0.1,
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={e => {
+                  if (!isActive(page)) {
+                    (e.currentTarget as HTMLElement).style.color = '#edf0ff'
+                    ;(e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isActive(page)) {
+                    (e.currentTarget as HTMLElement).style.color = '#6e7e9e'
+                    ;(e.currentTarget as HTMLElement).style.background = 'none'
+                  }
+                }}
+              >
+                {label}
+              </button>
+              {/* Services dropdown */}
+              {page === 'services' && (
+                <div className="nav-dd-menu">
+                  <button onClick={() => go('services')}>All Services</button>
+                  <button onClick={() => go('email-warmup')}>Warmup Service</button>
+                  <button onClick={() => go('services/bulk-email-warmup')}>Bulk Email Warmup</button>
+                  <button onClick={() => go('services/email-verification-services')}>Email Verification Services</button>
+                  {serviceLandings.map(x => <button key={x.slug} onClick={() => go(`services/${x.slug}`)}>{x.navLabel}</button>)}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Resources — dropdown parent only, no navigation destination */}
+          <div
+            className={`nav-dd${ddClosed ? ' closed' : ''}`}
+            style={{ position: 'relative' }}
+            onMouseLeave={() => setDdClosed(false)}
+          >
+            {/* Button intentionally has no onClick navigate — it is a dropdown trigger only */}
             <button
-              onClick={() => go(page)}
               style={{
-                background: isActive(page) ? 'rgba(6, 182, 212, 0.08)' : 'none',
-                border: isActive(page) ? '1px solid rgba(6,182,212,0.18)' : '1px solid transparent',
+                background: resourcesActive ? 'rgba(6, 182, 212, 0.08)' : 'none',
+                border: resourcesActive ? '1px solid rgba(6,182,212,0.18)' : '1px solid transparent',
                 borderRadius: 10,
-                color: isActive(page) ? '#22d3ee' : '#6e7e9e',
+                color: resourcesActive ? '#22d3ee' : '#6e7e9e',
                 fontFamily: 'Sora, sans-serif',
                 fontWeight: 500,
                 fontSize: 13.5,
                 padding: '7px 13px',
-                cursor: 'pointer',
+                cursor: 'default',
                 transition: 'all 0.18s ease',
                 letterSpacing: -0.1,
                 whiteSpace: 'nowrap',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 4,
               }}
-              onMouseEnter={e => {
-                if (!isActive(page)) {
-                  (e.currentTarget as HTMLElement).style.color = '#edf0ff'
-                  ;(e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
-                }
-              }}
-              onMouseLeave={e => {
-                if (!isActive(page)) {
-                  (e.currentTarget as HTMLElement).style.color = '#6e7e9e'
-                  ;(e.currentTarget as HTMLElement).style.background = 'none'
-                }
-              }}
+              aria-haspopup="true"
+              tabIndex={0}
             >
-              {label}
+              Resources
+              <ChevronDown size={12} style={{ opacity: 0.6 }} />
             </button>
-            {page === 'email-deliverability-assets' && (
-              <div className="nav-dd-menu">
-                <button onClick={() => go('email-deliverability-assets')}>Email Deliverability Assets</button>
-              </div>
-            )}
-            {page === 'services' && (
-              <div className="nav-dd-menu">
-                <button onClick={() => go('services')}>All Services</button>
-                <button onClick={() => go('email-warmup')}>Warmup Service</button>
-                <button onClick={() => go('services/bulk-email-warmup')}>Bulk Email Warmup</button>
-                <button onClick={() => go('services/email-verification-services')}>Email Verification Services</button>
-                {serviceLandings.map(x => <button key={x.slug} onClick={() => go(`services/${x.slug}`)}>{x.navLabel}</button>)}
-              </div>
-            )}
+            <div className="nav-dd-menu">
+              <button onClick={() => go('resources/email-deliverability-assets')}>Email Deliverability Assets</button>
+              <button onClick={() => go('resources/case-study-emaildeliverability')}>Case Study</button>
             </div>
-          ))}
+          </div>
+
           <style>{`
-            .nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; padding: 6px; margin-top: 4px; background: rgba(6,11,23,0.97); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); flex-direction: column; }
+            .nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; padding: 6px; margin-top: 4px; background: rgba(6,11,23,0.97); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); flex-direction: column; }
             .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: flex; }
             .nav-dd.closed .nav-dd-menu { display: none !important; }
             .nav-dd-menu button { background: none; border: none; text-align: left; color: #c4d0ee; font-family: Sora, sans-serif; font-size: 13.5px; font-weight: 500; padding: 10px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
@@ -188,31 +262,66 @@ export default function Nav({ currentPage, navigate }: NavProps) {
           WebkitBackdropFilter: 'blur(24px)',
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 20 }}>
-            <button
-              onClick={() => go('home')}
-              style={{ textAlign: 'left', background: currentPage === 'home' ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: currentPage === 'home' ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}
-            >
+            {/* Home */}
+            <button onClick={() => go('home')} style={mobileBtn(currentPage === 'home')}>
               Home
             </button>
+
+            {/* Standard links (excluding Resources — handled separately) */}
             {mainLinks.map(([label, page]) => (
-              <button
-                key={page}
-                onClick={() => go(page)}
-                style={{ textAlign: 'left', background: isActive(page) ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive(page) ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}
-              >
+              <button key={page} onClick={() => go(page)} style={mobileBtn(isActive(page))}>
                 {label}
               </button>
             ))}
-            <button onClick={() => go('email-warmup')} style={{ textAlign: 'left', background: isActive('email-warmup') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('email-warmup') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>Warmup Service</button>
-            <button onClick={() => go('services/bulk-email-warmup')} style={{ textAlign: 'left', background: isActive('services/bulk-email-warmup') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('services/bulk-email-warmup') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>Bulk Email Warmup</button>
-            <button onClick={() => go('services/email-verification-services')} style={{ textAlign: 'left', background: isActive('services/email-verification-services') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('services/email-verification-services') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>Email Verification Services</button>
+
+            {/* Service sub-links */}
+            <button onClick={() => go('email-warmup')} style={mobileChildBtn(isActive('email-warmup'))}>Warmup Service</button>
+            <button onClick={() => go('services/bulk-email-warmup')} style={mobileChildBtn(isActive('services/bulk-email-warmup'))}>Bulk Email Warmup</button>
+            <button onClick={() => go('services/email-verification-services')} style={mobileChildBtn(isActive('services/email-verification-services'))}>Email Verification Services</button>
             {serviceLandings.map(x => (
-              <button key={x.slug} onClick={() => go(`services/${x.slug}`)} style={{ textAlign: 'left', background: isActive(`services/${x.slug}`) ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive(`services/${x.slug}`) ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}>{x.navLabel}</button>
+              <button key={x.slug} onClick={() => go(`services/${x.slug}`)} style={mobileChildBtn(isActive(`services/${x.slug}`))}>{x.navLabel}</button>
             ))}
+
+            {/* Resources — collapsible group */}
             <button
-              onClick={() => go('contact')}
-              style={{ textAlign: 'left', background: isActive('contact') ? 'rgba(6,182,212,0.07)' : 'none', border: 'none', borderRadius: 9, color: isActive('contact') ? '#22d3ee' : '#c4d0ee', fontFamily: 'Sora, sans-serif', fontSize: 15, fontWeight: 500, padding: '12px 14px', cursor: 'pointer' }}
+              onClick={() => setMobileExpanded(mobileExpanded === 'resources' ? null : 'resources')}
+              style={{
+                ...mobileBtn(resourcesActive),
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+              aria-expanded={mobileExpanded === 'resources'}
             >
+              <span>Resources</span>
+              <ChevronDown
+                size={14}
+                style={{
+                  transition: 'transform 0.2s',
+                  transform: mobileExpanded === 'resources' ? 'rotate(180deg)' : 'rotate(0deg)',
+                  color: resourcesActive ? '#22d3ee' : '#6e7e9e',
+                }}
+              />
+            </button>
+            {mobileExpanded === 'resources' && (
+              <>
+                <button
+                  onClick={() => go('resources/email-deliverability-assets')}
+                  style={mobileChildBtn(currentPage === 'resources/email-deliverability-assets')}
+                >
+                  Email Deliverability Assets
+                </button>
+                <button
+                  onClick={() => go('resources/case-study-emaildeliverability')}
+                  style={mobileChildBtn(currentPage === 'resources/case-study-emaildeliverability')}
+                >
+                  Case Study
+                </button>
+              </>
+            )}
+
+            {/* Contact */}
+            <button onClick={() => go('contact')} style={mobileBtn(isActive('contact'))}>
               Contact
             </button>
           </div>

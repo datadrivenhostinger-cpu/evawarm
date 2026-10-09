@@ -3,6 +3,7 @@ export interface ServiceLanding {
   navLabel: string
   title: string
   metaTitle: string
+  metaDescription: string
   eyebrow: string
   heroSub: string
   highlight: string
@@ -21,11 +22,12 @@ export const serviceLandings: ServiceLanding[] = [
     navLabel: 'Manual Email Warmup',
     title: 'Manual Email Warmup',
     metaTitle: 'Manual Email Warmup Service | Human-Driven Sender Reputation | EvaWarm',
+    metaDescription: 'Build genuine sender reputation with EvaWarm manual email warmup. Real human engagement and progressive volume scaling for reliable inbox placement.',
     eyebrow: 'Service 01',
     heroSub: 'Real people, real inbox activity. The warmup ISPs actually trust.',
     highlight: 'Manual',
     intro: 'Automated warmup tools trade emails between pools of fake accounts, and ISPs discount those signals. Our team opens, replies to, and rescues your emails by hand so your reputation grows on genuine engagement.',
-    stats: [{ v: '94%', l: 'Avg inbox placement after warmup' }, { v: '3–6 wks', l: 'Typical warmup duration' }, { v: '0.1%', l: 'Target spam complaint rate' }],
+    stats: [{ v: '94%', l: 'Avg inbox placement after warmup' }, { v: '3-6 wks', l: 'Typical warmup duration' }, { v: '0.1%', l: 'Target spam complaint rate' }],
     included: [
       { t: 'Full Infrastructure Audit', d: 'SPF, DKIM, DMARC, IP reputation and ESP configuration reviewed before a single warmup email is sent.' },
       { t: 'Volume Scaling Protocol', d: 'Daily increments calibrated to your domain history so ISP anomaly detection is never triggered.' },
@@ -61,6 +63,7 @@ export const serviceLandings: ServiceLanding[] = [
     navLabel: 'Deliverability Consulting',
     title: 'Email Deliverability Consulting',
     metaTitle: 'Email Deliverability Consulting | Fix Spam Folder & Bounce Issues | EvaWarm',
+    metaDescription: 'Expert email deliverability consulting from EvaWarm. Fix spam folder issues, authentication gaps, and blocklists to restore inbox placement for your domain.',
     eyebrow: 'Service 02',
     heroSub: 'Fix the root cause, not just the symptom.',
     highlight: 'Deliverability',
@@ -101,6 +104,7 @@ export const serviceLandings: ServiceLanding[] = [
     navLabel: 'Outbound Email Marketing',
     title: 'Outbound Email Marketing',
     metaTitle: 'Outbound Email Marketing Service | Cold Email Campaigns That Convert | EvaWarm',
+    metaDescription: 'Run outbound email campaigns that reach the inbox with EvaWarm. Deliverability-first setup, proven cold email sequences, and sender reputation management.',
     eyebrow: 'Service 03',
     heroSub: 'Sequences that start conversations, not delete-fests.',
     highlight: 'Outbound',
@@ -141,6 +145,7 @@ export const serviceLandings: ServiceLanding[] = [
     navLabel: 'Deliverability Audit',
     title: 'Email Deliverability Audit',
     metaTitle: 'Email Deliverability Audit | Free Inbox Placement & Sender Health Check | EvaWarm',
+    metaDescription: 'Get an email deliverability audit from EvaWarm covering authentication, blocklists, sender reputation, and inbox placement, with a prioritised action plan.',
     eyebrow: 'Service 04',
     heroSub: 'An honest look at why your emails are or are not reaching the inbox.',
     highlight: 'Audit',

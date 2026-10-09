@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block admin and API paths
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://evawarmweb.vercel.app/sitemap.xml

@@ -34,7 +34,7 @@ export default function EmailDeliverabilityAssets({ navigate }: { navigate: (p: 
             Email Deliverability <span className="g-text">Masterclass</span>
           </h2>
           <p style={{ fontFamily: 'Inter', fontSize: 16.5, lineHeight: 1.8, color: '#94a3b8', maxWidth: 600, margin: '0 auto 40px' }}>
-            Watch this in-depth guide on email deliverability — covering sender reputation, inbox placement strategies, and how to avoid spam filters for your cold email campaigns.
+            Watch this in-depth guide on email deliverability, covering sender reputation, inbox placement strategies, and how to avoid spam filters for your cold email campaigns.
           </p>
           <div style={{ background: '#0d1424', border: '1px solid #1e293b', borderRadius: 16, padding: 16, maxWidth: 860, margin: '0 auto' }}>
             <iframe

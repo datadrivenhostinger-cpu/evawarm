@@ -60,8 +60,8 @@
       "title": "Picking an email provider that is right for your business",
       "paragraphs": [
         "There are two types of email providers that are broadly used;",
-        "Paid (Example – G-suite, HostGator)",
-        "Free (Example – Google, Hotmail, Yahoo, etc)",
+        "Paid (Example, G-suite, HostGator)",
+        "Free (Example, Google, Hotmail, Yahoo, etc)",
         "I will suggest the paid one. Here are some reasons for that:",
         "You can easily send emails through your domain like yourname@youdomain.com (never use your primary domain for cold outreach, please use the secondary domain for the cold email outreach. Eg. yourname@yourdomain.in instead of yourname@youdomain.com )",
         "It makes your company look professional and helps to build credibility with the customers.",
@@ -86,7 +86,7 @@
     },
     {
       "id": "2-how-to-avoid-getting-blacklisted-cold-email-vs-spam-folder",
-      "title": "2. How to avoid getting blacklisted – cold email vs spam folders",
+      "title": "2. How to avoid getting blacklisted, cold email vs spam folders",
       "paragraphs": [
         "Databases that contain spammer information are called blacklist directories. You should be aware that they track your email sending activity, such as frequency, volume, bounce rate, spam reports, and most importantly, how engaged your recipients are with your emails.",
         "It is important to have an unsubscribe note at the bottom of your email signature."
@@ -98,15 +98,15 @@
       "paragraphs": [
         "In essence, email authentication protocols function as secret agents behind the scenes, ensuring that senders are indeed who they claim to be before emails reach their inboxes. Enabling these methods can increase your email deliverability.",
         "There are three things to consider in this,",
-        "SPF – It tells the receiver of an email how legitimate the sender is. In order to verify the SPF record for an email received by a recipient, their email provider checks the DNS records for the domain name listed as the return address in the “envelope from” address.",
-        "DKIM – The DKIM protocol adds a digital signature to every message. The receiving servers can confirm that the message is not forged and that hasn’t been altered during transit.",
-        "DMARC – The DMARC protocol is very effective for organizations since it uses both DKIM and SPF records to verify the senders’ emails. It protects your domain from email spoofing.",
+        "SPF, It tells the receiver of an email how legitimate the sender is. In order to verify the SPF record for an email received by a recipient, their email provider checks the DNS records for the domain name listed as the return address in the “envelope from” address.",
+        "DKIM, The DKIM protocol adds a digital signature to every message. The receiving servers can confirm that the message is not forged and that hasn’t been altered during transit.",
+        "DMARC, The DMARC protocol is very effective for organizations since it uses both DKIM and SPF records to verify the senders’ emails. It protects your domain from email spoofing.",
         "To run a quick audit of your SPF and DKIM settings, use Glockapp"
       ]
     },
     {
       "id": "setup-of-a-custom-tracking-domain-why-is-it-so-important",
-      "title": "Setup of a custom tracking domain – why is it so important?",
+      "title": "Setup of a custom tracking domain, why is it so important?",
       "paragraphs": [
         "You will need the tracking domain for two main reasons, to track open and click rates.",
         "But why do you have to set up a custom tracking code ?",
@@ -165,8 +165,8 @@
       "title": "How to find email addresses?",
       "paragraphs": [
         "There are 2 ways to find email addresses.",
-        "Free – At first understand the email pattern. After trying different formats using the email verification tools, find the format that works for the company you want.",
-        "Paid – There are tons of resources available (such as Leadiro ) on the internet to find the email addresses of the prospects."
+        "Free, At first understand the email pattern. After trying different formats using the email verification tools, find the format that works for the company you want.",
+        "Paid, There are tons of resources available (such as Leadiro ) on the internet to find the email addresses of the prospects."
       ]
     },
     {
