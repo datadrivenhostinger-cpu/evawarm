@@ -177,8 +177,31 @@ export default function ServiceLandingPage({ service: s, navigate }: { service: 
         <Reveal style={{ maxWidth: 780, margin: '0 auto' }}>
           <figure className="card-glass" style={{ padding: '40px 36px' }}>
             <Quote size={30} color="#22d3ee" style={{ opacity: 0.7, marginBottom: 16 }} />
-            <blockquote style={{ fontFamily: 'Inter', fontSize: 19, lineHeight: 1.7, color: '#dbe4f8', marginBottom: 20 }}>{s.quote.q}</blockquote>
-            <figcaption><span style={{ fontFamily: 'Sora', fontWeight: 700, color: '#edf0ff' }}>{s.quote.n}</span> <span style={{ fontFamily: 'Inter', fontSize: 14, color: '#6e7e9e' }}>· {s.quote.r}</span></figcaption>
+            <blockquote style={{ fontFamily: 'Inter', fontSize: 19, lineHeight: 1.7, color: '#dbe4f8', marginBottom: 24 }}>{s.quote.q}</blockquote>
+            <figcaption style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              {(s.quote as any).avatar ? (
+                <div style={{ width: 52, height: 52, borderRadius: '50%', border: '2px solid rgba(34,211,238,0.35)', flexShrink: 0, overflow: 'hidden', background: 'rgba(34,211,238,0.08)' }}>
+                  <img src={(s.quote as any).avatar} alt={s.quote.n} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
+                </div>
+              ) : (
+                <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg, #06b6d4, #8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 16, color: '#fff', flexShrink: 0 }}>
+                  {s.quote.n.split(' ').map((w: string) => w[0]).join('')}
+                </div>
+              )}
+              <div style={{ flex: 1 }}>
+                <span style={{ fontFamily: 'Sora', fontWeight: 700, color: '#edf0ff', display: 'block' }}>{s.quote.n}</span>
+                <span style={{ fontFamily: 'Inter', fontSize: 14, color: '#6e7e9e' }}>{s.quote.r}</span>
+              </div>
+              {(s.quote as any).linkedin && (
+                <a href={(s.quote as any).linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${s.quote.n} on LinkedIn`}
+                  style={{ color: '#0a66c2', opacity: 0.8, transition: 'opacity 0.2s', flexShrink: 0 }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '1'}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '0.8'}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+              )}
+            </figcaption>
           </figure>
         </Reveal>
       </Section>

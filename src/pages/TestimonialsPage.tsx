@@ -57,7 +57,9 @@ const testimonials = [
     title: 'Co-Founder',
     company: 'LeadWalut',
     initials: 'NT',
+    avatar: '/avatars/natarajan.png',
     color: '#8b5cf6',
+    linkedin: 'https://www.linkedin.com/in/meetnattu/',
     quote: 'With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates compared to previous campaigns.',
     highlight: null,
   },
@@ -66,7 +68,9 @@ const testimonials = [
     title: 'Growth Marketer',
     company: 'Attentive',
     initials: 'AK',
+    avatar: '/avatars/ankur.jpg',
     color: '#06b6d4',
+    linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/',
     quote: 'For an extended period, we had poor open rates...but now we are seeing a good open rate of 65% thanks to EvaWarm\'s warm-up service.',
     highlight: { v: '65%', l: 'Open Rate Achieved' },
   },
@@ -75,7 +79,9 @@ const testimonials = [
     title: 'Founder',
     company: 'Datyle',
     initials: 'JR',
+    avatar: '/avatars/jonathan.jpg',
     color: '#f59e0b',
+    linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/',
     quote: 'Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I have always enjoyed working with him and have done so for years. I would recommend his services to anyone in the B2B space.',
     highlight: null,
   },
@@ -119,13 +125,22 @@ function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: numbe
 
       {/* Author */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-        <div style={{ width: 46, height: 46, borderRadius: '50%', background: `linear-gradient(135deg, ${t.color}24, ${t.color}0a)`, border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 14, color: t.color, flexShrink: 0 }}>
-          {t.initials}
+        <div style={{ width: 52, height: 52, borderRadius: '50%', border: `2px solid ${t.color}55`, flexShrink: 0, overflow: 'hidden', background: `linear-gradient(135deg, ${t.color}24, ${t.color}0a)` }}>
+          <img src={t.avatar} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
         </div>
-        <div>
+        <div style={{ flex: 1 }}>
           <div style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 15, color: '#edf0ff' }}>{t.name}</div>
           <div style={{ fontFamily: 'Inter', fontSize: 13, color: '#3a4762' }}>{t.title}, {t.company}</div>
         </div>
+        {t.linkedin && (
+          <a href={t.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${t.name} on LinkedIn`}
+            style={{ color: '#0a66c2', opacity: 0.8, transition: 'opacity 0.2s', flexShrink: 0 }}
+            onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '1'}
+            onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '0.8'}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        )}
       </div>
     </div>
   )

@@ -380,14 +380,20 @@ function Achievements() {
 const testimonials = [
   {
     name: 'Natarajan', role: 'Co-Founder, LeadWalut', initials: 'N', color: '#06b6d4',
+    avatar: '/avatars/natarajan.png',
+    linkedin: 'https://www.linkedin.com/in/meetnattu/',
     quote: 'With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates compared to previous campaigns.',
   },
   {
     name: 'Ankur', role: 'Growth Marketer, Attentive', initials: 'A', color: '#8b5cf6',
+    avatar: '/avatars/ankur.jpg',
+    linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/',
     quote: 'For an extended period, we had poor open rates, even with utilizing some email warming services, but now we are seeing a good open rate of 65% thanks to EvaWarm\'s warm-up service.',
   },
   {
     name: 'Jonathan Rodger', role: 'Founder, Datyle', initials: 'JR', color: '#f59e0b',
+    avatar: '/avatars/jonathan.jpg',
+    linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/',
     quote: 'Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I have always enjoyed working with him and have done so for years. I would recommend his services to anyone in the B2B space.',
   },
 ]
@@ -405,7 +411,7 @@ function TestimonialsSection() {
           </h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
-          {testimonials.map(({ name, role, initials, color, quote }) => {
+          {testimonials.map(({ name, role, initials, color, quote, avatar, linkedin }) => {
             const ref = useReveal<HTMLDivElement>()
             return (
               <div key={name} ref={ref} className="card reveal" style={{ padding: '36px 32px', position: 'relative', overflow: 'hidden' }}>
@@ -415,11 +421,25 @@ function TestimonialsSection() {
                 </div>
                 <p style={{ fontFamily: 'Inter', fontSize: 15, color: '#c4d0ee', lineHeight: 1.82, marginBottom: 28, fontStyle: 'italic' }}>"{quote}"</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: `linear-gradient(135deg, ${color}30, ${color}18)`, border: `1px solid ${color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 14, color, flexShrink: 0 }}>{initials}</div>
-                  <div>
+                  <div style={{ width: 46, height: 46, borderRadius: '50%', background: `linear-gradient(135deg, ${color}30, ${color}18)`, border: `1.5px solid ${color}40`, flexShrink: 0, overflow: 'hidden' }}>
+                    {avatar
+                      ? <img src={avatar} alt={name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
+                      : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 14, color }}>{initials}</div>
+                    }
+                  </div>
+                  <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 14, color: '#edf0ff' }}>{name}</div>
                     <div style={{ fontFamily: 'Inter', fontSize: 12.5, color: '#6e7e9e', marginTop: 2 }}>{role}</div>
                   </div>
+                  {linkedin && (
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${name} on LinkedIn`}
+                      style={{ color: '#0a66c2', opacity: 0.8, transition: 'opacity 0.2s', flexShrink: 0 }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '1'}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '0.8'}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                  )}
                 </div>
               </div>
             )

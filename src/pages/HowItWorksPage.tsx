@@ -157,8 +157,8 @@ function StepRow({ num, color, title, desc, Icon, reverse }: {
       gap: 0,
       alignItems: 'center',
     }}>
-      {/* Left slot */}
-      <div style={{ padding: reverse ? '0 0 0 32px' : '0 32px 0 0', order: reverse ? 3 : 1 }}>
+      {/* Left column — card for odd steps, empty for even */}
+      <div style={{ padding: '0 32px 0 0' }}>
         {!reverse && (
           <div className="card" style={{ padding: '32px 28px' }}>
             <StepContent num={num} color={color} title={title} desc={desc} Icon={Icon} />
@@ -166,17 +166,17 @@ function StepRow({ num, color, title, desc, Icon, reverse }: {
         )}
       </div>
 
-      {/* Center spine */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', order: 2, position: 'relative' }}>
-        <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, transparent, ${color}40)`, marginBottom: 0 }} />
+      {/* Center spine — always the numbered bubble */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+        <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, transparent, ${color}40)` }} />
         <div style={{ width: 56, height: 56, borderRadius: '50%', background: `${color}14`, border: `2px solid ${color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: `0 0 24px ${color}20`, zIndex: 1, position: 'relative' }}>
           <span style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 16, color }}>{num}</span>
         </div>
-        <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${color}40, transparent)`, marginTop: 0 }} />
+        <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${color}40, transparent)` }} />
       </div>
 
-      {/* Right slot */}
-      <div style={{ padding: reverse ? '0 32px 0 0' : '0 0 0 32px', order: reverse ? 1 : 3 }}>
+      {/* Right column — card for even steps, empty for odd */}
+      <div style={{ padding: '0 0 0 32px' }}>
         {reverse && (
           <div className="card" style={{ padding: '32px 28px' }}>
             <StepContent num={num} color={color} title={title} desc={desc} Icon={Icon} />
@@ -189,8 +189,7 @@ function StepRow({ num, color, title, desc, Icon, reverse }: {
           .step-row { grid-template-columns: 48px 1fr !important; }
           .step-row > div:nth-child(1) { display: none !important; }
           .step-row > div:nth-child(2) { order: 1 !important; }
-          .step-row > div:nth-child(3) { order: 2 !important; padding: 0 0 0 16px !important; }
-          .step-row > div:nth-child(3) > div { display: block !important; }
+          .step-row > div:nth-child(3) { order: 2 !important; padding: 0 0 0 16px !important; display: block !important; }
         }
       `}</style>
     </div>

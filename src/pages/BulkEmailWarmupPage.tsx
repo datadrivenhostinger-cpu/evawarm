@@ -381,10 +381,10 @@ function CaseStudies() {
 /* ── 11. Testimonials ────────────────────────────────── */
 function Testimonials() {
   const items = [
-    { n: 'Natarajan', r: 'Co-Founder, LeadWalut', img: 'https://evawarm.com/wp-content/uploads/2023/03/UIUX-1.png', q: 'With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates compared to previous campaigns.' },
-    { n: 'Jonathan Rodger', r: 'Founder, Datyle', img: 'https://evawarm.com/wp-content/uploads/2023/03/1646383145662-1.jpeg', q: 'Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I have always enjoyed working with him and have done so for years. I would recommend his services to anyone in the B2B space.' },
-    { n: 'Ankur', r: 'Growth Marketer, Attentive', img: 'https://evawarm.com/wp-content/uploads/2023/03/UIUX-2.png', q: "For an extended period, we had poor open rates, even with utilizing some email warming services, but now we are seeing a good open rate of 65% thanks to EvaWarm's warm-up service." },
-    { n: 'Greg Jordan', r: 'VP of Email Products & Technology, DemandScience', img: '', q: 'I have found Sundar to be very motivated and professional, he sets out to achieve his goals and I would highly recommend him as a marketing professional.' },
+    { n: 'Natarajan', r: 'Co-Founder, LeadWalut', img: '/avatars/natarajan.png', linkedin: 'https://www.linkedin.com/in/meetnattu/', q: 'With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates compared to previous campaigns.' },
+    { n: 'Jonathan Rodger', r: 'Founder, Datyle', img: '/avatars/jonathan.jpg', linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/', q: 'Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I have always enjoyed working with him and have done so for years. I would recommend his services to anyone in the B2B space.' },
+    { n: 'Ankur', r: 'Growth Marketer, Attentive', img: '/avatars/ankur.jpg', linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/', q: "For an extended period, we had poor open rates, even with utilizing some email warming services, but now we are seeing a good open rate of 65% thanks to EvaWarm's warm-up service." },
+    { n: 'Greg Jordan', r: 'VP of Email Products & Technology, DemandScience', img: '', linkedin: '', q: 'I have found Sundar to be very motivated and professional, he sets out to achieve his goals and I would highly recommend him as a marketing professional.' },
   ]
   return (
     <Section>
@@ -399,10 +399,19 @@ function Testimonials() {
                 {t.img
                   ? <img src={t.img} alt={t.n} loading="lazy" style={{ width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', background: '#0d1424', border: '2px solid rgba(34,211,238,0.4)' }} />
                   : <div style={{ width: 52, height: 52, borderRadius: '50%', background: 'linear-gradient(135deg, #06b6d4, #8b5cf6)', color: '#fff', fontFamily: 'Sora', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{t.n.split(' ').map(w => w[0]).join('')}</div>}
-                <div>
+                <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 15, color: '#edf0ff' }}>{t.n}</div>
                   <div style={{ fontFamily: 'Inter', fontSize: 13, color: '#6e7e9e' }}>{t.r}</div>
                 </div>
+                {t.linkedin && (
+                  <a href={t.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${t.n} on LinkedIn`}
+                    style={{ color: '#0a66c2', opacity: 0.8, transition: 'opacity 0.2s', flexShrink: 0 }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '1'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '0.8'}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                )}
               </figcaption>
             </figure>
           </Reveal>

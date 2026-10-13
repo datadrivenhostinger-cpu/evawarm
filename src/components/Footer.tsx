@@ -97,6 +97,13 @@ export default function Footer({ navigate }: FooterProps) {
               <Mail size={14} />
               Email Us
             </a>
+            <a href="tel:+919500087415" style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 10, color: '#5a6a86', fontFamily: 'Inter', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#06b6d4')}
+              onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#5a6a86')}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.6.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01l-2.2 2.21z" /></svg>
+              +91 95000 87415
+            </a>
           </div>
         </div>
 

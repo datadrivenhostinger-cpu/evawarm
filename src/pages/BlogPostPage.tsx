@@ -175,9 +175,9 @@ function SectionBlocks({ paragraphs, sectionId, sectionTitle }: { paragraphs: st
   // Fast-path: implicit list section (Pros, Cons, Features, etc.)
   if (isImplicitListSection(sectionTitle, paragraphs)) {
     return (
-      <ul style={{ margin: '10px 0 16px', paddingLeft: 22, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <ul style={{ margin: '10px 0 20px', paddingLeft: 22, display: 'flex', flexDirection: 'column', gap: 8 }}>
         {paragraphs.map((item, ii) => (
-          <li key={`${sectionId}-ili-${ii}`} style={{ color: '#b9c6e0', lineHeight: 1.75, fontSize: 15.5 }}>{item.trim()}</li>
+          <li key={`${sectionId}-ili-${ii}`} style={{ color: '#b9c6e0', lineHeight: 1.72, fontSize: 17 }}>{item.trim()}</li>
         ))}
       </ul>
     )
@@ -217,18 +217,18 @@ function SectionBlocks({ paragraphs, sectionId, sectionTitle }: { paragraphs: st
 
           case 'ul':
             return (
-              <ul key={key} style={{ margin: '10px 0 16px', paddingLeft: 22, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <ul key={key} style={{ margin: '6px 0 22px', paddingLeft: 24 }}>
                 {block.items.map((item, ii) => (
-                  <li key={ii} style={{ color: '#b9c6e0', lineHeight: 1.75, fontSize: 15.5 }}>{item}</li>
+                  <li key={ii} style={{ color: '#b9c6e0', lineHeight: 1.7, fontSize: 17, marginBottom: 8 }}>{item}</li>
                 ))}
               </ul>
             )
 
           case 'ol':
             return (
-              <ol key={key} style={{ margin: '10px 0 16px', paddingLeft: 22, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <ol key={key} style={{ margin: '6px 0 22px', paddingLeft: 24 }}>
                 {block.items.map((item, ii) => (
-                  <li key={ii} style={{ color: '#b9c6e0', lineHeight: 1.75, fontSize: 15.5 }}>{item}</li>
+                  <li key={ii} style={{ color: '#b9c6e0', lineHeight: 1.7, fontSize: 17, marginBottom: 8 }}>{item}</li>
                 ))}
               </ol>
             )
@@ -382,7 +382,7 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
 
   return (
     <main>
-      <section className="mesh-hero page-texture" style={{ padding: '144px 32px 88px' }}>
+      <section className="mesh-hero page-texture" style={{ padding: '144px 32px 72px' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto' }}>
           <button
             onClick={() => navigate('blog')}
@@ -392,8 +392,8 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
           </button>
           <div style={{ maxWidth: 900 }}>
             <div className="chip" style={{ marginBottom: 18 }}>{post.category}</div>
-            <h1 style={{ fontFamily: 'Sora, sans-serif', color: '#edf0ff', fontSize: 'clamp(40px, 6vw, 68px)', lineHeight: 1.08, letterSpacing: '-2.8px', marginBottom: 22 }}>{post.title}</h1>
-            <p style={{ maxWidth: 780, color: '#9aabc9', fontSize: 17, lineHeight: 1.8, marginBottom: 24 }}>{post.excerpt}</p>
+            <h1 style={{ fontFamily: 'Sora, sans-serif', color: '#edf0ff', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: 1.08, letterSpacing: '-2.5px', marginBottom: 22 }}>{post.title}</h1>
+            <p style={{ maxWidth: 760, color: '#9aabc9', fontSize: 17.5, lineHeight: 1.75, marginBottom: 24 }}>{post.excerpt}</p>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', color: '#6e7e9e', fontSize: 12.5 }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><CalendarDays size={13} />{formatBlogDate(post.date)}</span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><Clock3 size={13} />{post.readTime}</span>
@@ -461,7 +461,8 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
               </figure>
             )}
 
-            <article className="blog-article" style={{ color: '#b9c6e0', fontSize: 16, lineHeight: 1.9 }}>
+            {/* font-size, line-height, color are set via .blog-article CSS class */}
+            <article className="blog-article">
               <p>{post.introduction}</p>
 
               {post.sections.map((section) => (

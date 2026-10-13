@@ -60,12 +60,129 @@ const activity = [
   { time: '1h ago',  text: 'Domain reputation flagged as Trusted',   dot: '#a78bfa' },
 ]
 
+// ─── Mount-based animation hooks (hero is visible immediately on load) ────────
+
+function useMountCount(target: number, decimals = 0, delay = 0) {
+  const [val, setVal] = useState(0)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const dur = 1600; const t0 = performance.now()
+      const raf = (now: number) => {
+        const p = Math.min((now - t0) / dur, 1)
+        const ease = 1 - Math.pow(1 - p, 3)
+        setVal(parseFloat((ease * target).toFixed(decimals)))
+        if (p < 1) requestAnimationFrame(raf)
+      }
+      requestAnimationFrame(raf)
+    }, delay)
+    return () => clearTimeout(timer)
+  }, [target, decimals, delay])
+  return val
+}
+
+function useMountBar(targetPct: number, delay = 0) {
+  const [width, setWidth] = useState(0)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const dur = 1400; const t0 = performance.now()
+      const raf = (now: number) => {
+        const p = Math.min((now - t0) / dur, 1)
+        const ease = 1 - Math.pow(1 - p, 4)
+        setWidth(ease * targetPct)
+        if (p < 1) requestAnimationFrame(raf)
+      }
+      requestAnimationFrame(raf)
+    }, delay)
+    return () => clearTimeout(timer)
+  }, [targetPct, delay])
+  return width
+}
+
+// ─── Dashboard sub-components ────────────────────────────────────────────────
+
+function AnimBar({ label, pct, color, total, count, delay }: {
+  label: string; pct: number; color: string; total: number; count: number; delay: number
+}) {
+  const width    = useMountBar(pct, delay)
+  const animCount = useMountCount(count, 0, delay)
+  return (
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+        <span style={{ color: '#5a6a82', fontSize: 11, fontFamily: 'Inter', fontWeight: 500 }}>{label}</span>
+        <span style={{ color: '#c4d0ee', fontSize: 11, fontFamily: 'Sora', fontWeight: 600 }}>
+          {Math.round(animCount)}/{total}
+        </span>
+      </div>
+      <div style={{ height: 5, background: 'rgba(255,255,255,0.05)', borderRadius: 3, overflow: 'hidden' }}>
+        <div style={{ width: `${width}%`, height: '100%', background: color, borderRadius: 3, boxShadow: `0 0 6px ${color}55` }} />
+      </div>
+    </div>
+  )
+}
+
+function DashWarmup() {
+  const width = useMountBar(46, 600)
+  const day   = useMountCount(14, 0, 600)
+  return (
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+        <span style={{ color: '#5a6a82', fontSize: 11.5, fontFamily: 'Inter', fontWeight: 500 }}>Warmup Progress</span>
+        <span style={{ color: '#22d3ee', fontSize: 11.5, fontFamily: 'Sora', fontWeight: 700 }}>
+          Day {Math.round(day)} / 30
+        </span>
+      </div>
+      <div style={{ height: 7, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' }}>
+        <div className="prog-bar" style={{ width: `${width}%`, height: '100%', borderRadius: 4 }} />
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
+        <span style={{ color: '#2a3550', fontSize: 9.5, fontFamily: 'Inter' }}>Day 1</span>
+        <span style={{ color: '#2a3550', fontSize: 9.5, fontFamily: 'Inter' }}>Day 30</span>
+      </div>
+    </div>
+  )
+}
+
+function DashMiniStats() {
+  const openRate = useMountCount(31,  0, 700)
+  const bounce   = useMountCount(0.8, 1, 800)
+  const rep      = useMountCount(9.2, 1, 900)
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 14 }}>
+      <div style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 10, padding: '9px 10px' }}>
+        <div style={{ color: '#3a4560', fontSize: 9.5, fontFamily: 'Inter', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 5 }}>Open Rate</div>
+        <div style={{ color: '#4ade80', fontSize: 14, fontFamily: 'Sora', fontWeight: 800 }}>+{Math.round(openRate)}%</div>
+      </div>
+      <div style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 10, padding: '9px 10px' }}>
+        <div style={{ color: '#3a4560', fontSize: 9.5, fontFamily: 'Inter', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 5 }}>Bounce</div>
+        <div style={{ color: '#f87171', fontSize: 14, fontFamily: 'Sora', fontWeight: 800 }}>{bounce.toFixed(1)}%</div>
+      </div>
+      <div style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 10, padding: '9px 10px' }}>
+        <div style={{ color: '#3a4560', fontSize: 9.5, fontFamily: 'Inter', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 5 }}>Rep Score</div>
+        <div style={{ color: '#22d3ee', fontSize: 14, fontFamily: 'Sora', fontWeight: 800 }}>{rep.toFixed(1)}/10</div>
+      </div>
+    </div>
+  )
+}
+
 function Dashboard() {
+  // Circular gauge arc — starts immediately on mount
+  const [strokeOffset, setStrokeOffset] = useState(CIRC)
+  const [scoreVal,     setScoreVal]     = useState(0)
+
+  useEffect(() => {
+    const dur = 1800; const t0 = performance.now()
+    const raf = (now: number) => {
+      const p    = Math.min((now - t0) / dur, 1)
+      const ease = 1 - Math.pow(1 - p, 3)
+      setStrokeOffset(CIRC - ease * (CIRC - SCORE_OFFSET))
+      setScoreVal(parseFloat((ease * 94.3).toFixed(1)))
+      if (p < 1) requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  }, [])
+
   return (
     <div className="animate-float" style={{ position: 'relative', width: '100%', maxWidth: 460 }}>
-      {/* Ambient glow */}
-      <div style={{ position: 'absolute', inset: -70, background: 'radial-gradient(ellipse 80% 80% at 40% 35%, rgba(6,182,212,0.13) 0%, rgba(139,92,246,0.07) 55%, transparent 75%)', pointerEvents: 'none' }} />
-
       {/* Main panel */}
       <div className="dash-panel">
 
@@ -99,16 +216,15 @@ function Dashboard() {
               </defs>
               {/* Track */}
               <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
-              {/* Score arc */}
+              {/* Animated arc */}
               <circle
                 cx="60" cy="60" r="48" fill="none"
                 stroke="url(#scoreGrad)" strokeWidth="8" strokeLinecap="round"
                 strokeDasharray={`${CIRC}`}
-                strokeDashoffset={`${SCORE_OFFSET}`}
+                strokeDashoffset={strokeOffset}
                 transform="rotate(-90 60 60)"
-                className="dash-arc"
               />
-              <text x="60" y="54" textAnchor="middle" fill="#edf0ff" fontFamily="Sora" fontWeight="800" fontSize="21">94.3</text>
+              <text x="60" y="54" textAnchor="middle" fill="#edf0ff" fontFamily="Sora" fontWeight="800" fontSize="21">{scoreVal.toFixed(1)}</text>
               <text x="60" y="67" textAnchor="middle" fill="#22d3ee" fontFamily="Sora" fontWeight="700" fontSize="10">%</text>
               <text x="60" y="80" textAnchor="middle" fill="#3a4762" fontFamily="Inter" fontSize="8" letterSpacing="1">INBOX</text>
             </svg>
@@ -116,61 +232,26 @@ function Dashboard() {
 
           {/* Distribution bars */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {[
-              { label: 'Primary Inbox', pct: 94, color: '#22d3ee', count: '189/201' },
-              { label: 'Promotions',    pct: 4,  color: '#a78bfa', count: '8/201'   },
-              { label: 'Spam',          pct: 2,  color: '#f87171', count: '4/201'   },
-            ].map(({ label, pct, color, count }) => (
-              <div key={label}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                  <span style={{ color: '#5a6a82', fontSize: 11, fontFamily: 'Inter', fontWeight: 500 }}>{label}</span>
-                  <span style={{ color: '#c4d0ee', fontSize: 11, fontFamily: 'Sora', fontWeight: 600 }}>{count}</span>
-                </div>
-                <div style={{ height: 5, background: 'rgba(255,255,255,0.05)', borderRadius: 3, overflow: 'hidden' }}>
-                  <div style={{ width: `${pct}%`, height: '100%', background: color, borderRadius: 3, boxShadow: `0 0 6px ${color}55`, transition: 'width 1.4s cubic-bezier(0.16,1,0.3,1)' }} />
-                </div>
-              </div>
-            ))}
+            <AnimBar label="Primary Inbox" pct={94} color="#22d3ee" total={201} count={189} delay={100} />
+            <AnimBar label="Promotions"    pct={4}  color="#a78bfa" total={201} count={8}   delay={250} />
+            <AnimBar label="Spam"          pct={2}  color="#f87171" total={201} count={4}   delay={400} />
           </div>
         </div>
 
         <div className="divider-glow" style={{ margin: '16px 0' }} />
 
         {/* Warmup progress */}
-        <div style={{ marginBottom: 16 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ color: '#5a6a82', fontSize: 11.5, fontFamily: 'Inter', fontWeight: 500 }}>Warmup Progress</span>
-            <span style={{ color: '#22d3ee', fontSize: 11.5, fontFamily: 'Sora', fontWeight: 700 }}>Day 14 / 30</span>
-          </div>
-          <div style={{ height: 7, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' }}>
-            <div className="prog-bar" style={{ width: '46%', height: '100%', borderRadius: 4 }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
-            <span style={{ color: '#2a3550', fontSize: 9.5, fontFamily: 'Inter' }}>Day 1</span>
-            <span style={{ color: '#2a3550', fontSize: 9.5, fontFamily: 'Inter' }}>Day 30</span>
-          </div>
-        </div>
+        <DashWarmup />
 
         {/* Mini stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 14 }}>
-          {[
-            { l: 'Open Rate', v: '+31%',   color: '#4ade80' },
-            { l: 'Bounce',    v: '0.8%',   color: '#f87171' },
-            { l: 'Rep Score', v: '9.2/10', color: '#22d3ee' },
-          ].map(({ l, v, color }) => (
-            <div key={l} style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 10, padding: '9px 10px' }}>
-              <div style={{ color: '#3a4560', fontSize: 9.5, fontFamily: 'Inter', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 5 }}>{l}</div>
-              <div style={{ color, fontSize: 14, fontFamily: 'Sora', fontWeight: 800 }}>{v}</div>
-            </div>
-          ))}
-        </div>
+        <DashMiniStats />
 
         {/* Activity feed */}
         <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '11px 13px' }}>
           <div style={{ fontSize: 9.5, fontFamily: 'Sora', fontWeight: 700, color: '#2e3f58', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 9 }}>Recent Activity</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {activity.map((a, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, opacity: 0, animation: 'hero-up 0.5s ease both', animationDelay: `${1.0 + i * 0.18}s` }}>
                 <div style={{ width: 6, height: 6, borderRadius: '50%', background: a.dot, flexShrink: 0, boxShadow: `0 0 5px ${a.dot}80` }} />
                 <span style={{ color: '#5a6a82', fontSize: 11, fontFamily: 'Inter', flex: 1, lineHeight: 1.3 }}>{a.text}</span>
                 <span style={{ color: '#2a3550', fontSize: 10, fontFamily: 'Sora', fontWeight: 600, flexShrink: 0 }}>{a.time}</span>
@@ -195,6 +276,7 @@ function Dashboard() {
 }
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
+
 
 export function Hero({ navigate }: { navigate: (p: string) => void }) {
   return (
@@ -729,11 +811,14 @@ export function ServicesPreview({ navigate }: { navigate: (p: string) => void })
 // ─── Testimonials ─────────────────────────────────────────────────────────────
 
 const testimonials = [
-  { name: 'Jonathan Rodger', title: 'Founder', company: 'Datyle', initials: 'JR', color: '#06b6d4',
+  { name: 'Jonathan Rodger', title: 'Founder', company: 'Datyle', initials: 'JR', color: '#06b6d4', avatar: '/avatars/jonathan.jpg',
+    linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/',
     quote: 'EvaWarm completely transformed our cold outreach. Before working with them, our emails were consistently landing in spam. Within 3 weeks of their manual warmup process, we were hitting 85%+ inbox placement. The transparency and communication throughout was excellent.', highlight: null },
-  { name: 'Natarajan', title: 'Co-Founder', company: 'LeadWalut', initials: 'NT', color: '#8b5cf6',
+  { name: 'Natarajan', title: 'Co-Founder', company: 'LeadWalut', initials: 'NT', color: '#8b5cf6', avatar: '/avatars/natarajan.png',
+    linkedin: 'https://www.linkedin.com/in/meetnattu/',
     quote: "As a startup, we couldn't afford to waste budget on campaigns that never got seen. EvaWarm's customized approach meant our new domain was trusted from day one. Their understanding of ISP behavior and warmup timing is genuinely unmatched.", highlight: null },
-  { name: 'Ankur', title: 'Growth Marketer', company: 'Attentive', initials: 'AK', color: '#f59e0b',
+  { name: 'Ankur', title: 'Growth Marketer', company: 'Attentive', initials: 'AK', color: '#f59e0b', avatar: '/avatars/ankur.jpg',
+    linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/',
     quote: "After EvaWarm's full deliverability overhaul, warmup, authentication cleanup, and sequence optimization, we went from 22% to 65% open rates on our outbound campaigns. That's not incremental. That's a business transformation.", highlight: { v: '65%', l: 'Open Rate Achieved' } },
 ]
 
@@ -775,13 +860,22 @@ export function Testimonials() {
           )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{ width: 46, height: 46, borderRadius: '50%', background: `linear-gradient(135deg, ${t.color}22, ${t.color}0a)`, border: `1.5px solid ${t.color}38`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 14, color: t.color, flexShrink: 0 }}>
-              {t.initials}
+            <div style={{ width: 52, height: 52, borderRadius: '50%', border: `2px solid ${t.color}55`, flexShrink: 0, overflow: 'hidden', background: `linear-gradient(135deg, ${t.color}22, ${t.color}0a)` }}>
+              <img src={t.avatar} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
             </div>
-            <div>
+            <div style={{ flex: 1 }}>
               <div style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 15, color: '#edf0ff' }}>{t.name}</div>
               <div style={{ fontFamily: 'Inter', fontSize: 13, color: '#3a4762' }}>{t.title}, {t.company}</div>
             </div>
+            {t.linkedin && (
+              <a href={t.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${t.name} on LinkedIn`}
+                style={{ color: '#0a66c2', opacity: 0.8, transition: 'opacity 0.2s', flexShrink: 0 }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '1'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '0.8'}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            )}
           </div>
         </div>
 

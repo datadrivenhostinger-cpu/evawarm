@@ -48,7 +48,7 @@ export const serviceLandings: ServiceLanding[] = [
       { t: 'Switching ESPs', d: 'Move providers without losing inbox placement.' },
       { t: 'Recovering senders', d: 'Rebuild after blocklisting or a spam-folder slump.' },
     ],
-    quote: { q: 'After their warmup, we went from 22% to 65% open rates. That is not incremental, that is transformational.', n: 'Ankur', r: 'Growth Marketer, Attentive' },
+    quote: { q: 'After their warmup, we went from 22% to 65% open rates. That is not incremental, that is transformational.', n: 'Ankur', r: 'Growth Marketer, Attentive', avatar: '/avatars/ankur.jpg', linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/' },
     faqs: [
       { q: 'How long does manual warmup take?', a: 'Typically 3 to 6 weeks depending on domain age, sending history and target volume.' },
       { q: 'How is manual different from automated warmup?', a: 'Automated tools exchange mail between fake account pools. Manual warmup uses real human interaction that ISPs reward.' },
@@ -89,7 +89,7 @@ export const serviceLandings: ServiceLanding[] = [
       { t: 'SaaS companies', d: 'Protect transactional and lifecycle email delivery.' },
       { t: 'Agencies', d: 'Resolve client deliverability problems with expert backup.' },
     ],
-    quote: { q: 'Our new domain was trusted from day one. Their understanding of ISP behavior is genuinely unmatched.', n: 'Natarajan', r: 'Co-Founder, LeadWalut' },
+    quote: { q: 'Our new domain was trusted from day one. Their understanding of ISP behavior is genuinely unmatched.', n: 'Natarajan', r: 'Co-Founder, LeadWalut', avatar: '/avatars/natarajan.png', linkedin: 'https://www.linkedin.com/in/meetnattu/' },
     faqs: [
       { q: 'How do I know if deliverability is my problem?', a: 'Declining open rates, bounce rates above 3%, spam complaints above 0.1% or blocklist presence are the usual signs.' },
       { q: 'Can you work with our existing ESP or CRM?', a: 'Yes. We work with HubSpot, Salesforce, Mailchimp, Instantly, Smartlead and custom infrastructure.' },
@@ -130,7 +130,7 @@ export const serviceLandings: ServiceLanding[] = [
       { t: 'Founders', d: 'Get early customers without hiring an SDR team.' },
       { t: 'Agencies', d: 'Run outbound for clients on a healthy sending base.' },
     ],
-    quote: { q: 'Within 3 weeks we were hitting 85%+ inbox placement and open rates we had not seen in years.', n: 'Jonathan Rodger', r: 'Founder, Datyle' },
+    quote: { q: 'Within 3 weeks we were hitting 85%+ inbox placement and open rates we had not seen in years.', n: 'Jonathan Rodger', r: 'Founder, Datyle', avatar: '/avatars/jonathan.jpg', linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/' },
     faqs: [
       { q: 'Do you write the emails?', a: 'Yes. We handle strategy, sequence copy, cadence design and ongoing optimization.' },
       { q: 'Will my domain be safe?', a: 'Every campaign is built deliverability-first, with warmup, pacing and bounce control.' },

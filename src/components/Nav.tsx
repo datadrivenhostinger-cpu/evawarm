@@ -141,11 +141,13 @@ export default function Nav({ currentPage, navigate }: NavProps) {
               {/* Services dropdown */}
               {page === 'services' && (
                 <div className="nav-dd-menu">
-                  <button onClick={() => go('services')}>All Services</button>
-                  <button onClick={() => go('email-warmup')}>Warmup Service</button>
-                  <button onClick={() => go('services/bulk-email-warmup')}>Bulk Email Warmup</button>
-                  <button onClick={() => go('services/email-verification-services')}>Email Verification Services</button>
-                  {serviceLandings.map(x => <button key={x.slug} onClick={() => go(`services/${x.slug}`)}>{x.navLabel}</button>)}
+                  <div className="nav-dd-menu-inner">
+                    <button onClick={() => go('services')}>All Services</button>
+                    <button onClick={() => go('email-warmup')}>Warmup Service</button>
+                    <button onClick={() => go('services/bulk-email-warmup')}>Bulk Email Warmup</button>
+                    <button onClick={() => go('services/email-verification-services')}>Email Verification Services</button>
+                    {serviceLandings.map(x => <button key={x.slug} onClick={() => go(`services/${x.slug}`)}>{x.navLabel}</button>)}
+                  </div>
                 </div>
               )}
             </div>
@@ -183,13 +185,16 @@ export default function Nav({ currentPage, navigate }: NavProps) {
               <ChevronDown size={12} style={{ opacity: 0.6 }} />
             </button>
             <div className="nav-dd-menu">
-              <button onClick={() => go('resources/email-deliverability-assets')}>Email Deliverability Assets</button>
-              <button onClick={() => go('resources/case-study-emaildeliverability')}>Case Study</button>
+              <div className="nav-dd-menu-inner">
+                <button onClick={() => go('resources/email-deliverability-assets')}>Email Deliverability Assets</button>
+                <button onClick={() => go('resources/case-study-emaildeliverability')}>Case Study</button>
+              </div>
             </div>
           </div>
 
           <style>{`
-            .nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; padding: 6px; margin-top: 4px; background: rgba(6,11,23,0.97); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); flex-direction: column; }
+            .nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; padding-top: 8px; background: transparent; flex-direction: column; }
+            .nav-dd-menu-inner { background: rgba(6,11,23,0.97); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); padding: 6px; display: flex; flex-direction: column; }
             .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: flex; }
             .nav-dd.closed .nav-dd-menu { display: none !important; }
             .nav-dd-menu button { background: none; border: none; text-align: left; color: #c4d0ee; font-family: Sora, sans-serif; font-size: 13.5px; font-weight: 500; padding: 10px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap; }

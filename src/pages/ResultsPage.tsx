@@ -222,18 +222,21 @@ const testimonials = [
   {
     name: 'Jonathan Rodger', title: 'Founder', company: 'Datyle',
     initials: 'JR', color: '#06b6d4',
+    avatar: '/avatars/jonathan.jpg',
     quote: "Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I would recommend his services to anyone in the B2B space.",
     linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/',
   },
   {
     name: 'Natarajan', title: 'Co-Founder', company: 'LeadWalut',
     initials: 'NT', color: '#8b5cf6',
+    avatar: '/avatars/natarajan.png',
     quote: "With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates.",
     linkedin: 'https://www.linkedin.com/in/meetnattu/',
   },
   {
     name: 'Ankur', title: 'Growth Marketer', company: 'Attentive',
     initials: 'AK', color: '#f59e0b',
+    avatar: '/avatars/ankur.jpg',
     quote: "We are seeing a good open rate of 65% thanks to EvaWarm's warm-up service.",
     linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/',
   },
@@ -263,8 +266,11 @@ function TestimonialsSection() {
                   {t.quote}
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ width: 42, height: 42, borderRadius: '50%', background: `linear-gradient(135deg, ${t.color}22, ${t.color}08)`, border: `1.5px solid ${t.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 13, color: t.color, flexShrink: 0 }}>
-                    {t.initials}
+                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: `linear-gradient(135deg, ${t.color}22, ${t.color}08)`, border: `1.5px solid ${t.color}40`, flexShrink: 0, overflow: 'hidden' }}>
+                    {t.avatar
+                      ? <img src={t.avatar} alt={t.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
+                      : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Sora', fontWeight: 800, fontSize: 13, color: t.color }}>{t.initials}</div>
+                    }
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 14, color: '#edf0ff' }}>{t.name}</div>
