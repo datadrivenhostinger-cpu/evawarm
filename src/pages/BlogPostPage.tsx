@@ -1,4 +1,5 @@
-import { ArrowLeft, ArrowRight, CalendarDays, Clock3 } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowRight, CalendarDays, Clock3 } from 'lucide-react'
 import { blogPosts, formatBlogDate } from '@/data/blog'
 import PageFAQ from '@/components/FAQ'
 
@@ -13,11 +14,12 @@ interface BlogPostPageProps {
 // ever mutating source content.
 
 type RenderedBlock =
-  | { kind: 'p';    text: string }
-  | { kind: 'ul';   items: string[] }
-  | { kind: 'ol';   items: string[] }
-  | { kind: 'table'; rows: string[][] }
-  | { kind: 'url';  href: string; text: string }
+  | { kind: 'p';         text: string }
+  | { kind: 'ul';        items: string[] }
+  | { kind: 'ol';        items: string[] }
+  | { kind: 'table';     rows: string[][] }
+  | { kind: 'url';       href: string; text: string }
+  | { kind: 'checklist'; intro: string; items: string[] }
 
 /** Detect a pipe-separated row: at least one ` | ` separator and 2+ cells. */
 function isPipeRow(line: string): boolean {
@@ -60,6 +62,24 @@ function stripBullet(text: string): string {
 /** Strip the leading number marker from a paragraph. */
 function stripNumber(text: string): string {
   return text.trim().replace(/^(\d+[.)]\s+|\(\d+\)\s+)/, '')
+}
+
+/** True when a paragraph contains 2 or more ✓/✔/☑ checkmark characters. */
+function isChecklist(text: string): boolean {
+  return (text.match(/[✓✔☑]/g) ?? []).length >= 2
+}
+
+/** Split a checkmark paragraph into { intro, items }.
+ *  Any text before the first ✓ becomes the intro label.
+ *  Each ✓-prefixed fragment (trimmed, trailing period stripped) becomes an item.
+ */
+function parseChecklist(text: string): { intro: string; items: string[] } {
+  const parts = text.split(/[✓✔☑]/).map(s => s.trim()).filter(Boolean)
+  // If the first part doesn't end with a sentence-terminator it's a label
+  const hasIntro = parts.length > 1 && !/[.!?]$/.test(parts[0].replace(/:$/, ''))
+  const intro = hasIntro ? parts[0].replace(/:$/, '').trim() : ''
+  const items = (hasIntro ? parts.slice(1) : parts).map(s => s.replace(/\.\s*$/, '').trim())
+  return { intro, items }
 }
 
 function renderParagraphs(paragraphs: string[]): RenderedBlock[] {
@@ -105,7 +125,15 @@ function renderParagraphs(paragraphs: string[]): RenderedBlock[] {
       continue
     }
 
-    // ── 4. Bare URL ────────────────────────────────────────────────────────
+    // ── 4. Checklist paragraph (inline ✓ items) ───────────────────────────
+    if (isChecklist(p)) {
+      const { intro, items } = parseChecklist(p)
+      blocks.push({ kind: 'checklist', intro, items })
+      i++
+      continue
+    }
+
+    // ── 5. Bare URL ────────────────────────────────────────────────────────
     if (isUrl(p)) {
       const url = p.trim()
       blocks.push({ kind: 'url', href: url, text: url })
@@ -113,7 +141,7 @@ function renderParagraphs(paragraphs: string[]): RenderedBlock[] {
       continue
     }
 
-    // ── 5. Plain paragraph ─────────────────────────────────────────────────
+    // ── 6. Plain paragraph ─────────────────────────────────────────────────
     blocks.push({ kind: 'p', text: p })
     i++
   }
@@ -232,6 +260,27 @@ function SectionBlocks({ paragraphs, sectionId, sectionTitle }: { paragraphs: st
                 ))}
               </ol>
             )
+
+          case 'checklist': {
+            const checkItems = block.items
+            return (
+              <div key={key} style={{ margin: '8px 0 22px' }}>
+                {block.intro && (
+                  <p style={{ marginBottom: 10, fontWeight: 600, color: '#d8e2f5' }}>
+                    {block.intro}:
+                  </p>
+                )}
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {checkItems.map((item, ii) => (
+                    <li key={ii} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: '#b9c6e0', lineHeight: 1.7, fontSize: 17 }}>
+                      <span style={{ color: '#22d3ee', flexShrink: 0, marginTop: 3 }}>✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
 
           case 'url':
             return (
@@ -367,29 +416,126 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
     return result
   }
 
+  // True when the post data already contains a section titled "Final Thoughts"
+  // (case-insensitive). Used to avoid rendering a duplicate at the bottom.
+  const hasFinalThoughtsSection = post.sections.some(
+    (s) => s.title.trim().toLowerCase().replace(/[^a-z ]/g, '') === 'final thoughts',
+  )
+
   const tocSections = [
     ...buildTocSections(post.sections),
-    { id: 'final-thoughts', title: 'Final thoughts', paragraphs: [] },
+    // Only add the synthetic entry when it isn't already in the article data
+    // and the post has a conclusion to display.
+    ...(!hasFinalThoughtsSection && post.conclusion
+      ? [{ id: 'final-thoughts', title: 'Final thoughts', paragraphs: [] as string[] }]
+      : []),
   ]
+
+  const [activeId, setActiveId] = useState<string | undefined>(undefined)
+  const [readPct, setReadPct] = useState(0)
+  const articleRef = useRef<HTMLElement>(null)
+
+  // ── Reading progress bar ───────────────────────────────────────────────
+  useEffect(() => {
+    const onScroll = () => {
+      const el = articleRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const articleHeight = el.offsetHeight
+      const scrolled = Math.max(0, -rect.top)
+      setReadPct(Math.min(100, (scrolled / articleHeight) * 100))
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // ── Active TOC section via IntersectionObserver ────────────────────────
+  useEffect(() => {
+    const NAV_H = 68 + 28 // --blog-nav-h + breathing room
+    const sectionIds = [
+      ...post.sections.map(s => s.id),
+      'final-thoughts',
+    ].filter(Boolean) as string[]
+
+    // Persistent set of currently-intersecting section IDs.
+    // Each callback only delivers *changed* entries, so we accumulate state here.
+    const intersecting = new Set<string>()
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            intersecting.add(entry.target.id)
+          } else {
+            intersecting.delete(entry.target.id)
+          }
+        })
+        // Always pick the first (topmost in document order) intersecting section.
+        const active = sectionIds.find(id => intersecting.has(id))
+        if (active) setActiveId(active)
+      },
+      // Top boundary just below the nav; bottom boundary at 45% of viewport
+      // so short sections still highlight as soon as they reach the nav edge.
+      { rootMargin: `-${NAV_H}px 0px -45% 0px`, threshold: 0 },
+    )
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [post.sections])
+
+  const NAV_OFFSET = 68 + 24 // fixed nav height + breathing room
 
   const jumpTo = (id?: string) => {
     if (!id) return
     const el = document.getElementById(id)
     if (!el) return
-    // scrollIntoView works inside an overflow:auto parent
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const top = window.scrollY + el.getBoundingClientRect().top - NAV_OFFSET
+    window.scrollTo({ top, behavior: 'smooth' })
   }
 
   return (
     <main>
-      <section className="mesh-hero page-texture" style={{ padding: '144px 32px 72px' }}>
-        <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-          <button
-            onClick={() => navigate('blog')}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'none', border: 'none', color: '#6e7e9e', cursor: 'pointer', fontFamily: 'Sora, sans-serif', fontSize: 13, marginBottom: 26 }}
-          >
-            <ArrowLeft size={15} /> Back to Blog
-          </button>
+      {/* Reading progress bar */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          height: 3,
+          zIndex: 300,
+          background: 'linear-gradient(90deg, #06b6d4, #8b5cf6)',
+          width: `${readPct}%`,
+          transition: 'width 0.1s linear',
+          pointerEvents: 'none',
+        }}
+      />
+      <section className="mesh-hero page-texture" style={{ padding: '130px 32px 64px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" style={{ marginBottom: 20 }}>
+            <ol style={{ listStyle: 'none', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2, fontFamily: 'Sora, sans-serif', fontSize: 12.5, fontWeight: 500, color: '#6e7e9e', padding: 0, margin: 0 }}>
+              {[{ label: 'Home', page: 'home' }, { label: 'Blog', page: 'blog' }, { label: post.title }].map((crumb, i, arr) => {
+                const isLast = i === arr.length - 1
+                return (
+                  <li key={crumb.label} style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    {i > 0 && <span style={{ color: '#3a4a65', fontSize: 13, margin: '0 2px' }}>›</span>}
+                    {!isLast && crumb.page ? (
+                      <button onClick={() => navigate(crumb.page!)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Sora, sans-serif', fontSize: 12.5, fontWeight: 500, color: '#6e7e9e', padding: '2px 4px', borderRadius: 4, transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#22d3ee')} onMouseLeave={e => (e.currentTarget.style.color = '#6e7e9e')}>
+                        {crumb.label}
+                      </button>
+                    ) : (
+                      <span style={{ color: isLast ? '#22d3ee' : '#6e7e9e', padding: '2px 4px', maxWidth: 320, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'inline-block' }}>{crumb.label}</span>
+                    )}
+                  </li>
+                )
+              })}
+            </ol>
+          </nav>
+
           <div style={{ maxWidth: 900 }}>
             <div className="chip" style={{ marginBottom: 18 }}>{post.category}</div>
             <h1 style={{ fontFamily: 'Sora, sans-serif', color: '#edf0ff', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: 1.08, letterSpacing: '-2.5px', marginBottom: 22 }}>{post.title}</h1>
@@ -410,7 +556,7 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
               {tocSections.map((section) => (
                 <button
                   key={section.id}
-                  className={section.id === tocSections[0]?.id ? 'blog-toc-link active' : 'blog-toc-link'}
+                  className={section.id === (activeId ?? tocSections[0]?.id) ? 'blog-toc-link active' : 'blog-toc-link'}
                   onClick={() => jumpTo(section.id)}
                 >
                   {section.title}
@@ -462,7 +608,7 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
             )}
 
             {/* font-size, line-height, color are set via .blog-article CSS class */}
-            <article className="blog-article">
+            <article className="blog-article" ref={articleRef}>
               <p>{post.introduction}</p>
 
               {post.sections.map((section) => (
@@ -479,10 +625,12 @@ export default function BlogPostPage({ slug, navigate }: BlogPostPageProps) {
                 </div>
               )}
 
-              <section id="final-thoughts" className="blog-article-section">
-                <h2>Final thoughts</h2>
-                <p>{post.conclusion}</p>
-              </section>
+              {!hasFinalThoughtsSection && post.conclusion && (
+                <section id="final-thoughts" className="blog-article-section">
+                  <h2>Final thoughts</h2>
+                  <p>{post.conclusion}</p>
+                </section>
+              )}
             </article>
 
             <div style={{ marginTop: 62, paddingTop: 34, borderTop: '1px solid rgba(255,255,255,0.07)' }}>

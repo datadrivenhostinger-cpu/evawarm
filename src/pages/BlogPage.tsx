@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, CalendarDays, ChevronRight, Clock3, MailCheck, ShieldCheck, Sparkles } from 'lucide-react'
 import { blogPosts, formatBlogDate, type BlogPost } from '@/data/blog'
 import PageFAQ from '@/components/FAQ'
+import Breadcrumb from '@/components/Breadcrumb'
 
 const POSTS_PER_PAGE = 9
 
@@ -127,53 +128,34 @@ export default function BlogPage({ navigate }: BlogPageProps) {
           {/* ── Featured post ─────────────────────────────────── */}
           {featuredPost ? (
           <article className="card-glass" style={{ overflow: 'hidden', marginBottom: 54 }}>
-            <div className="blog-feature-grid">
-              <div style={{ minHeight: 360, padding: 44, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: 'radial-gradient(circle at 15% 20%, rgba(34,211,238,0.16), transparent 42%), radial-gradient(circle at 85% 80%, rgba(139,92,246,0.14), transparent 40%), #0a1426' }}>
-                <div>
-                  <div className="chip" style={{ marginBottom: 20 }}>Featured article</div>
-                  <h2 style={{ fontFamily: 'Sora, sans-serif', fontSize: 'clamp(28px, 4vw, 45px)', lineHeight: 1.12, color: '#edf0ff', letterSpacing: '-1.6px', marginBottom: 18 }}>
-                    {featuredPost.title}
-                  </h2>
-                  <p style={{ color: '#9aabc9', fontSize: 15.5, lineHeight: 1.75, maxWidth: 640 }}>
-                    {featuredPost.excerpt}
-                  </p>
-                </div>
-                <div style={{ marginTop: 30 }}>
+            <div className="blog-feature-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 360 }}>
+              {/* Left: text content */}
+              <div style={{ padding: '44px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'radial-gradient(circle at 15% 20%, rgba(34,211,238,0.12), transparent 45%), radial-gradient(circle at 85% 80%, rgba(139,92,246,0.10), transparent 42%), #0a1426' }}>
+                <div className="chip" style={{ marginBottom: 18, display: 'inline-flex', alignSelf: 'flex-start' }}>Featured article</div>
+                <h2 style={{ fontFamily: 'Sora, sans-serif', fontSize: 'clamp(22px, 2.8vw, 36px)', lineHeight: 1.15, color: '#edf0ff', letterSpacing: '-1.2px', marginBottom: 14 }}>
+                  {featuredPost.title}
+                </h2>
+                <p style={{ color: '#9aabc9', fontSize: 15, lineHeight: 1.75, marginBottom: 28 }}>
+                  {featuredPost.excerpt}
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
                   <Meta post={featuredPost} />
-                  <button className="btn-primary btn-sm" style={{ marginTop: 22 }} onClick={() => navigate(`blog/${featuredPost.slug}`)}>
+                  <button className="btn-primary btn-sm" onClick={() => navigate(`blog/${featuredPost.slug}`)}>
                     Read article <ArrowRight size={14} />
                   </button>
                 </div>
               </div>
-              <div style={{ minHeight: 360, padding: 24, display: 'flex', alignItems: 'stretch', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(6,182,212,0.08), rgba(139,92,246,0.08))' }}>
+              {/* Right: image fully shown */}
+              <div style={{ background: '#0d1829', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24, borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
                 {featuredPost.image ? (
-                  <div style={{ width: '100%', minHeight: 320, borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', background: '#0f1b30' }}>
-                    <img
-                      src={featuredPost.image}
-                      alt={featuredPost.title}
-                      style={{ width: '100%', height: '100%', minHeight: 320, display: 'block', objectFit: 'cover', objectPosition: featuredPost.imagePosition || 'center' }}
-                      loading="eager"
-                    />
-                  </div>
+                  <img
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    loading="eager"
+                    style={{ width: '100%', height: 'auto', maxHeight: 340, objectFit: 'contain', display: 'block', borderRadius: 12 }}
+                  />
                 ) : (
-                  <div style={{ width: '100%', maxWidth: 430, alignSelf: 'center', aspectRatio: '1.25', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, background: 'rgba(6,11,23,0.66)', boxShadow: '0 24px 70px rgba(0,0,0,0.35)', padding: 26, position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', width: 220, height: 220, borderRadius: '50%', background: 'rgba(34,211,238,0.10)', filter: 'blur(20px)', top: -100, right: -60 }} />
-                    <div style={{ display: 'flex', gap: 8, marginBottom: 22 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} />
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} />
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10b981' }} />
-                    </div>
-                    <div style={{ width: '54%', height: 11, borderRadius: 6, background: 'rgba(255,255,255,0.10)', marginBottom: 12 }} />
-                    <div style={{ width: '78%', height: 10, borderRadius: 6, background: 'rgba(255,255,255,0.06)', marginBottom: 22 }} />
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                      {[94, 87, 91, 96].map((value, i) => (
-                        <div key={i} style={{ padding: 14, borderRadius: 14, border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.025)' }}>
-                          <div style={{ color: '#6e7e9e', fontSize: 10, marginBottom: 8 }}>Inbox health</div>
-                          <div style={{ color: '#edf0ff', fontFamily: 'Sora, sans-serif', fontWeight: 700, fontSize: 20 }}>{value}%</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <div style={{ width: '100%', aspectRatio: '4/3', borderRadius: 16, background: 'rgba(34,211,238,0.04)', border: '1px dashed rgba(34,211,238,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3a4a65', fontFamily: 'Inter', fontSize: 13 }}>No preview</div>
                 )}
               </div>
             </div>

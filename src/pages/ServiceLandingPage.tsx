@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { ArrowRight, Calendar, CheckCircle2, Minus, Plus, Quote } from 'lucide-react'
 import type { ServiceLanding } from '@/data/serviceLandings'
+import Breadcrumb from '@/components/Breadcrumb'
+
+function hl(text: string) {
+  const parts = text.split(/(\d+[%+x]?(?:\.\d+)?[%+]?)/g)
+  return parts.map((p, i) =>
+    /^\d/.test(p) ? <span key={i} style={{ color: '#22d3ee', fontWeight: 700 }}>{p}</span> : p
+  )
+}
 
 const CALENDLY = 'https://calendar.app.google/gt6J1J4rvFomHMgi8'
 const CARD = '#0f1b30'
@@ -100,6 +108,7 @@ export default function ServiceLandingPage({ service: s, navigate }: { service: 
   return (
     <main>
       <section style={{ paddingTop: 68, position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 80% 70% at 10% 30%, rgba(6,182,212,0.12) 0%, transparent 55%), radial-gradient(ellipse 60% 55% at 90% 10%, rgba(139,92,246,0.09) 0%, transparent 52%), #060b17' }}>
+        <Breadcrumb crumbs={[{ label: 'Home', page: 'home' }, { label: 'Services', page: 'services' }, { label: s.title }]} navigate={navigate} />
         <div style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px)', backgroundSize: '72px 72px', position: 'absolute', inset: 0, pointerEvents: 'none' }} />
         <div className="sl-hero" style={{ maxWidth: 1240, margin: '0 auto', padding: '88px 32px 96px', display: 'grid', gridTemplateColumns: '1fr 440px', gap: 72, alignItems: 'center', position: 'relative' }}>
           <div style={{ animation: 'hero-up 0.8s ease both' }}>
@@ -177,7 +186,7 @@ export default function ServiceLandingPage({ service: s, navigate }: { service: 
         <Reveal style={{ maxWidth: 780, margin: '0 auto' }}>
           <figure className="card-glass" style={{ padding: '40px 36px' }}>
             <Quote size={30} color="#22d3ee" style={{ opacity: 0.7, marginBottom: 16 }} />
-            <blockquote style={{ fontFamily: 'Inter', fontSize: 19, lineHeight: 1.7, color: '#dbe4f8', marginBottom: 24 }}>{s.quote.q}</blockquote>
+            <blockquote style={{ fontFamily: 'Inter', fontSize: 19, lineHeight: 1.7, color: '#dbe4f8', marginBottom: 24 }}>{hl(s.quote.q)}</blockquote>
             <figcaption style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               {(s.quote as any).avatar ? (
                 <div style={{ width: 52, height: 52, borderRadius: '50%', border: '2px solid rgba(34,211,238,0.35)', flexShrink: 0, overflow: 'hidden', background: 'rgba(34,211,238,0.08)' }}>

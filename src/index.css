@@ -717,11 +717,11 @@ a { color: inherit; }
    Mobile:  single column, TOC scrolls horizontally above article.
    ──────────────────────────────────────────────────────────────────────────── */
 
-:root { --blog-nav-h: 84px; }
+:root { --blog-nav-h: 68px; }
 
-/* Outer section — natural page flow, no height constraint */
+/* Outer section — breathing room below the hero, generous bottom space */
 .blog-post-section {
-  padding: 0 32px 120px;
+  padding: 48px 32px 120px;
 }
 
 /* Two-column grid: slim TOC sidebar + wide article column */
@@ -741,7 +741,7 @@ a { color: inherit; }
   top: calc(var(--blog-nav-h) + 24px);
   align-self: start;
   /* No card background, borders, or shadow */
-  padding: 0;
+  padding: 32px 0 0;  /* top matches .blog-post-main so label aligns with first content */
   border: none;
   background: transparent;
   border-radius: 0;
@@ -794,26 +794,14 @@ a { color: inherit; }
 
 /* A faint rule separates TOC from article on the right — handled by gap, no extra element needed */
 
-/* ── Article main column — sticky reading pane ──────── */
+/* ── Article main column — natural document flow ────── */
 .blog-post-main {
   min-width: 0;
-  /* Sticky: pins to viewport top, scrolls its own content internally */
-  position: sticky;
-  top: calc(var(--blog-nav-h) + 24px);
-  align-self: start;
-  height: calc(100vh - var(--blog-nav-h) - 48px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 32px 12px 48px 0;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(34, 211, 238, 0.14) transparent;
+  padding: 32px 0 48px;
 }
-.blog-post-main::-webkit-scrollbar { width: 4px; }
-.blog-post-main::-webkit-scrollbar-track { background: transparent; }
-.blog-post-main::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.16); border-radius: 2px; }
 
 /* Section anchors need breathing room below the fixed nav */
-.blog-article-section { scroll-margin-top: calc(var(--blog-nav-h) + 32px); }
+.blog-article-section { scroll-margin-top: calc(var(--blog-nav-h) + 28px); }
 
 /* ── Responsive: ≤1020 px — narrower sidebar ─────────── */
 @media (max-width: 1020px) {
@@ -890,15 +878,12 @@ a { color: inherit; }
     background: rgba(34, 211, 238, 0.08);
   }
 
-  /* On narrow screens: revert article to natural flow — no sticky pane */
+  /* On narrow screens: article stays natural flow */
   .blog-post-main {
-    position: static;
-    height: auto;
-    overflow: visible;
     padding: 0;
   }
 
-  .blog-article-section { scroll-margin-top: calc(var(--blog-nav-h) + 56px); }
+  .blog-article-section { scroll-margin-top: calc(var(--blog-nav-h) + 52px); }
 }
 
 /* ── Responsive: ≤480 px — tight mobile ─────────────── */

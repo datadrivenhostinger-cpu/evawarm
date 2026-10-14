@@ -5,6 +5,14 @@ import {
   Quote, MapPin, Globe,
 } from 'lucide-react'
 import Logo from '@/components/Logo'
+import Breadcrumb from '@/components/Breadcrumb'
+
+function hl(text: string) {
+  const parts = text.split(/(\d+[%+x]?(?:\.\d+)?[%+]?)/g)
+  return parts.map((p, i) =>
+    /^\d/.test(p) ? <span key={i} style={{ color: '#22d3ee', fontWeight: 700 }}>{p}</span> : p
+  )
+}
 
 const CALENDLY = 'https://calendar.app.google/gt6J1J4rvFomHMgi8'
 const LIGHT = '#0b1324'
@@ -165,7 +173,7 @@ function HowItWorks() {
       <div style={{ maxWidth: 820, margin: '0 auto', position: 'relative' }}>
         <div style={{ position: 'absolute', left: 27, top: 10, bottom: 10, width: 2, background: 'linear-gradient(180deg, #06b6d4, #8b5cf6 70%, transparent)', opacity: 0.4 }} />
         {steps.map(([t, d], i) => (
-          <Reveal key={t} style={{ display: 'flex', gap: 28, marginBottom: 20, position: 'relative' }}>
+          <Reveal key={t} style={{ display: 'flex', gap: 28, marginBottom: 20, position: 'relative', alignItems: 'center' }}>
             <div style={{ flexShrink: 0, width: 56, height: 56, borderRadius: '50%', background: '#0b1324', border: '2px solid #06b6d4', color: '#22d3ee', fontFamily: 'Sora', fontWeight: 800, fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 24px rgba(6,182,212,0.25)' }}>{i + 1}</div>
             <div className="card" style={{ padding: '22px 26px', flex: 1 }}>
               <h3 style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 18, color: '#edf0ff', marginBottom: 6 }}>{t}</h3>
@@ -191,7 +199,7 @@ function About() {
       <div className="bew-2" style={{ display: 'grid', gridTemplateColumns: '5fr 6fr', gap: 72, alignItems: 'center' }}>
         <Reveal>
           <div style={{ background: CARD, border: `1px solid ${LINE}`, borderRadius: '58% 42% 55% 45% / 48% 55% 45% 52%', overflow: 'hidden', aspectRatio: '1 / 1', boxShadow: '0 30px 70px rgba(0,0,0,0.4)' }}>
-            <img src="https://evawarm.com/wp-content/uploads/2023/03/UIUX-13-1024x1024.png" alt="EvaWarm team in a business meeting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="EvaWarm team in a business meeting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </Reveal>
         <Reveal>
@@ -384,7 +392,7 @@ function Testimonials() {
     { n: 'Natarajan', r: 'Co-Founder, LeadWalut', img: '/avatars/natarajan.png', linkedin: 'https://www.linkedin.com/in/meetnattu/', q: 'With consultation from EvaWarm, we elevate our email marketing to the next level, resulting in improved open and response rates compared to previous campaigns.' },
     { n: 'Jonathan Rodger', r: 'Founder, Datyle', img: '/avatars/jonathan.jpg', linkedin: 'https://www.linkedin.com/in/jonathan-rodger-3b7851/', q: 'Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I have always enjoyed working with him and have done so for years. I would recommend his services to anyone in the B2B space.' },
     { n: 'Ankur', r: 'Growth Marketer, Attentive', img: '/avatars/ankur.jpg', linkedin: 'https://www.linkedin.com/in/ankurkhannaofficial/', q: "For an extended period, we had poor open rates, even with utilizing some email warming services, but now we are seeing a good open rate of 65% thanks to EvaWarm's warm-up service." },
-    { n: 'Greg Jordan', r: 'VP of Email Products & Technology, DemandScience', img: '', linkedin: '', q: 'I have found Sundar to be very motivated and professional, he sets out to achieve his goals and I would highly recommend him as a marketing professional.' },
+    { n: 'Greg Jordan', r: 'VP of Email Products & Technology, DemandScience', img: '/avatars/greg-jordan.jpg', linkedin: 'https://www.linkedin.com/in/gregmjordan/', q: 'I have found Sundar to be very motivated and professional, he sets out to achieve his goals and I would highly recommend him as a marketing professional.' },
   ]
   return (
     <Section>
@@ -394,7 +402,7 @@ function Testimonials() {
           <Reveal key={t.n}>
             <figure className="card-glass" style={{ padding: '32px 30px', height: '100%', display: 'flex', flexDirection: 'column', gap: 22 }}>
               <Quote size={28} color="#22d3ee" style={{ opacity: 0.7 }} />
-              <blockquote style={{ fontFamily: 'Inter', fontSize: 16, lineHeight: 1.75, color: '#dbe4f8', flex: 1 }}>{t.q}</blockquote>
+              <blockquote style={{ fontFamily: 'Inter', fontSize: 16, lineHeight: 1.75, color: '#dbe4f8', flex: 1 }}>{hl(t.q)}</blockquote>
               <figcaption style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                 {t.img
                   ? <img src={t.img} alt={t.n} loading="lazy" style={{ width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', background: '#0d1424', border: '2px solid rgba(34,211,238,0.4)' }} />
@@ -456,9 +464,12 @@ function FAQ() {
   )
 }
 
-export default function BulkEmailWarmupPage() {
+export default function BulkEmailWarmupPage({ navigate }: { navigate: (p: string) => void }) {
   return (
     <main>
+      <div style={{ background: '#060b17', paddingTop: 68 }}>
+        <Breadcrumb crumbs={[{ label: 'Home', page: 'home' }, { label: 'Services', page: 'services' }, { label: 'Bulk Email Warmup' }]} navigate={navigate} />
+      </div>
       <Hero />
       <WhatWeDo />
       <HowItWorks />
@@ -467,7 +478,6 @@ export default function BulkEmailWarmupPage() {
       <Results />
       <WhoWeServe />
       <Stats />
-      <Clients />
       <CaseStudies />
       <Testimonials />
       <FAQ />

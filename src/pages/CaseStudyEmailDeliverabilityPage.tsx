@@ -1,5 +1,43 @@
 import { useEffect } from 'react'
-import { Target, Lightbulb, TrendingUp, AlertTriangle, CheckCircle2, Building2 } from 'lucide-react'
+import { Target, Lightbulb, TrendingUp, AlertTriangle, CheckCircle2, Building2, Mail, MapPin, Globe } from 'lucide-react'
+import Logo from '@/components/Logo'
+import Breadcrumb from '@/components/Breadcrumb'
+
+const CARD = '#0f1b30'
+const LINE = 'rgba(255,255,255,0.07)'
+const DARK_INK = '#0b1324'
+
+function CaseBlock({ title, children, dark }: { title: string; children: React.ReactNode; dark?: boolean }) {
+  const body: React.CSSProperties = { fontFamily: 'Inter', fontSize: 14.5, lineHeight: 1.7, color: dark ? '#c4d0ee' : '#6e7e9e' }
+  return (
+    <div style={dark ? { background: '#060b17', border: `1px solid ${LINE}`, borderRadius: 14, padding: '20px 22px' } : undefined}>
+      <h4 style={{ fontFamily: 'Sora', fontWeight: 700, fontSize: 12.5, letterSpacing: 1.4, textTransform: 'uppercase', color: dark ? '#22d3ee' : '#0891b2', marginBottom: 8 }}>{title}</h4>
+      <div style={body}>{children}</div>
+    </div>
+  )
+}
+
+function CList({ items, ordered }: { items: string[]; ordered?: boolean }) {
+  const Tag = ordered ? 'ol' : 'ul'
+  return <Tag style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>{items.map(i => <li key={i}>{i}</li>)}</Tag>
+}
+
+function MiniCaseCard({ Icon, accentColor, title, children }: { Icon: typeof Mail; accentColor: string; title: string; children: React.ReactNode }) {
+  return (
+    <div style={{ background: CARD, border: `1px solid ${LINE}`, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.25)', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 130 }}>
+        <div style={{ background: `linear-gradient(135deg, ${DARK_INK}, #1e1b4b)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon size={48} color="#22d3ee" strokeWidth={1.4} /></div>
+        <div style={{ background: accentColor, display: 'flex', alignItems: 'center', padding: 20 }}><h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 22, lineHeight: 1.2, color: DARK_INK, letterSpacing: -0.5 }}>{title}</h3></div>
+      </div>
+      <div style={{ padding: '26px 26px 20px', display: 'flex', flexDirection: 'column', gap: 18, flex: 1 }}>{children}</div>
+      <div style={{ background: '#111827', borderTop: `1px solid ${LINE}`, padding: '14px 26px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <Logo height={20} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'Inter', fontSize: 12, color: '#6e7e9e' }}><Globe size={12} /> www.evawarm.com</div>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 5, fontFamily: 'Inter', fontSize: 12, color: '#6e7e9e' }}><MapPin size={12} style={{ marginTop: 2, flexShrink: 0 }} />No. 158, Gulecha Tower, 2nd Floor, Arcot Rd, Vadapalani, Chennai, Tamil Nadu 600026</div>
+      </div>
+    </div>
+  )
+}
 
 // ── Colour accent for this page ────────────────────────────────────────────
 const ACCENT = '#06b6d4'
@@ -233,6 +271,82 @@ export default function CaseStudyEmailDeliverabilityPage({ navigate }: { navigat
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ── More Case Studies ─────────────────────────────────────── */}
+      <section style={{ padding: '80px 28px', background: '#060b17' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 52 }}>
+            <span className="chip" style={{ marginBottom: 14, display: 'inline-flex' }}>More Case Studies</span>
+            <h2 style={{ fontFamily: 'Sora', fontWeight: 900, fontSize: 'clamp(24px, 3.2vw, 40px)', color: '#edf0ff', letterSpacing: -1.2, lineHeight: 1.1 }}>
+              More Client <span className="g-text">Wins</span>
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, alignItems: 'stretch' }} className="cs-2col">
+
+            {/* Attentive Card */}
+            <div className="card" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ height: 6, background: 'linear-gradient(90deg, #06b6d4, #0e7490)' }} />
+              <div style={{ padding: '32px 30px', flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Target size={26} color="#06b6d4" />
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'Sora', fontSize: 11, fontWeight: 600, letterSpacing: 1.2, textTransform: 'uppercase', color: '#06b6d4', marginBottom: 4 }}>Case Study</div>
+                    <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 20, color: '#edf0ff', letterSpacing: -0.4 }}>Attentive</h3>
+                  </div>
+                </div>
+                <p style={{ fontFamily: 'Inter', fontSize: 15, color: '#8896b3', lineHeight: 1.75 }}>
+                  A sales automation company for landscaping businesses used EvaWarm's manual warmup to transform their email outreach, going from poor deliverability to industry-leading results within 6 weeks.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                  {[['70%+', 'Avg Open Rate'], ['<2%', 'Bounce Rate'], ['15/mo', 'Leads Generated'], ['20%', 'Revenue Increase']].map(([v, l]) => (
+                    <div key={l} style={{ background: 'rgba(6,182,212,0.08)', border: '1px solid rgba(6,182,212,0.18)', borderRadius: 8, padding: '7px 14px', display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <span style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 15, color: '#22d3ee' }}>{v}</span>
+                      <span style={{ fontFamily: 'Inter', fontSize: 12, color: '#6e7e9e' }}>{l}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                  <span style={{ fontFamily: 'Inter', fontSize: 13, color: '#4a5a7a' }}>Industry: Sales Automation · Landscaping</span>
+                </div>
+              </div>
+            </div>
+
+            {/* IDM Card */}
+            <div className="card" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ height: 6, background: 'linear-gradient(90deg, #8b5cf6, #6d28d9)' }} />
+              <div style={{ padding: '32px 30px', flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Mail size={26} color="#8b5cf6" />
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'Sora', fontSize: 11, fontWeight: 600, letterSpacing: 1.2, textTransform: 'uppercase', color: '#8b5cf6', marginBottom: 4 }}>Case Study</div>
+                    <h3 style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 20, color: '#edf0ff', letterSpacing: -0.4 }}>IDM (Pharma)</h3>
+                  </div>
+                </div>
+                <p style={{ fontFamily: 'Inter', fontSize: 15, color: '#8896b3', lineHeight: 1.75 }}>
+                  A leading US-based online pharma company struggling with 2–5% open rates. EvaWarm segmented their list, ran volume strategy, and rebuilt domain authority — bringing open rates to a sustained 35%.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                  {[['35%', 'Avg Open Rate'], ['500%', 'Order Rate Up'], ['90+', 'Domain Score'], ['5%', 'Revenue Gain']].map(([v, l]) => (
+                    <div key={l} style={{ background: 'rgba(139,92,246,0.08)', border: '1px solid rgba(139,92,246,0.18)', borderRadius: 8, padding: '7px 14px', display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <span style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: 15, color: '#a78bfa' }}>{v}</span>
+                      <span style={{ fontFamily: 'Inter', fontSize: 12, color: '#6e7e9e' }}>{l}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                  <span style={{ fontFamily: 'Inter', fontSize: 13, color: '#4a5a7a' }}>Industry: Healthcare · Pharma E-commerce</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <style>{`@media(max-width:820px){.cs-2col{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────── */}

@@ -1,5 +1,13 @@
 import { ArrowLeft } from 'lucide-react'
 import { useEffect, useRef } from 'react'
+import Breadcrumb from '@/components/Breadcrumb'
+
+function hl(text: string) {
+  const parts = text.split(/(\d+[%+x]?(?:\.\d+)?[%+]?)/g)
+  return parts.map((p, i) =>
+    /^\d/.test(p) ? <span key={i} style={{ color: '#22d3ee', fontWeight: 700 }}>{p}</span> : p
+  )
+}
 
 function useReveal<T extends HTMLElement>(threshold = 0.13) {
   const ref = useRef<T>(null)
@@ -85,6 +93,17 @@ const testimonials = [
     quote: 'Sundar has worked tirelessly to generate quality contacts and new leads for Email Verify. I have always enjoyed working with him and have done so for years. I would recommend his services to anyone in the B2B space.',
     highlight: null,
   },
+  {
+    name: 'Greg Jordan',
+    title: 'VP of Email Products & Technology',
+    company: 'DemandScience',
+    initials: 'GJ',
+    avatar: '/avatars/greg-jordan.jpg',
+    color: '#10b981',
+    linkedin: 'https://www.linkedin.com/in/gregmjordan/',
+    quote: 'I have found Sundar to be very motivated and professional, he sets out to achieve his goals and I would highly recommend him as a marketing professional.',
+    highlight: null,
+  },
 ]
 
 function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: number }) {
@@ -112,7 +131,7 @@ function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: numbe
 
       {/* Quote */}
       <p style={{ fontFamily: 'Inter', fontSize: isFeature ? 17 : 15, color: '#c4d0ee', lineHeight: 1.85, marginBottom: 24, position: 'relative', zIndex: 1 }}>
-        {t.quote}
+        {hl(t.quote)}
       </p>
 
       {/* Highlight stat */}

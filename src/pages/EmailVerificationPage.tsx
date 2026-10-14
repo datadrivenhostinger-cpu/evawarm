@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { ArrowRight, Calendar, CheckCircle2, ChevronDown, MonitorCheck, TrendingUp, Target, Headset, Zap, CopyMinus } from 'lucide-react'
+import Breadcrumb from '@/components/Breadcrumb'
 
 const CALENDLY = 'https://calendar.app.google/gt6J1J4rvFomHMgi8'
 const CARD = '#0f1b30'
@@ -133,6 +134,7 @@ export default function EmailVerificationPage({ navigate }: { navigate: (p: stri
     <main>
       {/* Hero */}
       <section style={{ paddingTop: 68, position: 'relative', overflow: 'hidden', background: MESH }}>
+        <Breadcrumb crumbs={[{ label: 'Home', page: 'home' }, { label: 'Services', page: 'services' }, { label: 'Email Verification Services' }]} navigate={navigate} />
         <div style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px)', backgroundSize: '72px 72px', position: 'absolute', inset: 0, pointerEvents: 'none' }} />
         <div className="ev-hero" style={{ maxWidth: 1240, margin: '0 auto', padding: '88px 32px 96px', display: 'grid', gridTemplateColumns: '1fr 440px', gap: 72, alignItems: 'center', position: 'relative' }}>
           <div style={{ animation: 'hero-up 0.8s ease both' }}>

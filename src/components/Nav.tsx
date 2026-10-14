@@ -11,7 +11,8 @@ interface NavProps {
 // Pages that belong to the Resources group
 const RESOURCE_PAGES = new Set([
   'resources/email-deliverability-assets',
-  'resources/case-study-emaildeliverability',
+  'case-studies',
+  'case-study',
 ])
 
 export default function Nav({ currentPage, navigate }: NavProps) {
@@ -186,8 +187,8 @@ export default function Nav({ currentPage, navigate }: NavProps) {
             </button>
             <div className="nav-dd-menu">
               <div className="nav-dd-menu-inner">
+                <button onClick={() => go('case-studies')}>Case Studies</button>
                 <button onClick={() => go('resources/email-deliverability-assets')}>Email Deliverability Assets</button>
-                <button onClick={() => go('resources/case-study-emaildeliverability')}>Case Study</button>
               </div>
             </div>
           </div>
@@ -311,16 +312,16 @@ export default function Nav({ currentPage, navigate }: NavProps) {
             {mobileExpanded === 'resources' && (
               <>
                 <button
+                  onClick={() => go('case-studies')}
+                  style={mobileChildBtn(currentPage === 'case-studies' || currentPage === 'case-study')}
+                >
+                  Case Studies
+                </button>
+                <button
                   onClick={() => go('resources/email-deliverability-assets')}
                   style={mobileChildBtn(currentPage === 'resources/email-deliverability-assets')}
                 >
                   Email Deliverability Assets
-                </button>
-                <button
-                  onClick={() => go('resources/case-study-emaildeliverability')}
-                  style={mobileChildBtn(currentPage === 'resources/case-study-emaildeliverability')}
-                >
-                  Case Study
                 </button>
               </>
             )}

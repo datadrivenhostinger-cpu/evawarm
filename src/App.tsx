@@ -32,18 +32,20 @@ import EmailDeliverabilityAssets from '@/pages/EmailDeliverabilityAssets'
 import TermsAndConditions from '@/pages/TermsAndConditions'
 import BulkEmailWarmupPage from '@/pages/BulkEmailWarmupPage'
 import ServiceLandingPage from '@/pages/ServiceLandingPage'
-import CaseStudyEmailDeliverabilityPage from '@/pages/CaseStudyEmailDeliverabilityPage'
+import CaseStudiesPage from '@/pages/CaseStudiesPage'
+import CaseStudyPage from '@/pages/CaseStudyPage'
 import { serviceLandings } from '@/data/serviceLandings'
 import { setSeo } from '@/utils/seo'
 import { SEO_META } from '@/utils/seoMeta'
 import { blogPosts } from '@/data/blog'
+import { caseStudies } from '@/data/caseStudies'
 
 type Page =
   | 'home' | 'services' | 'how-it-works' | 'results' | 'testimonials'
   | 'about' | 'pricing' | 'faq' | 'contact' | 'blog' | 'blog-post'
   | 'email-warmup' | `services/${string}`
   | 'resources/email-deliverability-assets'
-  | 'resources/case-study-emaildeliverability'
+  | 'case-studies' | 'case-study'
   | 'terms-conditions' | 'privacy-policy' | '404'
 
 // ── Derive the active Page from the current pathname ────────────────────────
@@ -59,11 +61,12 @@ function pageFromPath(p: string): Page {
   if (p === '/contact') return 'contact'
   if (p === '/blog') return 'blog'
   if (p.startsWith('/blog/')) return 'blog-post'
+  if (p === '/case-studies') return 'case-studies'
+  if (p.startsWith('/case-studies/')) return 'case-study'
   if (p === '/email-warmup') return 'email-warmup'
   if (p === '/services/bulk-email-warmup') return 'services/bulk-email-warmup'
   if (p === '/services/email-verification-services') return 'services/email-verification-services'
   if (p === '/resources/email-deliverability-assets') return 'resources/email-deliverability-assets'
-  if (p === '/resources/case-study-emaildeliverability') return 'resources/case-study-emaildeliverability'
   if (p === '/terms-conditions') return 'terms-conditions'
   if (p === '/privacy-policy') return 'privacy-policy'
   const sl = serviceLandings.find(x => p === `/services/${x.slug}`)
@@ -81,6 +84,7 @@ export default function App() {
     // but push the full clean path so the slug is in the URL.
     let pageName: Page = p as Page
     if (p.startsWith('blog/')) pageName = 'blog-post'
+    if (p.startsWith('case-studies/')) pageName = 'case-study'
 
     setPage(pageName)
     const path = p === 'home' ? '/' : `/${p}`
@@ -119,6 +123,18 @@ export default function App() {
       return
     }
 
+    // Case study detail pages
+    if (page === 'case-study') {
+      const csSlug = currentPath.slice('/case-studies/'.length)
+      const cs = caseStudies.find(c => c.slug === csSlug)
+      if (cs) {
+        setSeo(`${cs.client}: ${cs.heroStats[0][0]} ${cs.heroStats[0][1]} | EvaWarm Case Study`, cs.tagline.slice(0, 160), `/case-studies/${csSlug}`)
+      } else {
+        setSeo('Case Study | EvaWarm', 'Email deliverability case study from EvaWarm.', `/case-studies/${csSlug}`)
+      }
+      return
+    }
+
     // Service landing pages: use dedicated metaTitle + metaDescription
     const landing = serviceLandings.find(x => page === `services/${x.slug}`)
     if (landing) {
@@ -141,7 +157,7 @@ export default function App() {
   const showFooter = page !== '404'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#060b17', color: '#c4d0ee', overflowX: 'hidden' }}>
+    <div style={{ minHeight: '100vh', background: '#060b17', color: '#c4d0ee', overflowX: 'clip' }}>
       {page !== '404' && <Nav currentPage={page} navigate={navigate} />}
 
       {page === 'home' ? (
@@ -178,16 +194,18 @@ export default function App() {
         <BlogPage navigate={navigate} />
       ) : page === 'blog-post' ? (
         <BlogPostPage slug={currentPath.slice('/blog/'.length)} navigate={navigate} />
+      ) : page === 'case-studies' ? (
+        <CaseStudiesPage navigate={navigate} />
+      ) : page === 'case-study' ? (
+        <CaseStudyPage slug={currentPath.slice('/case-studies/'.length)} navigate={navigate} />
       ) : page === 'email-warmup' ? (
         <EmailWarmupPage navigate={navigate} />
       ) : page === 'services/bulk-email-warmup' ? (
-        <BulkEmailWarmupPage />
+        <BulkEmailWarmupPage navigate={navigate} />
       ) : page === 'services/email-verification-services' ? (
         <EmailVerificationPage navigate={navigate} />
       ) : page === 'resources/email-deliverability-assets' ? (
         <EmailDeliverabilityAssets navigate={navigate} />
-      ) : page === 'resources/case-study-emaildeliverability' ? (
-        <CaseStudyEmailDeliverabilityPage navigate={navigate} />
       ) : page === 'terms-conditions' ? (
         <TermsAndConditions navigate={navigate} />
       ) : page === 'privacy-policy' ? (
