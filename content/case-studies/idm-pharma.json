@@ -1,0 +1,41 @@
+{
+  "slug": "idm-pharma",
+  "client": "IDM (Pharma)",
+  "title": "Compliant Outreach",
+  "tagline": "How EvaWarm helped IDM Pharma achieve 89% inbox placement reaching healthcare professionals across NHS and private hospital domains — in a fully regulated environment.",
+  "industry": "Pharmaceutical / Healthcare",
+  "accent": "#10b981",
+  "date": "2024-09-10",
+  "heroStats": [
+    { "value": "89%",    "label": "Inbox Placement" },
+    { "value": "10 wks", "label": "Warmup Programme" },
+    { "value": "30%",    "label": "Faster Approvals" }
+  ],
+  "about": "IDM is a pharmaceutical company that uses email outreach to communicate with healthcare professionals (HCPs) — a highly regulated audience with strict compliance requirements under GDPR, HIPAA-adjacent guidelines, and industry codes of practice.",
+  "objective": "Achieve strong inbox placement reaching NHS and private hospital email domains while satisfying medical-legal content approval requirements, GDPR compliance, and internal data-governance audit obligations.",
+  "challenges": [
+    "HCP email addresses hosted on NHS and hospital domains apply aggressive content filtering for pharmaceutical terminology",
+    "Content required medical and legal review before sending, creating long approval cycles that limited copy iteration",
+    "DMARC policy was absent — authenticated and unauthenticated sends were indistinguishable to receiving servers",
+    "No audit trail for send-time metadata, blocking internal data-governance sign-off on the programme",
+    "Standard seed warmup networks are ineffective for NHS mail environments that operate outside major ISP reputation systems",
+    "Regulatory exposure: incorrect sender identity or unapproved content in a single send creates legal risk"
+  ],
+  "solutions": [
+    { "title": "Compliance-First Infrastructure", "desc": "Worked with legal and medical affairs upfront to define approved sender names, domain formats, and content guardrails — embedding compliance by design, not review." },
+    { "title": "Full Authentication at \"Reject\"", "desc": "Dedicated sending domains with strict SPF, DKIM, and DMARC at \"reject\" policy from day one — maximising trust with NHS servers that apply extra scrutiny to pharma senders." },
+    { "title": "Audit-Compliant Logging",          "desc": "Integrated a logging layer recording full send-time metadata (recipient, timestamp, message hash) to an audit-compliant store, satisfying internal governance without impacting deliverability." },
+    { "title": "HCP-Domain Warmup",               "desc": "Built warmup using IDM's own internal NHS and hospital contacts — generating domain-specific positive signals that standard seed networks cannot provide." },
+    { "title": "Conservative Volume Strategy",    "desc": "Low, consistent volume rather than aggressive ramps — HCP domains reward reliability over time rather than raw engagement rates or rapid volume growth." },
+    { "title": "Custom Bounce Monitoring",         "desc": "NHS mail servers return custom bounce codes requiring manual interpretation. We monitored and categorised every bounce to distinguish temporary blocks from permanent failures." }
+  ],
+  "stats": [
+    { "value": "89%",    "label": "Inbox Placement",     "sub": "across NHS, private & commercial domains" },
+    { "value": "10 wks", "label": "Programme Length",    "sub": "warmup + infrastructure setup" },
+    { "value": "30%",    "label": "Faster Approvals",    "sub": "reduction in campaign approval time" },
+    { "value": "1st",    "label": "Audit Submission",    "sub": "data governance review passed first time" },
+    { "value": "0",      "label": "Compliance Breaches", "sub": "across the entire programme" }
+  ],
+  "takeaway": "Compliance and deliverability are not in opposition. The discipline required to meet pharma's regulatory standards — consistent sender identity, documented processes, controlled volume — is also exactly what builds durable inbox trust.",
+  "conclusion": "IDM Pharma's programme shows that even the most regulated outreach contexts can achieve strong inbox performance when compliance requirements are treated as engineering specifications rather than obstacles to work around."
+}

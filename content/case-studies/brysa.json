@@ -1,0 +1,41 @@
+{
+  "slug": "brysa",
+  "client": "Brysa",
+  "title": "Email Deliverability",
+  "tagline": "How EvaWarm helped Brysa, a certified Salesforce partner in the UK, achieve a 94% inbox placement rate and recover from spam-folder exile within 6 weeks of manual email warmup.",
+  "industry": "B2B SaaS / Salesforce Partner",
+  "accent": "#06b6d4",
+  "date": "2024-03-15",
+  "heroStats": [
+    { "value": "94%",   "label": "Inbox Placement" },
+    { "value": "6 wks", "label": "To Results" },
+    { "value": "4.1%",  "label": "Reply Rate" }
+  ],
+  "about": "Brysa is a certified Salesforce partner based in the United Kingdom, specialising in Salesforce management services. Their outbound email programme is a critical driver of lead generation, making inbox placement and open rates central to their revenue pipeline.",
+  "objective": "Recover inbox placement after a deliverability collapse caused by rapid volume scaling, and establish a sustainable sending infrastructure that could grow without repeat incidents.",
+  "challenges": [
+    "Inbox placement collapsed from 70%+ to below 30% after a rapid volume scale-up",
+    "Single sending domain with no warmup, authentication gaps, and high complaint rates",
+    "DMARC policy set to \"none\" — failed authentications silently ignored",
+    "Contact list contained 34%+ stale, unverified, or catch-all addresses",
+    "Transactional and outreach email sharing the same domain, creating cross-contamination risk",
+    "Sales pipeline dried up with open rates below 8% for two consecutive weeks"
+  ],
+  "solutions": [
+    { "title": "Full Deliverability Audit",   "desc": "Audited DNS authentication (SPF, DKIM, DMARC), infrastructure, list hygiene, and historical complaint rates to identify all root causes before starting warmup." },
+    { "title": "DMARC Hardening",             "desc": "Moved DMARC policy from \"none\" to monitored \"quarantine\" with reporting enabled, preventing future authentication failures from going undetected." },
+    { "title": "List Verification & Hygiene", "desc": "Ran the full contact list through the EvaWarm verification pipeline, removing 34% of addresses that were invalid, role-based, or catch-all." },
+    { "title": "Domain Isolation",            "desc": "Separated cold outreach and transactional sending onto isolated subdomains so that future outreach complaints could never damage transactional reputation." },
+    { "title": "Manual Warmup Programme",     "desc": "Six-week manual warmup using real human inboxes — not automated seed networks — scaling from 20 to 300+ emails per day per domain with engagement at every step." },
+    { "title": "Volume Strategy & Monitoring","desc": "Daily deliverability checks via seed inbox placement tests, A/B subject line testing, and engagement monitoring ensured no regression before production launch." }
+  ],
+  "stats": [
+    { "value": "94%",    "label": "Inbox Placement",     "sub": "across Gmail, Outlook & Yahoo" },
+    { "value": "6 wks",  "label": "Time to Results",     "sub": "from audit to full production" },
+    { "value": "4.1%",   "label": "Reply Rate",          "sub": "exceeding pre-crisis baseline" },
+    { "value": "<2%",    "label": "Complaint Rate",      "sub": "down from problem-level highs" },
+    { "value": "0",      "label": "Domains Abandoned",   "sub": "clean rebuild, no throwaway domains" }
+  ],
+  "takeaway": "Warmup is not a one-time event. The protocol EvaWarm established became Brysa's standard operating procedure for every new domain they spin up — meaning deliverability problems at scale are now a solved problem for their business.",
+  "conclusion": "Brysa's turnaround demonstrates that even severely damaged sender reputation can be restored with the right sequence of infrastructure fixes and disciplined, manual warmup. The investment paid back within the first recovered campaign cycle."
+}

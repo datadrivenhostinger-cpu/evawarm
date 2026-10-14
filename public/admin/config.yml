@@ -107,3 +107,116 @@ collections:
       - label: Conclusion
         name: conclusion
         widget: text
+
+  # ── Case Studies ────────────────────────────────────────────────────────────
+  - name: case-studies
+    label: Case Studies
+    label_singular: Case Study
+    folder: content/case-studies
+    create: true
+    delete: true
+    identifier_field: client
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{client}} — {{title}}"
+    sortable_fields: [date, client, industry]
+    fields:
+      - label: Client Name
+        name: client
+        widget: string
+        hint: "Company or client name, e.g. Brysa"
+
+      - label: Page Title (service/topic)
+        name: title
+        widget: string
+        hint: "Short descriptor shown in the hero, e.g. Email Deliverability"
+
+      - label: Tagline
+        name: tagline
+        widget: text
+        hint: "One-sentence summary shown in the hero and on the listing card."
+
+      - label: Industry
+        name: industry
+        widget: string
+        hint: "e.g. B2B SaaS / Salesforce Partner"
+
+      - label: Publish Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        hint: "Controls display order — oldest first."
+
+      - label: Accent Colour
+        name: accent
+        widget: string
+        default: "#06b6d4"
+        hint: "Hex colour used for highlights, e.g. #06b6d4 (cyan), #8b5cf6 (purple), #10b981 (green)."
+
+      - label: Featured Image
+        name: image
+        widget: image
+        required: false
+        hint: "Optional hero image for the case study."
+
+      - label: Hero Stats
+        name: heroStats
+        widget: list
+        label_singular: Stat
+        summary: "{{value}} — {{label}}"
+        hint: "Up to 3 quick-win numbers shown in the hero strip."
+        fields:
+          - { label: Value, name: value, widget: string, hint: "e.g. 94%" }
+          - { label: Label, name: label, widget: string, hint: "e.g. Inbox Placement" }
+
+      - label: About the Client
+        name: about
+        widget: text
+        hint: "2–3 sentences describing the client and why email matters to them."
+
+      - label: Objective
+        name: objective
+        widget: text
+        hint: "What the client wanted to achieve."
+
+      - label: Challenges
+        name: challenges
+        widget: list
+        label_singular: Challenge
+        hint: "List each obstacle as a separate item."
+        field:
+          label: Challenge
+          name: challenge
+          widget: text
+
+      - label: Solutions
+        name: solutions
+        widget: list
+        label_singular: Solution
+        summary: "{{title}}"
+        hint: "Each EvaWarm solution card — title + short description."
+        fields:
+          - { label: Title,       name: title, widget: string }
+          - { label: Description, name: desc,  widget: text   }
+
+      - label: Result Stats
+        name: stats
+        widget: list
+        label_singular: Stat
+        summary: "{{value}} — {{label}}"
+        hint: "Numbers displayed in the Results grid."
+        fields:
+          - { label: Value,    name: value, widget: string, hint: "e.g. 94%" }
+          - { label: Label,    name: label, widget: string, hint: "e.g. Inbox Placement" }
+          - { label: Sub-text, name: sub,   widget: string, hint: "e.g. across Gmail, Outlook & Yahoo" }
+
+      - label: EvaWarm Takeaway
+        name: takeaway
+        widget: text
+        hint: "Key lesson shown in the highlighted callout box."
+
+      - label: Conclusion
+        name: conclusion
+        widget: text
+        hint: "Closing paragraph of the case study."

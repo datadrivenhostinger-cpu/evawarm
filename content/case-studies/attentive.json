@@ -1,0 +1,41 @@
+{
+  "slug": "attentive",
+  "client": "Attentive",
+  "title": "Outbound Scaling",
+  "tagline": "How EvaWarm helped Attentive scale from 500 to 8,000 emails per day across 12 domains with zero deliverability incidents over four consecutive months.",
+  "industry": "MarTech / E-commerce",
+  "accent": "#8b5cf6",
+  "date": "2024-06-01",
+  "heroStats": [
+    { "value": "8k/day", "label": "Peak Volume" },
+    { "value": "0",      "label": "Incidents" },
+    { "value": "96%",    "label": "Peak Inbox Rate" }
+  ],
+  "about": "Attentive is a marketing technology company serving mid-market and enterprise e-commerce brands. As they expanded their outbound sales motion, they needed to scale cold email from 500 to 8,000 emails per day across multiple domains without triggering spam filters.",
+  "objective": "Design a multi-domain sending architecture that could grow safely from 500 to 8,000 emails per day, maintain separate identities for different outreach personas, and sustain \"High\" Google Postmaster Tool reputation throughout.",
+  "challenges": [
+    "Previous scaling attempts caused Google Postmaster scores to drop to \"Bad\" within days, forcing domain abandonment",
+    "No structured warmup — volume increases were ad hoc, triggering ISP anomaly detection",
+    "Multiple outreach personas needed separate domain identities, requiring multi-domain architecture",
+    "Reply routing was broken — replies from prospects did not reach the correct sales rep's inbox",
+    "No monitoring in place — deliverability failures were discovered after revenue impact, not before",
+    "ISPs flag domains that increase volume faster than 40% per day as suspicious senders"
+  ],
+  "solutions": [
+    { "title": "Multi-Domain Portfolio Design", "desc": "12 sending domains purpose-built for specific outreach personas, warmed sequentially so at least 8 mature domains were always available for production sending." },
+    { "title": "Full Authentication Stack",     "desc": "Each domain received strict SPF, 2048-bit DKIM, DMARC graduated from \"none\" to \"reject\", and BIMI records on highest-volume domains for Gmail brand trust." },
+    { "title": "Reply Routing Fix",             "desc": "Configured separate MX routing per domain so prospect replies landed in the correct sales rep's inbox, maintaining the engagement loop and generating positive sender signals." },
+    { "title": "21-Day Sequential Warmup",      "desc": "Each domain followed a 21-day manual warmup protocol with a maximum 40% daily volume increase, before entering production rotation." },
+    { "title": "Continuous Monitoring",         "desc": "Daily checks across Google Postmaster Tools, Microsoft SNDS, and Barracuda reputation data. Any anomaly triggered an automatic domain hold pending investigation." },
+    { "title": "Rotating Domain System",        "desc": "New domains always being warmed in the background, so production capacity could grow steadily without any single domain bearing sudden volume jumps." }
+  ],
+  "stats": [
+    { "value": "8k/day",  "label": "Daily Send Volume",        "sub": "scaled from 500 over 4 months" },
+    { "value": "0",       "label": "Deliverability Incidents", "sub": "across the entire scaling period" },
+    { "value": "91–96%",  "label": "Inbox Placement",         "sub": "consistent across Gmail & Outlook" },
+    { "value": "4 mo",    "label": "Scaling Duration",        "sub": "no domain abandoned in that period" },
+    { "value": "High",    "label": "Postmaster Reputation",   "sub": "all domains maintained this rating" }
+  ],
+  "takeaway": "The infrastructure Attentive built with EvaWarm is now a competitive advantage. While peers periodically lose days or weeks to deliverability crises, Attentive's outbound programme runs without interruption — and scales on demand.",
+  "conclusion": "Scaling email volume safely is an engineering problem as much as a marketing one. Attentive's success came from treating it that way — systematic design, disciplined protocols, and daily measurement rather than ad-hoc volume pushes."
+}
